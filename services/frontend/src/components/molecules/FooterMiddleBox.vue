@@ -1,5 +1,5 @@
 <template>
-    <div class="col-12 сol-sm-6 col-md-2">
+    <div class="col-md-2">
       <div class="footer-items-box">
         <h2>{{ title }}</h2>
         <FooterItem 
@@ -50,5 +50,16 @@ h2 {
   font-weight: 500;
   font-style: normal;
   margin-bottom: 14px;
+}
+
+@media only screen and (max-width: 720px) {
+  .col-md-2 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .footer-items-box {
+    align-items: center;
+  }
 }
 </style>

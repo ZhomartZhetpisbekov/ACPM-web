@@ -17,7 +17,7 @@
       :footerNavs="footerNavs.press"
     />
 
-    <div class="col-12 сol-sm-6 col-md-2">
+    <div class="col-md-2">
       <div class="footer-items-box">
         <h2>Медиа</h2>
         <div class="media-container">
@@ -86,8 +86,12 @@ h2 {
   font-size: 1.3rem;
 }
 
-.media-row {
+.media-container {
   width: 80%;
+}
+
+.media-row {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
@@ -103,6 +107,23 @@ a {
   padding: 8px 25px;
   border-radius: 20px;
   text-decoration: none;
+  white-space: nowrap;
 }
 
+@media only screen and (max-width: 720px) {
+  .col-md-2 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .footer-items-box {
+    align-items: center;
+    text-align: center;
+  }
+
+  .media-container {
+    margin: auto;
+    justify-content: center;
+  }
+}
 </style>
