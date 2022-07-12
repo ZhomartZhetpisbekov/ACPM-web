@@ -40,4 +40,10 @@ h2 {
   font-size: 2.5rem;
   font-weight: 900;
 }
+
+@media only screen and (max-width: 720px){
+  .footer-title {
+    text-align: center;
+  }
+}
 </style>

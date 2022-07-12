@@ -1,11 +1,11 @@
 <template>
-    <div class="col-12 сol-sm-6 col-md-2">
+    <div class="col-md-2">
       <div class="footer-items-box">
-        <h2>{{ title }}</h2>
+        <h2>{{ footerNavs[0] }}</h2>
         <FooterItem 
-          v-for="(item, index) in footerNavs"
+          v-for="(item, index) in footerNavs.slice(1)"
           :key="index"
-          :title="item"
+          :link="item"
         />
       </div>
     </div>
@@ -20,13 +20,8 @@ export default {
       footerNavs: {
         type: Array,
       },
-      title: {
-        type: String,
-      }
     },
-    data() {
-        return {};
-    },
+    data() {},
     methods: {},
     components: { FooterItem }
 };
@@ -50,5 +45,16 @@ h2 {
   font-weight: 500;
   font-style: normal;
   margin-bottom: 14px;
+}
+
+@media only screen and (max-width: 720px) {
+  .col-md-2 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .footer-items-box {
+    align-items: center;
+  }
 }
 </style>
