@@ -1,20 +1,10 @@
 <template>
   <div class="row d-flex justify-content-center">
+
     <FooterMiddleBox 
-      :title="'Меню'"
-      :footerNavs="footerNavs.menu"
-    />
-    <FooterMiddleBox 
-      :title="'Членство'"
-      :footerNavs="footerNavs.chlenstvo"
-    />
-    <FooterMiddleBox 
-      :title="'Ссылки'"
-      :footerNavs="footerNavs.links"
-    />
-    <FooterMiddleBox 
-      :title="'Пресса'"
-      :footerNavs="footerNavs.press"
+      v-for="(item, index) in footerNavGroups"
+      :key="index"
+      :footerNavs="item"
     />
 
     <div class="col-md-2">
@@ -50,27 +40,31 @@ export default {
   props: {},
   data() {
     return {
-      footerNavs: {
-          menu: [
+      footerNavGroups: [
+          [
+            "Меню",
             "Общество",
             "События",
             "Образование",
             "Клинические протоколы",
             "Новости в медицине",
           ],
-          chlenstvo: [
+          [
+            "Членство",
             "Войти в мой кабинет",
             "Стать членом",
           ],
-          links: [
+          [
+            "Ссылки",
             "European Lung Found",
             "European Respiratory System",
           ],
-          press: [
+          [
+            "Пресса",
             "Press queries",
           ],
-      },
-    }
+      ],
+    };
   },
   methods: {},
 };

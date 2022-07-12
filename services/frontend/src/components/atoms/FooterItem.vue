@@ -1,5 +1,5 @@
 <template>
-  <a href="#">{{ this.title }}</a>
+  <a href="#">{{ this.link }}</a>
 </template>
 
 <script scoped>
@@ -7,7 +7,7 @@
 export default {
   name: "FooterItem",
   props: {
-    title: {
+    link: {
       type: String,
     },
   },
