@@ -1,21 +1,23 @@
 <template>
   <div class="upcomming-events-container">
     <h2>Предстоящие мероприятия</h2>
+
     <div class="events-container">
-      <a href="#"><img src="../../assets/HomePage/button-left.png" alt=""></a>
+      <a @click="scroll_left"><img src="../../assets/HomePage/button-left.png" alt=""></a>
       <div class="scrollable-container">
 
         <EventItem />
         <EventItem />
         <EventItem />
 
-        <!-- <EventItem />
         <EventItem />
-        <EventItem /> -->
+        <EventItem />
+        <EventItem />
 
       </div>
-      <a href="#"><img src="../../assets/HomePage/button-right.png" alt=""></a>
+      <a @click="scroll_right"><img src="../../assets/HomePage/button-right.png" alt=""></a>
     </div>
+
   </div>
 </template>
 
@@ -28,8 +30,19 @@ export default {
     data() {
         return {};
     },
-    methods: {},
-    components: { EventItem }
+    methods: {
+      scroll_left() {
+        let content = document.querySelector(".scrollable-container");
+        content.scrollLeft -= 200;
+      },
+      scroll_right() {
+        let content = document.querySelector(".scrollable-container");
+        content.scrollLeft += 200;
+      },
+    },
+    components: {
+      EventItem,
+    },
 };
 </script>
 
@@ -53,7 +66,7 @@ export default {
   display: flex;
   justify-content: space-between;
   width: 85%;
-  /* overflow: auto; */
+  overflow: auto;
 }
 
 h2 {

@@ -27,6 +27,9 @@ export default {
 
 <style scoped>
 /* Event Item */
+.event-outter-container {
+  margin-right: 85px;
+}
 
 .event-container {
   display: flex;
