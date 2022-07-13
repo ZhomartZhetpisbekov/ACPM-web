@@ -1,14 +1,14 @@
 <template>
   <section>
     <BaseHeader :title="'damn'" />
-    <MainContent :title="'mainContent'" />
+    <HomePage :title="'homepage'" />
     <BaseFooter :title="'footfetish'" />
   </section>
 </template>
 
 <script>
 import BaseHeader from "./components/UI/Header.vue";
-import MainContent from "./components/UI/MainContent.vue";
+import HomePage from "./components/UI/HomePage.vue";
 import BaseFooter from "./components/UI/Footer.vue";
 
 export default {
@@ -16,7 +16,7 @@ export default {
 
   components: {
     BaseHeader,
-    MainContent,
+    HomePage,
     BaseFooter,
   },
 
@@ -51,5 +51,10 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
 }
 </style>

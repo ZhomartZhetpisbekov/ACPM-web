@@ -24,8 +24,6 @@ export default {
 <style scoped>
 /* Footer */
 .footer {
-  margin-top: 130px;
-  /* max-width: 80rem; */
   background: #d9d9d9;
   width: 100%;
   justify-content: space-between;
