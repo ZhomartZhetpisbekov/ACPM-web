@@ -2,16 +2,19 @@
   <div class="home-page">
     <AboutUsBanner />
     <UpcommingEvents />
+    <BecomeMember />
+
   </div>
 </template>
 
 <script>
 import AboutUsBanner from '../molecules/AboutUsBanner.vue';
 import UpcommingEvents from '../molecules/UpcommingEvents.vue';
+import BecomeMember from '../molecules/BecomeMember.vue';
 
 export default {
   name: "HomePage",
-  components: { AboutUsBanner, UpcommingEvents },
+  components: { AboutUsBanner, UpcommingEvents, BecomeMember },
   props: {},
   data() {},
   methods: {},
@@ -24,6 +27,6 @@ export default {
   /* border: 1px solid #fff; */
   margin-top: 200px;
   width: 100%;
-  height: 150vh;
+  height: 250vh;
 }
 </style>

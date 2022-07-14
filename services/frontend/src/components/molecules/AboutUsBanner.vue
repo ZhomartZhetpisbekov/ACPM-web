@@ -44,17 +44,17 @@ export default {
 }
 
 .content-container {
-  width: 40%;
+  width: 30%;
   margin-left: 130px;
   color: #fff;
 } 
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 2.1rem;
 }
 
 p {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 
 .buttons-container {
@@ -75,6 +75,7 @@ a {
 @media only screen and (max-width: 720px) {
   .content-container {
     margin: auto;
+    width: 80%;
   }
 
   .buttons-container {

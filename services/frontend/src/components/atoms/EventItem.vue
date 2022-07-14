@@ -1,9 +1,9 @@
 <template>
-  <div class="event-outter-container">
-    <a href="">
+  <div :class="lastEvent ? 'last-event' : 'event-outter-container'">
+    <a href=""> 
       <div class="event-container">
-        <img src="../../assets/HomePage/event1.png" alt="">
-        <p>Tematisk fosk. Set sofanygon pesåsam.</p>
+        <img :src="require(`../../assets/HomePage/${eventInfo[1]}.png`)" />
+        <p>{{ eventInfo[2] }}</p>
       </div>
     </a>
   </div>
@@ -12,13 +12,19 @@
 <script scoped>
 
 export default {
+
   name: "EventItem",
   props: {
-
+    eventInfo: {
+      type: Array,
+    },
+    eventsNum: {
+      type: Number,
+    }
   },
   data() {
     return {
-
+      lastEvent: (this.eventInfo[0] === this.eventsNum) ? true : false,
     }
   },
   methods: {},
@@ -31,6 +37,10 @@ export default {
   margin-right: 85px;
 }
 
+.last-event {
+  margin-right: 0;
+}
+
 .event-container {
   display: flex;
   flex-direction: column;
@@ -40,11 +50,19 @@ export default {
 
 img {
   width: 350px;
+  
 }
 
 p {
   width: 80%;
   font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 720px) {
+  .event-container {
+    /* border: 1px solid yellow; */
+    width: 100%;
+  }
 }
 
 </style>
