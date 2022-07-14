@@ -38,6 +38,7 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   justify-content: left;
+  text-align: center;
 }
 
 h2 {
