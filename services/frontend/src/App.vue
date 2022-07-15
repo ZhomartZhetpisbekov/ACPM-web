@@ -1,14 +1,14 @@
 <template>
   <section>
     <BaseHeader :title="'damn'" />
-    <HomePage :title="'homepage'" />
+    <router-view />
     <BaseFooter :title="'footfetish'" />
   </section>
 </template>
 
 <script>
 import BaseHeader from "./components/UI/Header.vue";
-import HomePage from "./components/UI/HomePage.vue";
+// import HomePage from "./components/pages/HomePage.vue";
 import BaseFooter from "./components/UI/Footer.vue";
 
 export default {
@@ -16,7 +16,7 @@ export default {
 
   components: {
     BaseHeader,
-    HomePage,
+    // HomePage,
     BaseFooter,
   },
 

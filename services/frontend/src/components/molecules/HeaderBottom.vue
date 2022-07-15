@@ -6,6 +6,7 @@
         :key="i"
         :styling="'bottom'"
         :title="pageNames[i]"
+        :pagePath="pagePaths[i]"
       />
     </ul>
   </nav>
@@ -29,7 +30,13 @@ export default {
         "Новости в медицине",
       ],
       pageActive: [false, false, true],
-      pagePaths: ["Home", "Orders", "Rakhmet"],
+      pagePaths: [
+        "obschestvo",
+        "sobytia",
+        "obrazovanie",
+        "clinicalprotocols",
+        "medicinicnews",
+      ],
       pageImgs: ["Home", "Order", "Rakhmet"],
     };
   },

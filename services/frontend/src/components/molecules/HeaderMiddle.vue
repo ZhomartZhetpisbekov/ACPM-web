@@ -1,6 +1,15 @@
 <template>
   <div class="header-middle">
-    <img class="logo" :src="require('@/assets/Header/logo.png')" alt="" />
+    <img
+      class="logo"
+      :src="require('@/assets/Header/logo.png')"
+      alt=""
+      @click="
+        () => {
+          if (currentRouteName !== 'Home') this.$router.push('/');
+        }
+      "
+    />
     <ul>
       <div class="searchbar">
         <img class="icon" :src="require('@/assets/Header/search.svg')" alt="" />
@@ -10,7 +19,7 @@
       <li><img :src="require('@/assets/Header/ru.svg')" alt="" /></li>
       <li><img :src="require('@/assets/Header/eng.svg')" alt="" /></li>
     </ul>
-    <div class="icon-one" :class="{ active: isActive }" @click="openMenu">
+    <div class="icon-one" :class="{ active: isActive }" @click="clickHandler">
       <div class="hamburger hamburger-one"></div>
     </div>
   </div>
@@ -36,11 +45,17 @@ export default {
     };
   },
   methods: {
-    openMenu() {
+    clickHandler() {
       this.isActive = !this.isActive;
       this.$emit("openMenu", this.isActive);
     },
   },
+  computed: {
+    currentRouteName() {
+      return this.$route.name;
+    },
+  },
+  mounted() {},
 };
 </script>
 

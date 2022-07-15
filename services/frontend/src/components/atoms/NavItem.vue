@@ -1,5 +1,5 @@
 <template>
-  <li :class="`${this.addClass} ${this.styling}`">
+  <li :class="`${this.addClass} ${this.styling}`" @click="changePage">
     <img v-if="styling == 'top'" :src="this.path" />
     <p>{{ this.title }}</p>
   </li>
@@ -21,6 +21,9 @@ export default {
     imgPath: {
       type: String,
     },
+    pagePath: {
+      type: String,
+    },
   },
   data() {
     return {
@@ -30,14 +33,33 @@ export default {
         require("@/assets/Header/" + this.imgPath + ".svg"),
     };
   },
+  methods: {
+    changePage() {
+      if (this.$router.currentRoute.path !== "/" + this.pagePath)
+        this.$router.push({
+          name: "Information",
+          params: { name: this.pagePath },
+        });
+    },
+  },
 };
 </script>
 
 <style scoped>
 li {
+  padding-bottom: 0.25rem;
   color: white;
   display: flex;
   align-items: center;
+  border-bottom: 2px solid #313a59;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+.bottom:hover {
+  border-bottom: 2px solid white;
 }
 
 .top {
@@ -73,9 +95,5 @@ li {
   .middle {
     margin: 0 2em;
   }
-}
-
-p {
-  margin-bottom: 0;
 }
 </style>
