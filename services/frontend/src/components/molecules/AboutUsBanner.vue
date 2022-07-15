@@ -41,15 +41,19 @@ export default {
   background-size: cover;
   display: flex;
   align-items: center;
+  gap: 100px;
 }
 
 .content-container {
   width: 30%;
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
   margin-left: 130px;
   color: #fff;
 } 
 
-h2 {
+h3 {
   font-size: 2.1rem;
 }
 
@@ -70,13 +74,13 @@ a {
   text-decoration: none;
   margin-right: 10px;
   color: #0052B4;
+  transition: all ease 0.3s;
 }
 
 
   a:hover {
     background: #1E68FC;
     color: #fff;
-    transition: ease 0.3s;
   }
 
 @media only screen and (max-width: 720px) {

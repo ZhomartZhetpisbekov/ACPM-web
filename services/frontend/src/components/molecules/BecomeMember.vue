@@ -38,6 +38,7 @@ export default {
   color: #000;
   /* justify-content: center; */
   border-radius: 20px;
+  margin-bottom: 80px;
 }
 
 .content-container {

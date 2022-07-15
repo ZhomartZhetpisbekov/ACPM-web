@@ -23,6 +23,6 @@ export default {
   /* border: 1px solid #fff; */
   margin-top: 200px;
   width: 100%;
-  height: 250vh;
+  /* height: 250vh; */
 }
 </style>

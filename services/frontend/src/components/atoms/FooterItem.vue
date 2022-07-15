@@ -19,6 +19,11 @@ a {
   text-decoration: none;
   font-size: 1rem;
   color: #000;
-  margin-bottom: 7px;
+  margin-bottom: 10px;
+  transition: all 0.25s ease;
+}
+
+a:hover {
+  color: #1e68fc;
 }
 </style>

@@ -1,13 +1,11 @@
 <template>
-  <div class="col-md-2">
-    <div class="footer-items-box">
-      <h2>{{ footerNavs[0] }}</h2>
-      <FooterItem
-        v-for="(item, index) in footerNavs.slice(1)"
-        :key="index"
-        :link="item"
-      />
-    </div>
+  <div class="footer-items-box">
+    <h2>{{ footerNavs[0] }}</h2>
+    <FooterItem
+      v-for="(item, index) in footerNavs.slice(1)"
+      :key="index"
+      :link="item"
+    />
   </div>
 </template>
 
@@ -27,16 +25,15 @@ export default {
 
 <style scoped>
 /* Footer Middle Box */
-.col-md-2 {
-  width: 20%;
-}
 
 .footer-items-box {
+  /* border: 1px solid blue; */
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: left;
-  text-align: center;
+  text-align: left;
 }
 
 h2 {
@@ -47,13 +44,12 @@ h2 {
 }
 
 @media only screen and (max-width: 720px) {
-  .col-md-2 {
-    width: 100%;
-    margin-bottom: 10px;
-  }
 
   .footer-items-box {
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 15px;
   }
 }
 </style>
