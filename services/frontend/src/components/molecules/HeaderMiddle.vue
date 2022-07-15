@@ -15,9 +15,15 @@
         <img class="icon" :src="require('@/assets/Header/search.svg')" alt="" />
         <input type="text" placeholder="Search" />
       </div>
-      <li><img :src="require('@/assets/Header/kz.svg')" alt="" /></li>
-      <li><img :src="require('@/assets/Header/ru.svg')" alt="" /></li>
-      <li><img :src="require('@/assets/Header/eng.svg')" alt="" /></li>
+      <li>
+        <img :src="require('@/assets/Header/kz.svg')" alt="" />
+      </li>
+      <li>
+        <img :src="require('@/assets/Header/ru.svg')" alt="" />
+      </li>
+      <li>
+        <img :src="require('@/assets/Header/eng.svg')" alt="" />
+      </li>
     </ul>
     <div class="icon-one" :class="{ active: isActive }" @click="clickHandler">
       <div class="hamburger hamburger-one"></div>
@@ -50,12 +56,12 @@ export default {
       this.$emit("openMenu", this.isActive);
     },
   },
+
   computed: {
     currentRouteName() {
       return this.$route.name;
     },
   },
-  mounted() {},
 };
 </script>
 
@@ -159,6 +165,18 @@ export default {
   top: 0;
   transform: rotate(135deg);
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.squeezeMenu > li,
+.squeezeMenu > div {
+  display: none;
+}
+
+.squeezeLogo {
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: cover;
+  object-position: 0%;
 }
 
 @media screen and (max-width: 65rem) {

@@ -80,6 +80,10 @@ li:hover {
   font-size: 1.125rem;
 }
 
+.bottomSqueezed {
+  font-size: 1rem;
+}
+
 .middle {
   font-size: 1.125rem;
   border-bottom: 1px solid #f4f4f4;
