@@ -35,6 +35,7 @@ export default {
   margin: auto;
   /* height: 480px; */
   display: flex;
+  color: #000;
   /* justify-content: center; */
   border-radius: 20px;
 }
@@ -66,7 +67,13 @@ p {
 a {
   padding: 15px 40px;
   background: #1E68FC;
-  border-radius: 25px;
+  border-radius: 20px;
+  transition: all 0.25s ease;
+}
+
+a:hover {
+  color: #fff;
+  transform:scale(1.1,1.1);
 }
 
 .image-container {

@@ -25,6 +25,7 @@ export default {
 /* Footer */
 .footer {
   background: #d9d9d9;
+  color: #000;
   width: 100%;
   justify-content: space-between;
   padding: 25px 140px 60px;
