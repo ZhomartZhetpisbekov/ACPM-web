@@ -72,7 +72,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  /* justify-content: center; */
   text-align: center;
 }
 
@@ -121,7 +121,8 @@ a:hover {
   background: #fff;
 }
 
-@media only screen and (max-width: 720px) {
+
+@media only screen and (max-width: 60rem) {
   .grid-container {
     grid-template-columns: 100%;
   }

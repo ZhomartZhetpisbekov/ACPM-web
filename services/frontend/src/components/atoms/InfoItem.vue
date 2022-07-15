@@ -80,9 +80,15 @@ li:hover {
   margin: 0;
 }
 
-/* @media screen and (max-width: 65rem) {
-  .middle {
-    margin: 0 2em;
+@media screen and (max-width: 65rem) {
+  .info-middle {
+    padding: 0.875rem 0 0.875rem 4rem;
   }
-} */
+  li {
+    width: 18rem;
+  }
+  .active {
+    font-size: 1.175rem;
+  }
+}
 </style>

@@ -27,10 +27,10 @@ export default {
   },
   computed: {
     parsedpath() {
-      //   const paths = this.$router.currentRoute.path.split("/");
       let pathParse = "";
 
       for (let i = 0; i < this.paths.length; i++) {
+        if (this.paths[i] === undefined) continue;
         pathParse = pathParse + " - " + this.parser[this.paths[i]];
       }
       return pathParse;

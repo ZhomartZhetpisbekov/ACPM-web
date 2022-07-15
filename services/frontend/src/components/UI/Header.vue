@@ -55,21 +55,34 @@ export default {
     };
   },
   mounted() {
+    document.addEventListener("resize", this.handleResize(window.innerWidth));
     document.addEventListener("scroll", () => {
       this.handleScroll(window.scrollY);
     });
   },
-  unmounted() {
-    document.removeEventListener("scroll");
+  beforeDestroy() {
+    document.removeEventListener("scroll", () => {
+      this.handleScroll(window.scrollY);
+    });
+    window.removeEventListener(
+      "resize",
+      this.handleResize(window.innerWidth)
+    );
   },
   methods: {
     toggleMenu(payload) {
       this.isActive = payload;
     },
     handleScroll(payload) {
-      if (payload >= 150) {
+      if (payload >= 150 && window.innerWidth > 1040) {
         this.scrolledDown = true;
       } else {
+        this.scrolledDown = false;
+      }
+    },
+    handleResize(payload) {
+      console.log("asd")
+      if (payload < 1040) {
         this.scrolledDown = false;
       }
     },
