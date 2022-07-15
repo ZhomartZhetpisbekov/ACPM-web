@@ -3,7 +3,6 @@
 </template>
 
 <script scoped>
-
 export default {
   name: "FooterItem",
   props: {
@@ -11,12 +10,6 @@ export default {
       type: String,
     },
   },
-  data() {
-    return {
-
-    }
-  },
-  methods: {},
 };
 </script>
 

@@ -1,7 +1,6 @@
 <template>
   <div class="row d-flex justify-content-center">
-
-    <FooterMiddleBox 
+    <FooterMiddleBox
       v-for="(item, index) in footerNavGroups"
       :key="index"
       :footerNavs="item"
@@ -25,7 +24,6 @@
         <a href="#">Contact ACPM</a>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -37,36 +35,23 @@ export default {
   components: {
     FooterMiddleBox,
   },
-  props: {},
   data() {
     return {
       footerNavGroups: [
-          [
-            "Меню",
-            "Общество",
-            "События",
-            "Образование",
-            "Клинические протоколы",
-            "Новости в медицине",
-          ],
-          [
-            "Членство",
-            "Войти в мой кабинет",
-            "Стать членом",
-          ],
-          [
-            "Ссылки",
-            "European Lung Found",
-            "European Respiratory System",
-          ],
-          [
-            "Пресса",
-            "Press queries",
-          ],
+        [
+          "Меню",
+          "Общество",
+          "События",
+          "Образование",
+          "Клинические протоколы",
+          "Новости в медицине",
+        ],
+        ["Членство", "Войти в мой кабинет", "Стать членом"],
+        ["Ссылки", "European Lung Found", "European Respiratory System"],
+        ["Пресса", "Press queries"],
       ],
     };
   },
-  methods: {},
 };
 </script>
 
@@ -74,6 +59,8 @@ export default {
 /* Footer Middle */
 .col-md-2 {
   width: 20%;
+  display: grid;
+  grid-auto-columns: 5rem;
 }
 
 h2 {
@@ -96,7 +83,7 @@ img {
 }
 
 a {
-  background: #1E68FC;
+  background: #1e68fc;
   color: #fff;
   padding: 8px 25px;
   border-radius: 20px;

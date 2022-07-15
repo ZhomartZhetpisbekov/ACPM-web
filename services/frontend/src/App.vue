@@ -1,14 +1,15 @@
 <template>
   <section>
-    <BaseHeader :title="'damn'" />
-    <HomePage :title="'homepage'" />
+    <BaseHeader/>
+    <!-- <HomePage :title="'homepage'" /> -->
+    <router-view />
     <BaseFooter :title="'footfetish'" />
   </section>
 </template>
 
 <script>
 import BaseHeader from "./components/UI/Header.vue";
-import HomePage from "./components/UI/HomePage.vue";
+// import HomePage from "./components/pages/HomePage.vue";
 import BaseFooter from "./components/UI/Footer.vue";
 
 export default {
@@ -16,7 +17,7 @@ export default {
 
   components: {
     BaseHeader,
-    HomePage,
+    // HomePage,
     BaseFooter,
   },
 
@@ -27,7 +28,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 
 *,
 *::before,

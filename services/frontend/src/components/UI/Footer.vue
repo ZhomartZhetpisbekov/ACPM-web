@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer" style="border: 1px solid green">
+  <footer class="footer">
     <div class="footer-title">
       <h2>ACPM</h2>
     </div>
@@ -8,16 +8,13 @@
 </template>
 
 <script>
-import FooterMiddle from '../molecules/FooterMiddle.vue';
+import FooterMiddle from "../molecules/FooterMiddle.vue";
 
 export default {
   name: "BaseFooter",
   components: {
     FooterMiddle,
   },
-  props: {},
-  data() {},
-  methods: {},
 };
 </script>
 
@@ -40,7 +37,7 @@ h2 {
   font-weight: 900;
 }
 
-@media only screen and (max-width: 720px){
+@media only screen and (max-width: 720px) {
   .footer-title {
     text-align: center;
   }

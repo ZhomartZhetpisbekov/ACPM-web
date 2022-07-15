@@ -3,21 +3,17 @@
     <AboutUsBanner />
     <UpcommingEvents />
     <BecomeMember />
-
   </div>
 </template>
 
 <script>
-import AboutUsBanner from '../molecules/AboutUsBanner.vue';
-import UpcommingEvents from '../molecules/UpcommingEvents.vue';
-import BecomeMember from '../molecules/BecomeMember.vue';
+import AboutUsBanner from "../molecules/AboutUsBanner.vue";
+import UpcommingEvents from "../molecules/UpcommingEvents.vue";
+import BecomeMember from "../molecules/BecomeMember.vue";
 
 export default {
   name: "HomePage",
   components: { AboutUsBanner, UpcommingEvents, BecomeMember },
-  props: {},
-  data() {},
-  methods: {},
 };
 </script>
 

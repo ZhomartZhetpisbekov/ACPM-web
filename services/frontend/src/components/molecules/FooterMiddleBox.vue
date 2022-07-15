@@ -1,29 +1,27 @@
 <template>
-    <div class="col-md-2">
-      <div class="footer-items-box">
-        <h2>{{ footerNavs[0] }}</h2>
-        <FooterItem 
-          v-for="(item, index) in footerNavs.slice(1)"
-          :key="index"
-          :link="item"
-        />
-      </div>
+  <div class="col-md-2">
+    <div class="footer-items-box">
+      <h2>{{ footerNavs[0] }}</h2>
+      <FooterItem
+        v-for="(item, index) in footerNavs.slice(1)"
+        :key="index"
+        :link="item"
+      />
     </div>
+  </div>
 </template>
 
 <script>
-import FooterItem from '../atoms/FooterItem.vue';
+import FooterItem from "../atoms/FooterItem.vue";
 
 export default {
-    name: "FooterMiddleBox",
-    props: {
-      footerNavs: {
-        type: Array,
-      },
+  name: "FooterMiddleBox",
+  props: {
+    footerNavs: {
+      type: Array,
     },
-    data() {},
-    methods: {},
-    components: { FooterItem }
+  },
+  components: { FooterItem },
 };
 </script>
 
