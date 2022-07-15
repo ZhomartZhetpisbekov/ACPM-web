@@ -42,6 +42,7 @@ body {
   width: 100vw;
   overflow-x: hidden;
   background: #313a59;
+  color: #fff;
   display: flex;
   /* justify-content: center; */
 }

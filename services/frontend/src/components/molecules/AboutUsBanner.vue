@@ -72,6 +72,13 @@ a {
   color: #0052B4;
 }
 
+
+  a:hover {
+    background: #1E68FC;
+    color: #fff;
+    transition: ease 0.3s;
+  }
+
 @media only screen and (max-width: 720px) {
   .content-container {
     margin: auto;
@@ -88,6 +95,7 @@ a {
   a {
     margin-bottom: 10px;
   }
+
 }
 
 </style>
