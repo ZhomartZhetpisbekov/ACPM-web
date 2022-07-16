@@ -1,7 +1,6 @@
 <template>
   <section>
     <BaseHeader/>
-    <!-- <HomePage :title="'homepage'" /> -->
     <router-view />
     <BaseFooter :title="'footfetish'" />
   </section>
@@ -9,7 +8,6 @@
 
 <script>
 import BaseHeader from "./components/UI/Header.vue";
-// import HomePage from "./components/pages/HomePage.vue";
 import BaseFooter from "./components/UI/Footer.vue";
 
 export default {
