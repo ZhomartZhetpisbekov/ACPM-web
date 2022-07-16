@@ -59,7 +59,7 @@ export default {
 .upcomming-events-container {
   /* border: 1px solid yellow; */
   width: 100%;
-  margin-bottom: 45px;
+  margin-bottom: 70px;
 }
 
 .events-container {
