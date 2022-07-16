@@ -2,6 +2,7 @@
   <div class="information">
     <InfoMenu />
     <InfoText />
+    <!-- <router-view /> -->
   </div>
 </template>
 
@@ -26,5 +27,10 @@ export default {
   padding: 2em 0;
   flex-direction: row;
   background: #252b42;
+}
+@media screen and (max-width: 65rem) {
+  .information {
+    margin-top: 7rem;
+  }
 }
 </style>

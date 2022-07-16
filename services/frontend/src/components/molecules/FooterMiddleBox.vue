@@ -43,7 +43,7 @@ h2 {
   margin-bottom: 14px;
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 60rem) {
 
   .footer-items-box {
     align-items: center;

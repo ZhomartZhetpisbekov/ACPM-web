@@ -21,8 +21,13 @@ export default {
 /* Footer */
 .home-page {
   /* border: 1px solid #fff; */
-  margin-top: 200px;
+  margin-top: 12rem;
   width: 100%;
   /* height: 250vh; */
+}
+@media screen and (max-width: 65rem) {
+  .home-page{
+    margin-top: 7rem;
+  }
 }
 </style>

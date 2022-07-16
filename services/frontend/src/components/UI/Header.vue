@@ -1,9 +1,12 @@
 <template>
-  <header class="header">
+  <header class="header" :class="{ squeeze: scrolledDown }">
     <div class="header-content">
       <HeaderTop />
-      <HeaderMiddle @openMenu="(payload) => toggleMenu(payload)" />
-      <HeaderBottom />
+      <HeaderMiddle
+        v-if="!scrolledDown"
+        @openMenu="(payload) => toggleMenu(payload)"
+      />
+      <HeaderBottom :scrolledDown="scrolledDown" />
       <div class="mobile-dropdown" :class="{ menuOpen: isActive }">
         <NavItem
           v-for="i in [0, 1, 2, 3, 4, 5, 6, 7]"
@@ -48,11 +51,40 @@ export default {
         "Контакты",
         "Личный Кабинет",
       ],
+      scrolledDown: false,
     };
+  },
+  mounted() {
+    document.addEventListener("resize", this.handleResize(window.innerWidth));
+    document.addEventListener("scroll", () => {
+      this.handleScroll(window.scrollY);
+    });
+  },
+  beforeDestroy() {
+    document.removeEventListener("scroll", () => {
+      this.handleScroll(window.scrollY);
+    });
+    window.removeEventListener(
+      "resize",
+      this.handleResize(window.innerWidth)
+    );
   },
   methods: {
     toggleMenu(payload) {
       this.isActive = payload;
+    },
+    handleScroll(payload) {
+      if (payload >= 150 && window.innerWidth > 1040) {
+        this.scrolledDown = true;
+      } else {
+        this.scrolledDown = false;
+      }
+    },
+    handleResize(payload) {
+      console.log("asd")
+      if (payload < 1040) {
+        this.scrolledDown = false;
+      }
     },
   },
 };
@@ -73,14 +105,14 @@ export default {
 }
 
 .header-content {
-  max-width: 80rem;
+  max-width: 78rem;
   width: 100%;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 12rem;
+  height: 100%;
 }
 
 .header img {
@@ -97,6 +129,10 @@ export default {
 
 .menuOpen {
   display: block;
+}
+
+.squeeze {
+  height: 8rem;
 }
 
 @media screen and (min-width: 65rem) {

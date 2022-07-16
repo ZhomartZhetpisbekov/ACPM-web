@@ -25,7 +25,7 @@ export default {
   color: #000;
   width: 100%;
   justify-content: space-between;
-  padding: 25px 140px 60px;
+  padding: 25px 7.375rem 60px;
 }
 
 .footer-title {
@@ -37,9 +37,14 @@ h2 {
   font-weight: 900;
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 60rem) {
   .footer-title {
     text-align: center;
+  }
+}
+@media only screen and (max-width: 65rem) {
+  .footer {
+    padding: 25px 4rem 60px;
   }
 }
 </style>

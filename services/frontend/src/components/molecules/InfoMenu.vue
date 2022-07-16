@@ -88,4 +88,10 @@ export default {
   display: flex;
   align-items: center;
 }
+
+@media screen and (max-width: 65rem) {
+  .information-title {
+    margin-left: 4rem;
+  }
+}
 </style>
