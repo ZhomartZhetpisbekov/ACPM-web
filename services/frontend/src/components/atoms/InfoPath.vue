@@ -1,5 +1,5 @@
 <template>
-  <p class="info-path">Главная{{ parsedpath }}</p>
+  <p class="info-path">Главная{{ parsedpath() }}</p>
 </template>
 
 <script>
@@ -10,22 +10,12 @@ export default {
       type: Array,
     },
   },
-  data() {
-    return {
-      parser: {
-        " ": "Главная",
-        obschestvo: "Общество",
-        onas: "О нас",
-        istoriya: "История Создания",
-        cel: "Цель, миссия",
-        chlenstvo: "Членство",
-        sotrudnichestvo: "Сотрудничество",
-        partners: "Партнеры",
-        smionas: "СМИ о нас",
-      },
-    };
-  },
   computed: {
+    parser() {
+      return this.$store.state.parser;
+    },
+  },
+  methods: {
     parsedpath() {
       let pathParse = "";
 

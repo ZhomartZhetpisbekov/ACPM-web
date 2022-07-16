@@ -3,11 +3,11 @@
     <h2 class="information-title">Общество</h2>
     <ul>
       <InfoItem
-        v-for="(item, ind) in pageNames"
+        v-for="(item, ind) in menuItmes"
         :key="ind"
         :activeGiven="ind == currentActive"
-        :title="item"
-        :pagePath="pagePaths[ind]"
+        :title="item.name"
+        :pagePath="item.path"
         :index="ind"
         @changeActive="(payload) => toggleActive(payload)"
       />
@@ -28,28 +28,15 @@ export default {
   components: {
     InfoItem,
   },
+  computed: {
+    menuItmes() {
+      return this.$store.state.menu.pages.headerNavBottom[0].children;
+    },
+  },
   data() {
     return {
       currentActive: 0,
       isActive: false,
-      pageNames: [
-        "О нас",
-        "История Создания",
-        "Цель, миссия",
-        "Членство",
-        "Сотрудничество",
-        "Партнеры",
-        "СМИ o нас",
-      ],
-      pagePaths: [
-        "onas",
-        "istoriya",
-        "cel",
-        "chlenstvo",
-        "sotrudnichestvo",
-        "partners",
-        "smionas",
-      ],
     };
   },
   methods: {
@@ -58,8 +45,8 @@ export default {
     },
   },
   beforeMount() {
-    const computedCurrentSection = this.pagePaths.indexOf(
-      this.$router.currentRoute.params.item
+    const computedCurrentSection = this.menuItmes.findIndex(
+      (item) => item.path === this.$router.currentRoute.params.item
     );
     computedCurrentSection === -1
       ? (this.currentActive = 0)
@@ -69,7 +56,9 @@ export default {
     this.$watch(
       () => this.$route.params,
       (toParams) => {
-        const computedCurrentSection = this.pagePaths.indexOf(toParams.item);
+        const computedCurrentSection = this.menuItmes.findIndex(
+          (item) => item.path === toParams.item
+        );
         computedCurrentSection === -1
           ? (this.currentActive = 0)
           : (this.currentActive = computedCurrentSection);

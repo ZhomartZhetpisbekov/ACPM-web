@@ -9,10 +9,11 @@
       <HeaderBottom :scrolledDown="scrolledDown" />
       <div class="mobile-dropdown" :class="{ menuOpen: isActive }">
         <NavItem
-          v-for="i in [0, 1, 2, 3, 4, 5, 6, 7]"
-          :key="i"
+          v-for="(item, ind) in headerLinks"
+          :key="ind"
           :styling="'middle'"
-          :title="pageNames[i]"
+          :title="item.name"
+          :pagePath="item.path"
         />
       </div>
     </div>
@@ -38,19 +39,15 @@ export default {
       type: String,
     },
   },
+  computed: {
+    headerLinks() {
+      return this.$store.getters.headerAllItems;
+    },
+  },
   data() {
     return {
       isActive: false,
-      pageNames: [
-        "Общество",
-        "События",
-        "Образование",
-        "Клинические протоколы",
-        "Новости в медицине",
-        "Новости",
-        "Контакты",
-        "Личный Кабинет",
-      ],
+
       scrolledDown: false,
     };
   },
@@ -64,10 +61,7 @@ export default {
     document.removeEventListener("scroll", () => {
       this.handleScroll(window.scrollY);
     });
-    window.removeEventListener(
-      "resize",
-      this.handleResize(window.innerWidth)
-    );
+    window.removeEventListener("resize", this.handleResize(window.innerWidth));
   },
   methods: {
     toggleMenu(payload) {
@@ -81,7 +75,6 @@ export default {
       }
     },
     handleResize(payload) {
-      console.log("asd")
       if (payload < 1040) {
         this.scrolledDown = false;
       }

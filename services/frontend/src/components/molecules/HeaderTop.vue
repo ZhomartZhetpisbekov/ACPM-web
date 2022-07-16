@@ -2,12 +2,13 @@
   <nav>
     <ul>
       <NavItem
-        v-for="i in [0, 1, 2]"
-        :key="i"
+        v-for="(item, ind) in headerTopLinks"
+        :key="ind"
         :styling="'top'"
-        :active="pageActive[i]"
-        :title="pageNames[i]"
-        :imgPath="pageImgs[i]"
+        :active="pageActive[ind]"
+        :title="item.name"
+        :imgPath="item.path"
+        :pagePath="item.path"
       />
     </ul>
   </nav>
@@ -21,12 +22,17 @@ export default {
   components: {
     NavItem,
   },
+  computed: {
+    headerTopLinks() {
+      return this.$store.getters.headerTopItems;
+    },
+  },
   data() {
     return {
-      pageNames: ["Новости", "Контакты", "Личный Кабинет"],
+      // pageNames: ["Новости", "Контакты", "Личный Кабинет"],
       pageActive: [false, false, true],
-      pagePaths: ["Home", "Orders", "Rakhmet"],
-      pageImgs: ["news", "contacts", "cabinet"],
+      // pagePaths: ["Home", "Orders", "Rakhmet"],
+      // pageImgs: ["news", "contacts", "cabinet"],
     };
   },
 };

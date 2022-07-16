@@ -1,7 +1,7 @@
 <template>
   <div class="info-text">
     <InfoPath :paths="this.ablur" />
-    <h1 class="info-text_title">Общество</h1>
+    <h1 class="info-text_title">{{ parsedpath() }}</h1>
     <!-- <router-view></router-view> -->
     <InfoLol />
   </div>
@@ -42,6 +42,18 @@ export default {
         // this.pageName = toParams.item !== undefined;
       }
     );
+  },
+  computed: {
+    parser() {
+      return this.$store.state.parser;
+    },
+  },
+  methods: {
+    parsedpath() {
+      return this.ablur && this.ablur.length > 1
+        ? this.parser[this.ablur[1]]
+        : this.parser[this.ablur[0]];
+    },
   },
   // methods: {
   //   parseredData() {
