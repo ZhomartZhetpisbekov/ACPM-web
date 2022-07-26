@@ -10,14 +10,15 @@ export default new Vuex.Store({
     menu: {
       pages: {
         headerNavTop: [
-          { name: "Новости", path: "news" },
-          { name: "Контакты", path: "contacts" },
-          { name: "Личный Кабинет", path: "account" },
+          { name: "Новости", path: "news", routerName: "News" },
+          { name: "Контакты", path: "contacts", routerName: "Contacts" },
+          { name: "Личный Кабинет", path: "account", routerName: "Account" },
         ],
         headerNavBottom: [
           {
             name: "Общество",
             path: "society",
+            routerName: "Information",
             children: [
               { path: "about-us", name: "О нас" },
               { path: "history", name: "История Создания" },
@@ -28,10 +29,18 @@ export default new Vuex.Store({
               { path: "mass-media", name: "СМИ о нас" },
             ],
           },
-          { name: "События", path: "events" },
-          { name: "Образование", path: "education" },
-          { name: "Клинические протоколы", path: "clinical-protocols" },
-          { name: "Новости в медицине", path: "news" },
+          { name: "События", path: "events", routerName: "Information" },
+          { name: "Образование", path: "education", routerName: "Information" },
+          {
+            name: "Клинические протоколы",
+            path: "clinical-protocols",
+            routerName: "Information",
+          },
+          {
+            name: "Новости в медицине",
+            path: "news",
+            routerName: "News",
+          },
         ],
       },
     },

@@ -40,7 +40,7 @@ body {
   font-family: "Montserrat";
   width: 100vw;
   overflow-x: hidden;
-  background: #313a59;
+  background: #252B42;
   color: #fff;
   display: flex;
   /* justify-content: center; */

@@ -24,6 +24,9 @@ export default {
     pagePath: {
       type: String,
     },
+    routerName: {
+      type: String
+    }
   },
   data() {
     return {
@@ -37,7 +40,7 @@ export default {
     changePage() {
       if (this.$router.currentRoute.path !== "/" + this.pagePath)
         this.$router.push({
-          name: "Information",
+          name: this.routerName,
           params: { name: this.pagePath },
         });
     },
@@ -48,7 +51,7 @@ export default {
 <style scoped>
 li {
   padding-bottom: 0.25rem;
-  color: white;
+  /* color: white; */
   display: flex;
   align-items: center;
   border-bottom: 2px solid #313a59;
@@ -93,6 +96,7 @@ li:hover {
 
 .active {
   background: #23a6f0;
+  color: #fff;
 }
 
 @media screen and (max-width: 65rem) {

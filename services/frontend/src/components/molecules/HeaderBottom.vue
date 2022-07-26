@@ -10,6 +10,7 @@
         :styling="!scrolledDown ? 'bottom' : 'bottomSqueezed'"
         :title="item.name"
         :pagePath="item.path"
+        :routerName="item.routerName"
       />
     </ul>
   </nav>

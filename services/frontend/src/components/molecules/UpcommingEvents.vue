@@ -91,7 +91,6 @@ h2 {
   width: 83%;
   margin: auto;
   margin-bottom: 25px;
-  color: #fff;
 }
 
 @media only screen and (max-width: 720px) {

@@ -9,6 +9,7 @@
         :title="item.name"
         :imgPath="item.path"
         :pagePath="item.path"
+        :routerName="item.routerName"
       />
     </ul>
   </nav>

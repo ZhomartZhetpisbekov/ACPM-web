@@ -13,18 +13,11 @@
           <a href=""><i class="fa-brands fa-facebook fa-2x"></i></a>
           <a href=""><i class="fa-brands fa-twitter fa-2x"></i></a>
           <a href=""><i class="fa-brands fa-youtube fa-2x"></i></a>
-          <!-- <img src="../../assets/Footer/facebook.png" alt="" />
-          <img src="../../assets/Footer/twitter.png" alt="" />
-          <img src="../../assets/Footer/youtube.png" alt="" /> -->
         </div>
         <div class="media-row">
           <a href=""><i class="fa-brands fa-instagram fa-2x"></i></a>
           <a href=""><i class="fa-brands fa-whatsapp fa-2x"></i></a>
-          <a href=""><i class="fa-brands fa-telegram fa-2x"></i></a>
-
-          <!-- <img src="../../assets/Footer/instagram.png" alt="" />
-          <img src="../../assets/Footer/whatsapp.png" alt="" />
-          <img src="../../assets/Footer/telegram.png" alt="" /> -->
+          <a @click="temporaryNews"><i class="fa-brands fa-telegram fa-2x"></i></a>
         </div>
       </div>
       <a class="contact-btn" href="#">Contact ACPM</a>
@@ -56,6 +49,13 @@ export default {
         ["Пресса", "Press queries"],
       ],
     };
+  },
+  methods: {
+    temporaryNews() {
+        this.$router.push({
+          name: "News",
+        });
+    }
   },
 };
 </script>

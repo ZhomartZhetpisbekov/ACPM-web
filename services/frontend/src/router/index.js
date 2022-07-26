@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomePage from "../components/views/HomePage.vue";
 import InformationPage from "../components/views/InformationPage.vue";
+import NewsPage from "../components/views/NewsPage.vue";
 
 // import InfoLol from "../components/atoms/InfoLol";
 
@@ -14,6 +15,11 @@ const routes = [
     component: HomePage,
   },
   {
+    path: "/news",
+    name: "News",
+    component: NewsPage,
+  },
+  {
     path: "/:name/:item?",
     name: "Information",
     component: InformationPage,
@@ -24,7 +30,7 @@ const routes = [
     //   },
     // ],
     props: true,
-  },
+  }
 ];
 
 const router = new VueRouter({
