@@ -19,17 +19,6 @@ export default {
   data() {
     return {
       ablur: [...Object.values(this.$route.params)],
-      // parserer: {
-      //   obschestvo: "Общество",
-      //   onas: "Общество",
-      //   istoriya: "История Создания",
-      //   cel: "Цель, миссия",
-      //   chlenstvo: "Членство",
-      //   sotrudnichestvo: "Сотрудничество",
-      //   partners: "Партнеры",
-      //   smionas: "СМИ о нас",
-      // },
-      // pageName: this.parseredData(),
     };
   },
   created() {
@@ -38,8 +27,6 @@ export default {
       (toParams) => {
         // react to route changes...
         this.ablur = [...Object.values(toParams)];
-        // console.log(this.$route.params.item);
-        // this.pageName = toParams.item !== undefined;
       }
     );
   },
@@ -55,13 +42,6 @@ export default {
         : this.parser[this.ablur[0]];
     },
   },
-  // methods: {
-  //   parseredData() {
-  //     return this.ablur && this.ablur.length > 1
-  //       ? this.parserer[this.pageName[1]]
-  //       : this.parserer[this.pageName[0]];
-  //   },
-  // },
 };
 </script>
 

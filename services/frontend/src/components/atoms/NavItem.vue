@@ -25,8 +25,8 @@ export default {
       type: String,
     },
     routerName: {
-      type: String
-    }
+      type: String,
+    },
   },
   data() {
     return {
@@ -54,7 +54,6 @@ li {
   /* color: white; */
   display: flex;
   align-items: center;
-  border-bottom: 2px solid #313a59;
 }
 
 li:hover {
@@ -66,21 +65,21 @@ li:hover {
 }
 
 .top {
-  border-radius: 40px;
-  margin-right: 1.5rem;
-  margin-top: 1rem;
-  font-size: 0.875rem;
-  padding: 0.5rem 1rem;
-  font-weight: 700;
+  border-radius: 1rem;
+  font-size: 1rem;
+  margin: 0 1rem;
+  padding: 0.5rem 0;
 }
 
 .top img {
-  height: 1.125rem;
-  margin-right: 5px;
+  height: 1rem;
+  margin-right: 0.5rem;
 }
 
 .bottom {
-  font-size: 1.125rem;
+  font-size: 1rem;
+  font-weight: normal;
+  border-bottom: 2px solid var(--bg-color);
 }
 
 .bottomSqueezed {
@@ -88,15 +87,17 @@ li:hover {
 }
 
 .middle {
-  font-size: 1.125rem;
-  border-bottom: 1px solid #f4f4f4;
-  margin: 0 3em;
-  padding: 1em 0;
+  /* border-bottom: 1px solid #f4f; */
+  /* margin: 0 3em; */
+  /* padding: 1em 0; */
 }
 
 .active {
-  background: #23a6f0;
-  color: #fff;
+  background: var(--secondary-color);
+  border: 1px solid var(--text-color);
+  color: var(--bg-color);
+  padding: 0.5rem;
+  margin-right: 0;
 }
 
 @media screen and (max-width: 65rem) {

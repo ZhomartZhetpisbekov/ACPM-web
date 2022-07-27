@@ -2,7 +2,7 @@
   <div class="header-middle">
     <img
       class="logo"
-      :src="require('@/assets/Header/logo.png')"
+      :src="require('@/assets/Header/logo2.png')"
       alt=""
       @click="
         () => {
@@ -10,24 +10,15 @@
         }
       "
     />
-    <ul>
-      <div class="searchbar">
-        <img class="icon" :src="require('@/assets/Header/search.svg')" alt="" />
-        <input type="text" placeholder="Search" />
-      </div>
-      <li>
-        <img :src="require('@/assets/Header/kz.svg')" alt="" />
-      </li>
-      <li>
-        <img :src="require('@/assets/Header/ru.svg')" alt="" />
-      </li>
-      <li>
-        <img :src="require('@/assets/Header/eng.svg')" alt="" />
-      </li>
-    </ul>
-    <div class="icon-one" :class="{ active: isActive }" @click="clickHandler">
-      <div class="hamburger hamburger-one"></div>
+    <h1 class="header-middle_name">ACPM</h1>
+    <div class="searchbar">
+      <!-- <img class="icon" :src="require('@/assets/Header/search.svg')" alt="" /> -->
+      <input type="text" placeholder="Search" />
     </div>
+
+    <!-- <div class="icon-one" :class="{ active: isActive }" @click="clickHandler">
+      <div class="hamburger hamburger-one"></div>
+    </div> -->
   </div>
 </template>
 
@@ -68,24 +59,36 @@ export default {
 <style scoped>
 .header-middle {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  width: 95%;
-  padding: 0 3rem;
+  width: 100%;
+  /* padding: 0 3rem; */
+}
+
+.logo {
+  height: 4rem;
+  aspect-ratio: 1/1;
+  margin-right: 1rem;
+}
+.header-middle_name {
+  font-size: 3rem;
+  letter-spacing: 0;
+  color: var(--main-text-color);
+  height: 2.25rem;
 }
 
 .searchbar {
+  margin-left: 3rem;
   position: relative;
-  width: 80%;
-  margin-left: 50px;
+  width: 100%;
 }
 
-.icon {
+/* .icon {
   position: absolute;
   height: 25px;
   top: 7px;
   right: 8px;
-}
+} */
 
 .icon:hover {
   cursor: pointer;
@@ -93,15 +96,17 @@ export default {
 
 .header-middle input {
   width: 100%;
-  height: 40px;
-  background: #d9d9d9;
+  height: 1.75rem;
+  background: var(--footer-bg-color);
   border-radius: 1.125rem;
+  border-color: var(--footer-border-color);
+  border-width: 1px;
   text-align: left;
   padding-left: 2em;
 }
 
 .header-middle ul {
-  width: 90%;
+  width: 100%;
   list-style: none;
   display: flex;
   align-items: center;

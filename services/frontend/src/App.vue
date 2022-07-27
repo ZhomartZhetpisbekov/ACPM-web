@@ -1,6 +1,6 @@
 <template>
   <section>
-    <BaseHeader/>
+    <BaseHeader />
     <router-view />
     <BaseFooter :title="'footfetish'" />
   </section>
@@ -26,8 +26,9 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
-
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"); */
+@import url("http://fonts.cdnfonts.com/css/gotham-pro");
+@import "./assets/variables.css";
 *,
 *::before,
 *::after {
@@ -37,11 +38,11 @@ export default {
 }
 
 body {
-  font-family: "Montserrat";
+  font-family: "Gotham Pro", sans-serif;
   width: 100vw;
   overflow-x: hidden;
-  background: #252B42;
-  color: #fff;
+  background: var(--bg-color);
+  color: var(--bg-color);
   display: flex;
   /* justify-content: center; */
 }
