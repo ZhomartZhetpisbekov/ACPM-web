@@ -1,18 +1,14 @@
 <template>
-  <div class="event-outter-container">
-    <a href=""> 
-      <div class="event-container">
-        <img :src="require(`../../assets/HomePage/${eventInfo[1]}.png`)" />
-        <p>{{ eventInfo[2] }}</p>
-      </div>
+  <div class="event-container">
+    <a href="" class="event-link-wrapper">
+      <img :src="require(`../../assets/HomePage/${eventInfo[1]}.jpeg`)" />
+      <p>{{ eventInfo[2] }}</p>
     </a>
   </div>
 </template>
 
 <script scoped>
-
 export default {
-
   name: "EventItem",
   props: {
     eventInfo: {
@@ -20,49 +16,35 @@ export default {
     },
     eventsNum: {
       type: Number,
-    }
+    },
   },
-  // data() {
-  //   return {
-  //     lastEvent: (this.eventInfo[0] === this.eventsNum) ? true : false,
-  //   }
-  // },
 };
 </script>
 
 <style scoped>
 /* Event Item */
-.event-outter-container {
-  width: 100%;
-
-}
-
-.last-event {
-  margin-right: 0;
-}
 
 .event-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 90%;
   text-align: center;
 }
 
 img {
-  width: 350px;
-  
+  width: 100%;
+  display: block;
 }
 
 p {
-  width: 80%;
-  font-size: 1.2rem;
-}
-
-@media only screen and (max-width: 720px) {
-  .event-container {
-    /* border: 1px solid yellow; */
-    width: 100%;
-  }
+  background: #FACBA6;
+  color: #005963;
+  padding: 15px 20px;
+  font-size: 1rem;
+  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: hidden;
+  margin: auto;
+  height: 120px;
+  /* width: 100%; */
 }
 
 </style>

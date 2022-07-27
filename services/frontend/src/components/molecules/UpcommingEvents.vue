@@ -1,26 +1,11 @@
 <template>
   <div class="upcomming-events-container">
     <h2>Предстоящие мероприятия</h2>
-
-    <!-- <div class="events-container">
-      <a @click="scroll_left"><img src="../../assets/HomePage/button-left.png" alt=""></a>
-      <div class="scrollable-container">
-
-        <EventItem 
-          v-for="(item, index) in events"
-          :key="index"
-          :eventInfo="item"
-          :eventsNum="events.length"/>
-
-      </div>
-      <a @click="scroll_right"><img src="../../assets/HomePage/button-right.png" alt=""></a>
-    </div> -->
-
-    <div class="events-container">
+    <div class="events-container" style="border: 1px solid white">
       <a @click="scroll_left"
-        ><img src="../../assets/HomePage/button-left.png" alt=""
+        ><img src="../../assets/HomePage/left.png" alt=""
       /></a>
-      <div class="scrollable-container">
+      <div class="scrollable-container" style="border: 1px solid pink">
         <slider
           ref="slider"
           :options="options"
@@ -39,7 +24,7 @@
         </slider>
       </div>
       <a @click="scroll_right"
-        ><img src="../../assets/HomePage/button-right.png" alt=""
+        ><img src="../../assets/HomePage/right.png" alt=""
       /></a>
     </div>
   </div>
@@ -55,13 +40,13 @@ export default {
   data() {
     return {
       events: [
-        [1, "event1", "Tematisk fosk. Set sofanygon pesåsam."],
-        [2, "event2", "TemaSet anygon peså sofanygon gon pesåpesåsam."],
-        [3, "event3", "Teså sofanym. emaSet anygon polka"],
-        [4, "event2", "Labaduba, coriga on polka. Ikola pirodka hu'swetor."],
-        [5, "event1", "Lorino furiaka, boriko 08.2012 kamdetro."],
-        [6, "event3", "Teno furiaka, boriklka"],
-        [7, "event1", "Lorino furiaka, boriko 08.2012 kamdetro."],
+        [1, "conference1", "Tematisk fosk. Set sofanygon pesåsam Tematisk fosk. Set sofanygon pesåsam Tematisk fosk. Set sofanygon pesåsam."],
+        [2, "conference2", "TemaSet anygon peså sofanygon gon pesåpesåsam TemaSet anygon peså sofanygon gon pesåpesåsam TemaSet anygon peså sofanygon gon pesåpesåsam."],
+        [3, "conference3", "Teså sofanym. emaSet anygon polka"],
+        [4, "conference2", "Labaduba, coriga on polka. Ikola pirodka hu'swetor."],
+        [5, "conference1", "Lorino furiaka, boriko 08.2012 kamdetro."],
+        [6, "conference3", "Teno furiaka, boriklka"],
+        [7, "conference1", "Lorino furiaka, boriko 08.2012 kamdetro."],
       ],
       //Slider configuration [obj]
       options: {
@@ -98,15 +83,12 @@ export default {
 <style scoped>
 /* Upcomming Events */
 .upcomming-events-container {
-  /* border: 1px solid yellow; */
   width: 100%;
   margin-bottom: 70px;
 }
-
 .events-container {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
 }
 
 a {
@@ -118,13 +100,7 @@ a img {
 }
 
 .scrollable-container {
-  /* border: 1px solid greenyellow; */
-  display: flex;
-  justify-content: space-between;
   width: 85%;
-  overflow: auto;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 
 h2 {
@@ -134,13 +110,18 @@ h2 {
 }
 
 .custom-slider-item {
-  width: 33% !important;
+  width: 33%;
 }
 
 @media only screen and (max-width: 720px) {
-  .scrollable-container {
-    /* border: 1px solid #fff; */
-    width: 95%;
+  .custom-slider-item {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .custom-slider-item {
+    width: 100%;
   }
 }
 </style>

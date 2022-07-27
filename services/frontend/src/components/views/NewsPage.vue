@@ -17,44 +17,17 @@
         :date="item.date"
       />
     </div>
-
-    <!-- Make a div wrapped slider,set height and width -->
-    <div style="width: 100%; margin: 20px auto; height: 400px">
-      <!-- Using the slider component -->
-      <slider
-        ref="slider"
-        :options="options"
-        @slide="slide"
-        @tap="onTap"
-        @init="onInit"
-      >
-        <!-- slideritem wrapped package with the components you need -->
-        <slideritem
-          v-for="(item, index) in someList"
-          :key="index"
-          :style="item.style"
-          >{{ item.html }}</slideritem
-        >
-        <!-- Customizable loading -->
-        <div slot="loading">loading...</div>
-      </slider>
-    </div>
-    <a @click="slideNext">swipe</a>
   </div>
 </template>
 
 <script>
-import { slider, slideritem } from "vue-concise-slider";
 import LeadNews from "../molecules/LeadNews.vue";
 import SingleNews from "../molecules/SingleNews.vue";
 
 export default {
   name: "NewsPage",
-  components: { LeadNews, SingleNews, slider, slideritem },
+  components: { LeadNews, SingleNews },
   methods: {
-    slideNext () {
-    this.$refs.slider.$emit('slideNext')
-  }
   },
   data() {
     return {
@@ -94,82 +67,6 @@ export default {
           date: "22 January, 2022",
         },
       ],
-      someList: [
-        {
-          html: "slider1",
-          style: {
-            background: "#4abf8a",
-            width: "23.5%",
-            "margin-right": "2%",
-          },
-        },
-        {
-          html: "slider2",
-          style: {
-            background: "#4bbfc3",
-            width: "23.5%",
-            "margin-right": "2%",
-          },
-        },
-        {
-          html: "slider3",
-          style: {
-            background: "#7baabe",
-            width: "23.5%",
-            "margin-right": "2%",
-          },
-        },
-        {
-          html: "slider4",
-          style: {
-            background: "#7caabe",
-            width: "23.5%",
-            "margin-right": "2%",
-          },
-        },
-        {
-          html: "slider5",
-          style: {
-            background: "#4abf8a",
-            width: "23.5%",
-            "margin-right": "2%",
-          },
-        },
-        {
-          html: "slider6",
-          style: {
-            background: "#4bbfc3",
-            width: "23.5%",
-            "margin-right": "2%",
-          },
-        },
-        {
-          html: "slider7",
-          style: {
-            background: "#7baabe",
-            width: "23.5%",
-            "margin-right": "2%",
-          },
-        },
-        {
-          html: "slider8",
-          style: {
-            background: "#7caabe",
-            width: "23.5%",
-            "margin-right": "2%",
-          },
-        },
-      ],
-      //Slider configuration [obj]
-      options: {
-        currentPage: 0,
-        tracking: false,
-        thresholdDistance: 100,
-        thresholdTime: 300,
-        infinite: 4,
-        slidesToScroll: 1,
-        loop: true,
-      },
     };
   },
 };
