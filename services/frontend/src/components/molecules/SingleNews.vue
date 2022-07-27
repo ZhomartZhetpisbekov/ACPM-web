@@ -1,15 +1,16 @@
 <template>
-  <a href="">
+  <div>
     <div class="single-news-block">
-      <img :src="require(`../../assets/tempNews/${imgPath}.png`)" alt="">
-      <p> {{ title }} </p>
-      <span>{{ date }}</span>
+      <a href="">
+        <img :src="require(`../../assets/tempNews/${imgPath}.png`)" alt="" />
+        <p>{{ title }}</p>
+        <span>{{ date }}</span>
+      </a>
     </div>
-  </a>
+  </div>
 </template>
 
 <script>
-
 export default {
   name: "SingleNews",
   props: {
@@ -21,8 +22,8 @@ export default {
     },
     date: {
       type: String,
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -32,15 +33,12 @@ export default {
   width: 80%;
   margin: auto;
   text-align: left;
+  margin-bottom: 50px;
 }
 
 img {
   width: 100%;
-  margin-bottom: 10px
-}
-
-a {
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 p {
@@ -51,5 +49,4 @@ p {
 span {
   color: gray;
 }
-
 </style>

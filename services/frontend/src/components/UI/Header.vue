@@ -92,6 +92,7 @@ export default {
   width: 100%;
   height: 12rem;
   display: flex;
+  z-index: 9999;
   justify-content: center;
   background: #313a59;
   /* border-bottom: 1px solid black; */

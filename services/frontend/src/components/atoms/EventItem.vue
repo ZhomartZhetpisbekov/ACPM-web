@@ -1,5 +1,5 @@
 <template>
-  <div :class="lastEvent ? 'last-event' : 'event-outter-container'">
+  <div class="event-outter-container">
     <a href=""> 
       <div class="event-container">
         <img :src="require(`../../assets/HomePage/${eventInfo[1]}.png`)" />
@@ -22,19 +22,19 @@ export default {
       type: Number,
     }
   },
-  data() {
-    return {
-      lastEvent: (this.eventInfo[0] === this.eventsNum) ? true : false,
-    }
-  },
-  methods: {},
+  // data() {
+  //   return {
+  //     lastEvent: (this.eventInfo[0] === this.eventsNum) ? true : false,
+  //   }
+  // },
 };
 </script>
 
 <style scoped>
 /* Event Item */
 .event-outter-container {
-  margin-right: 85px;
+  width: 100%;
+
 }
 
 .last-event {
