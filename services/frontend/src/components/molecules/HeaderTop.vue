@@ -1,6 +1,15 @@
 <template>
   <nav>
     <ul>
+      <li>
+        <img :src="require('@/assets/Header/kz.svg')" alt="" />
+      </li>
+      <li>
+        <img :src="require('@/assets/Header/ru.svg')" alt="" />
+      </li>
+      <li>
+        <img :src="require('@/assets/Header/eng.svg')" alt="" />
+      </li>
       <NavItem
         v-for="(item, ind) in headerTopLinks"
         :key="ind"
@@ -44,11 +53,18 @@ nav {
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-right: 4rem;
+  /* margin-right: 4rem; */
 }
 ul {
+  margin-top: 1rem;
   list-style: none;
   display: flex;
+  align-items: center;
+}
+
+ul img {
+  height: 1rem;
+  margin-right: 1rem;
 }
 @media screen and (max-width: 65rem) {
   ul {

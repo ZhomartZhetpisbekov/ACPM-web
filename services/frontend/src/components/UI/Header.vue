@@ -89,29 +89,25 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
   height: 12rem;
   display: flex;
-  z-index: 9999;
+  z-index: 2;
   justify-content: center;
-  background: #313a59;
-  /* border-bottom: 1px solid black; */
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
 .header-content {
-  max-width: 78rem;
+  padding: 0 8rem;
   width: 100%;
   z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
   height: 100%;
 }
 
-.header img {
-  height: 4rem;
-}
 .mobile-dropdown {
   display: none;
   width: 100%;

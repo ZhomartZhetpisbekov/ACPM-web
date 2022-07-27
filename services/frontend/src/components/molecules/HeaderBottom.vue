@@ -67,7 +67,8 @@ ul {
   list-style: none;
   display: flex;
   justify-content: space-between;
-  margin: 1rem 4rem 1.25rem 4rem;
+  margin-top: 2rem;
+  /* margin: 1rem 4rem 1.25rem 4rem; */
 }
 
 li {
