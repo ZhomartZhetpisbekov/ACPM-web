@@ -45,7 +45,7 @@ export default {
 
 .content-container {
   width: 70%;
-  height: 480px;
+  /* height: 480px; */
   background: #fdf1e8;
   display: flex;
   flex-direction: column;
@@ -64,7 +64,6 @@ export default {
 h2 {
   font-size: 1.8rem;
   color: #f38023;
-  /* margin-bottom: 50px; */
 }
 
 p {
