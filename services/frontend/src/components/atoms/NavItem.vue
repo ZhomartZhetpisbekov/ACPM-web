@@ -33,7 +33,7 @@ export default {
       addClass: this.active == true ? "active" : "",
       path:
         this.styling == "top" &&
-        require("@/assets/Header/" + this.imgPath + ".svg"),
+        require("@/assets/Header/" + this.imgPath + "_icon.svg"),
     };
   },
   methods: {
@@ -74,6 +74,11 @@ li:hover {
 .top img {
   height: 1rem;
   margin-right: 0.5rem;
+  fill: var(--header-top-color);
+}
+
+.top > p { 
+  height: 0.75rem;
 }
 
 .bottom {
