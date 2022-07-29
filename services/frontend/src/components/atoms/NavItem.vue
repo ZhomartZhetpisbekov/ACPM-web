@@ -87,6 +87,10 @@ li:hover {
   border-bottom: 2px solid var(--bg-color);
 }
 
+p {
+  font-weight:bold;
+}
+
 .bottomSqueezed {
   font-size: 1rem;
 }

@@ -34,6 +34,7 @@ export default {
   margin: auto;
   text-align: left;
   margin-bottom: 50px;
+  color: #000;
 }
 
 img {

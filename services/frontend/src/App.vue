@@ -27,8 +27,25 @@ export default {
 
 <style>
 /* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"); */
-@import url("http://fonts.cdnfonts.com/css/gotham-pro");
+@import url('http://fonts.cdnfonts.com/css/gotham-pro?styles=24950,24948,24951,24952,14946,24949,24953');
+@import url(//db.onlinewebfonts.com/c/07a38bbad54db72a40b406bed1c72f53?family=Gotham+Pro);
 @import "./assets/variables.css";
+
+@font-face {
+  font-family: "Gotham Pro Light";
+  src: url("//db.onlinewebfonts.com/t/07a38bbad54db72a40b406bed1c72f53.eot");
+  src: url("//db.onlinewebfonts.com/t/07a38bbad54db72a40b406bed1c72f53.eot?#iefix")
+      format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/07a38bbad54db72a40b406bed1c72f53.woff2")
+      format("woff2"),
+    url("//db.onlinewebfonts.com/t/07a38bbad54db72a40b406bed1c72f53.woff")
+      format("woff"),
+    url("//db.onlinewebfonts.com/t/07a38bbad54db72a40b406bed1c72f53.ttf")
+      format("truetype"),
+    url("//db.onlinewebfonts.com/t/07a38bbad54db72a40b406bed1c72f53.svg#Gotham Pro")
+      format("svg");
+}
+
 *,
 *::before,
 *::after {
@@ -44,7 +61,6 @@ body {
   background: var(--bg-color);
   color: var(--bg-color);
   display: flex;
-  /* justify-content: center; */
 }
 
 section {
@@ -56,6 +72,6 @@ section {
 
 a {
   text-decoration: none;
-  color: #fff;
+  color: #000;
 }
 </style>

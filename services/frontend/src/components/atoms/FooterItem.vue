@@ -17,13 +17,13 @@ export default {
 /* Footer Item */
 a {
   text-decoration: none;
-  font-size: 1rem;
-  color: #000;
+  font-size: 16px;
+  color: #005963;
   margin-bottom: 10px;
   transition: all 0.25s ease;
 }
 
 a:hover {
-  color: #1e68fc;
+  color: #F38023;
 }
 </style>

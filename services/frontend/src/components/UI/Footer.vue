@@ -21,8 +21,8 @@ export default {
 <style scoped>
 /* Footer */
 .footer {
-  background: #d9d9d9;
-  color: #000;
+  background: #F0F5F6;
+  color: #005963;
   width: 100%;
   justify-content: space-between;
   padding: 25px 7.375rem 60px;

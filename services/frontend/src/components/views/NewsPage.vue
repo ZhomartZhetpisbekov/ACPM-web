@@ -77,6 +77,7 @@ export default {
 .news-page {
   margin-top: 12rem;
   width: 100%;
+  color: #000;
 }
 
 .banner {
@@ -95,6 +96,7 @@ export default {
   margin: auto auto 10px;
   font-weight: 500;
   font-size: 42px;
+  color: #fff;
 }
 
 h3 {
@@ -102,6 +104,7 @@ h3 {
   font-size: 24px;
   width: 85%;
   margin: auto auto 20px;
+  color: #005963;
 }
 
 .news-container {

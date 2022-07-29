@@ -1,6 +1,6 @@
 <template>
   <div class="leading-news-container">
-    <h3>Новости, заслуживающие вашего внимания</h3>
+    <h2>Новости, заслуживающие вашего внимания</h2>
     <div class="leading-news">
       <a href="">
         <img src="../../assets/tempNews/cancer.png" alt="">
@@ -46,6 +46,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: #000;
   gap: 20px;
 }
 
@@ -57,9 +58,14 @@ span {
   color: gray;
 }
 
-h3 {
-  font-weight: 500;
+h2 {
   font-size: 24px;
+  color: #005963
+}
+
+h3 {
+  font-size: 24px;
+  color: #000;
 }
 
 @media only screen and (max-width: 720px) {

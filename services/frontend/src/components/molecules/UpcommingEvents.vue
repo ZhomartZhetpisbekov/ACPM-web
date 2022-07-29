@@ -1,11 +1,11 @@
 <template>
   <div class="upcomming-events-container">
     <h2>Предстоящие мероприятия</h2>
-    <div class="events-container" style="border: 1px solid white">
+    <div class="events-container">
       <a @click="scroll_left"
         ><img src="../../assets/HomePage/left.png" alt=""
       /></a>
-      <div class="scrollable-container" style="border: 1px solid pink">
+      <div class="scrollable-container">
         <slider
           ref="slider"
           :options="options"
@@ -56,19 +56,16 @@ export default {
         thresholdTime: 300,
         infinite: 3,
         slidesToScroll: 1,
+        autoplay: 5000,
         loop: true,
       },
     };
   },
   methods: {
     scroll_left() {
-      // let content = document.querySelector(".scrollable-container");
-      // content.scrollLeft -= 436;
       this.$refs.slider.$emit("slidePre");
     },
     scroll_right() {
-      // let content = document.querySelector(".scrollable-container");
-      // content.scrollLeft += 436;
       this.$refs.slider.$emit("slideNext");
     },
   },
@@ -100,13 +97,14 @@ a img {
 }
 
 .scrollable-container {
-  width: 85%;
+  width: 86%;
 }
 
 h2 {
   width: 83%;
   margin: auto;
   margin-bottom: 25px;
+  color: #F38023;
 }
 
 .custom-slider-item {
