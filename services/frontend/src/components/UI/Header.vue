@@ -122,7 +122,7 @@ export default {
 }
 
 .squeeze {
-  height: 8rem;
+  height: 7.25rem;
 }
 
 @media screen and (min-width: 65rem) {
@@ -133,10 +133,12 @@ export default {
 
 @media screen and (max-width: 65rem) {
   .header {
-    height: 7em;
+    height: 6em;
   }
   .header-content {
-    height: 7em;
+    height: 6em;
+    justify-content: center;
+    padding: 0 1rem;
   }
 }
 </style>

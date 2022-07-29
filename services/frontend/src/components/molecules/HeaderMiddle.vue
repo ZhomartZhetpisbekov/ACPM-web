@@ -1,24 +1,26 @@
 <template>
   <div class="header-middle">
-    <img
-      class="logo"
-      :src="require('@/assets/Header/logo2.png')"
-      alt=""
-      @click="
-        () => {
-          if (currentRouteName !== 'Home') this.$router.push('/');
-        }
-      "
-    />
-    <h1 class="header-middle_name">ACPM</h1>
+    <div class="logo-content">
+      <img
+        class="logo"
+        :src="require('@/assets/Header/logo2.png')"
+        alt=""
+        @click="
+          () => {
+            if (currentRouteName !== 'Home') this.$router.push('/');
+          }
+        "
+      />
+      <h1 class="header-middle_name">ACPM</h1>
+    </div>
     <div class="searchbar">
       <!-- <img class="icon" :src="require('@/assets/Header/search.svg')" alt="" /> -->
       <input type="text" placeholder="Search" />
     </div>
 
-    <!-- <div class="icon-one" :class="{ active: isActive }" @click="clickHandler">
+    <div class="icon-one" :class="{ active: isActive }" @click="clickHandler">
       <div class="hamburger hamburger-one"></div>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -62,7 +64,13 @@ export default {
   align-items: flex-end;
   justify-content: center;
   width: 100%;
+  transition: all 0.375s ease;
   /* padding: 0 3rem; */
+}
+
+.logo-content {
+  display: flex;
+  align-items: flex-end;
 }
 
 .logo {
@@ -75,6 +83,11 @@ export default {
   letter-spacing: 0;
   color: var(--main-text-color);
   height: 2.25rem;
+}
+
+.logo:hover,
+.header-middle_name:hover {
+  cursor: pointer;
 }
 
 .searchbar {
@@ -94,15 +107,22 @@ export default {
   cursor: pointer;
 }
 
+::placeholder {
+  color: var(--search-bar-text-color);
+  font-size: 1rem;
+
+  /* font: normal normal normal 16px/19px Gotham Pro ; */
+}
+
 .header-middle input {
   width: 100%;
   height: 1.75rem;
-  background: var(--footer-bg-color);
+  background: var(--search-bar-color);
   border-radius: 1.125rem;
   border-color: var(--footer-border-color);
-  border-width: 1px;
+  border-width: 0;
   text-align: left;
-  padding-left: 2em;
+  padding-left: 1rem;
 }
 
 .header-middle ul {
@@ -110,6 +130,7 @@ export default {
   list-style: none;
   display: flex;
   align-items: center;
+  transition: all 0.375s ease;
 }
 
 .header-middle li > img {
@@ -124,9 +145,9 @@ export default {
   left: 10%;
   width: 2rem;
   height: 0.25rem;
-  background: #fcfcfc;
+  background: var(--text-color);
   position: relative;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
   transition: 0.5s;
 }
 
@@ -143,6 +164,8 @@ export default {
   margin-left: 1em;
   cursor: pointer;
   padding: 1em 0;
+  display: none;
+  color: var(--text-color);
 }
 
 .hamburger-one:before,
@@ -151,14 +174,15 @@ export default {
   position: absolute;
   width: 2rem;
   height: 0.25rem;
-  background: #fcfcfc;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background: var(--text-color);
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
   transition: 0.5s;
 }
 
 .icon-one.active .hamburger-one {
   background: rgba(0, 0, 0, 0);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+  /* background: var(--text-color); */
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0); */
 }
 
 .icon-one.active .hamburger-one:before {
@@ -188,25 +212,34 @@ export default {
   .header-middle li {
     display: none;
   }
+  .icon-one {
+    display: block;
+  }
   .hamburger {
     display: block;
   }
   .logo {
-    width: 4.5rem;
-    height: 4.5rem;
-    object-fit: cover;
-    object-position: 0%;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0.5rem;
   }
   .header-middle {
     justify-content: space-between;
     padding: 0 2rem;
+    align-items: center;
   }
+  /*
   .header-middle ul {
     width: 60%;
+  } */
+  .header-middle_name {
+    font-size: 2rem;
+    height: 1.675rem;
   }
   .searchbar {
-    width: 100%;
-    margin-left: 1.25rem;
+    /* width: 100%;
+    margin-left: 1.25rem; */
+    display: none;
   }
 }
 

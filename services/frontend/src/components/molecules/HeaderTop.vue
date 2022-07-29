@@ -60,6 +60,7 @@ ul {
   list-style: none;
   display: flex;
   align-items: center;
+  color: var(--header-top-color);
 }
 
 ul img {

@@ -61,6 +61,7 @@ export default {
 nav {
   width: 100%;
   display: flex;
+  transition: all 0.375s ease;
 }
 ul {
   width: 100%;
@@ -68,6 +69,7 @@ ul {
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
+  transition: all 0.175s ease;
   /* margin: 1rem 4rem 1.25rem 4rem; */
 }
 
@@ -76,21 +78,23 @@ li {
 }
 
 .squeezedList {
-  margin: 0 4rem 1rem 4rem;
+  /* margin: 0 4rem 1rem 4rem; */
+  /* margin-bottom: 1rem; */
+  margin-top: 0;
 }
 
 .squeezedSpan {
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 4rem;
+  height: 4rem;
   position: relative;
 }
 
 .squeezedLogo {
   position: absolute;
   bottom: 2rem;
-  left: 1rem;
-  width: 4.5rem;
-  height: 4.5rem;
+  /* left: 1rem; */
+  width: 4rem;
+  height: 4rem;
   object-fit: cover;
   object-position: 0%;
   border-radius: 50%;
