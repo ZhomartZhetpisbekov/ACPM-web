@@ -57,6 +57,7 @@ export default {
 .text-content {
   display: flex;
   flex-direction: column;
+  padding: 20px 0;
   gap: 30px;
 }
 
