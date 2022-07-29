@@ -97,6 +97,7 @@ export default {
   justify-content: center;
   background: var(--bg-color);
   color: var(--text-color);
+  font-weight: 700;
 }
 
 .header-content {

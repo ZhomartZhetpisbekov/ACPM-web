@@ -2,7 +2,10 @@
   <div class="event-container">
     <a href="" class="event-link-wrapper">
       <img :src="require(`../../assets/HomePage/${eventInfo[1]}.jpeg`)" />
-      <p>{{ eventInfo[2] }}</p>
+      <p>
+        {{ eventInfo[2] }} <br>
+        <a class="read-more">Read More...</a>
+      </p>
     </a>
   </div>
 </template>
@@ -26,7 +29,7 @@ export default {
 
 .event-container {
   width: 90%;
-  text-align: center;
+  text-align: left;
 }
 
 img {
@@ -35,16 +38,19 @@ img {
 }
 
 p {
-  background: #FACBA6;
-  color: #005963;
+  background: #f0f5f6;
+  color: #000;
   padding: 15px 20px;
   font-size: 1rem;
   text-overflow: ellipsis;
-  white-space: normal;
+  white-space: nowrap;
   overflow: hidden;
   margin: auto;
-  height: 120px;
-  /* width: 100%; */
+  height: 60px;
+  width: 100%;
 }
 
+.read-more {
+  color: #17A2AB;
+}
 </style>

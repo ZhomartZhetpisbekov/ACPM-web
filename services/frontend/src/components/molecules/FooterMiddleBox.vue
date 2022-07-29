@@ -37,9 +37,8 @@ export default {
 }
 
 h2 {
-  font-size: 1.3rem;
-  font-weight: 500;
-  font-style: normal;
+  font-size: 16px;
+  font-weight: bold;
   margin-bottom: 14px;
 }
 

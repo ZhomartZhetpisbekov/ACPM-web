@@ -20,7 +20,7 @@
           <a @click="temporaryNews"><i class="fa-brands fa-telegram fa-2x"></i></a>
         </div>
       </div>
-      <a class="contact-btn" href="#">Contact ACPM</a>
+      <a class="contact-btn" href="#">Свяжитесь с нами</a>
     </div>
   </div>
 </template>
@@ -78,8 +78,7 @@ export default {
 
 h2 {
   font-size: 1.3rem;
-  font-weight: 500;
-  font-style: normal;
+  font-weight: bold;
   margin-bottom: 14px;
 }
 
@@ -99,15 +98,15 @@ img {
 }
 
 a {
-  color: #000;
+  color: #4FC5C8;
   transition: all 0.3s ease;
 }
 
 a:hover {
-  color: #1e68fc;
+  color: #F38023;
 }
 .contact-btn {
-  background: #1e68fc;
+  background: #17A2AB;
   color: #fff;
   padding: 8px 25px;
   border-radius: 20px;
@@ -117,8 +116,8 @@ a:hover {
 }
 
 .contact-btn:hover {
-  color: #1e68fc;
-  background: #fff;
+  color: #fff;
+  background: #F38023;
 }
 
 

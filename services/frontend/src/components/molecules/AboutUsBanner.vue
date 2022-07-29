@@ -3,7 +3,8 @@
     <div class="content-container">
       <h2>О нас</h2>
       <p>
-        Monona epir fast funade. Otinde mina. Stenosam nilig inklusive tull. Gukassa defatrent.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis
+        rhoncus hendrerit. Quisque mattis ante sit amet dictum finibus.
       </p>
       <div class="buttons-container">
         <a href="#">Вступить</a>
@@ -14,16 +15,11 @@
 </template>
 
 <script>
-
 export default {
   name: "AboutUsBanner",
-  props: {
-
-  },
+  props: {},
   data() {
-    return {
-
-    }
+    return {};
   },
   methods: {},
 };
@@ -35,30 +31,28 @@ export default {
   width: 100%;
   height: 500px;
   margin-bottom: 70px;
-  background-image: url(../../assets/HomePage/background-img.png);
+  background-image: url(../../assets/HomePage/banner-img.png);
   background-position: center center;
-  /* background-attachment: fixed; */
   background-size: cover;
   display: flex;
   align-items: center;
-  gap: 100px;
 }
 
 .content-container {
   width: 30%;
+  margin-left: 8rem;
   display: flex;
   gap: 25px;
   flex-direction: column;
-  margin-left: 130px;
   color: #fff;
-} 
+}
 
 h2 {
-  font-size: 2.1rem;
+  font-size: 32px;
 }
 
 p {
-  font-size: 1.2rem;
+  line-height: 25px;
 }
 
 .buttons-container {
@@ -68,20 +62,19 @@ p {
 }
 
 a {
-  background: #d9d9d9;
+  background: #00acb1;
   padding: 10px 30px;
   border-radius: 20px;
   text-decoration: none;
   margin-right: 10px;
-  color: #0052B4;
+  color: #fff;
   transition: all ease 0.3s;
 }
 
-
-  a:hover {
-    background: #1E68FC;
-    color: #fff;
-  }
+a:hover {
+  background: #f38023;
+  color: #fff;
+}
 
 @media only screen and (max-width: 720px) {
   .content-container {
@@ -97,9 +90,9 @@ a {
   }
 
   a {
+    margin: auto;
     margin-bottom: 10px;
+    width: 50%;
   }
-
 }
-
 </style>
