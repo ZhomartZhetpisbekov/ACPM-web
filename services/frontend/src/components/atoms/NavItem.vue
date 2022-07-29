@@ -98,7 +98,7 @@ p {
 
 .active {
   background: var(--secondary-color);
-  border: 1px solid var(--text-color);
+  /* border: 1px solid var(--text-color); */
   color: var(--bg-color);
   padding: 0.5rem;
   margin-right: 0;

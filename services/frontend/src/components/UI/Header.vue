@@ -11,7 +11,7 @@
         <NavItem
           v-for="(item, ind) in headerLinks"
           :key="ind"
-          :styling="'middle'"
+          :styling="'mobile'"
           :title="item.name"
           :pagePath="item.path"
         />
