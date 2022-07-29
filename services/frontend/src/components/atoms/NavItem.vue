@@ -95,11 +95,6 @@ p {
   font-size: 1rem;
 }
 
-.middle {
-  /* border-bottom: 1px solid #f4f; */
-  /* margin: 0 3em; */
-  /* padding: 1em 0; */
-}
 
 .active {
   background: var(--secondary-color);
