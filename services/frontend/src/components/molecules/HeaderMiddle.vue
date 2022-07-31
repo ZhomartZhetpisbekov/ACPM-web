@@ -13,11 +13,7 @@
       />
       <h1 class="header-middle_name">ACPM</h1>
     </div>
-    <div class="searchbar">
-      <!-- <img class="icon" :src="require('@/assets/Header/search.svg')" alt="" /> -->
-      <input type="text" placeholder="Search" />
-    </div>
-
+    <SearchBar />
     <div class="icon-one" :class="{ active: isActive }" @click="clickHandler">
       <div class="hamburger hamburger-one"></div>
     </div>
@@ -25,8 +21,12 @@
 </template>
 
 <script>
+import SearchBar from "../atoms/SearchBar.vue";
 export default {
   name: "HeaderMiddle",
+  components: {
+    SearchBar,
+  },
   props: {
     active: {
       type: Boolean,
@@ -83,17 +83,12 @@ export default {
   letter-spacing: 0;
   color: var(--main-text-color);
   height: 2.25rem;
+  margin-right: 3rem;
 }
 
 .logo:hover,
 .header-middle_name:hover {
   cursor: pointer;
-}
-
-.searchbar {
-  margin-left: 3rem;
-  position: relative;
-  width: 100%;
 }
 
 /* .icon {
@@ -105,24 +100,6 @@ export default {
 
 .icon:hover {
   cursor: pointer;
-}
-
-::placeholder {
-  color: var(--search-bar-text-color);
-  font-size: 1rem;
-
-  /* font: normal normal normal 16px/19px Gotham Pro ; */
-}
-
-.header-middle input {
-  width: 100%;
-  height: 1.75rem;
-  background: var(--search-bar-color);
-  border-radius: 1.125rem;
-  border-color: var(--footer-border-color);
-  border-width: 0;
-  text-align: left;
-  padding-left: 1rem;
 }
 
 .header-middle ul {

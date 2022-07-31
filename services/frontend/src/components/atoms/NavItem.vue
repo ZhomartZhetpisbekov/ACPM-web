@@ -77,8 +77,8 @@ li:hover {
   fill: var(--header-top-color);
 }
 
-.top > p { 
-  height: 0.75rem;
+.top > p {
+  height: 1.175rem;
 }
 
 .bottom {
@@ -86,15 +86,14 @@ li:hover {
   font-weight: normal;
   border-bottom: 2px solid var(--bg-color);
 }
-
+/* 
 p {
   font-weight:bold;
-}
+} */
 
 .bottomSqueezed {
   font-size: 1rem;
 }
-
 
 .active {
   background: var(--secondary-color);
@@ -107,6 +106,10 @@ p {
 @media screen and (max-width: 65rem) {
   .middle {
     margin: 0 2em;
+  }
+  .top > p {
+    font-size: 0.875rem;
+    height: 1rem;
   }
 }
 </style>

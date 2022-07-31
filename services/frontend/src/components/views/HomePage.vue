@@ -27,7 +27,7 @@ export default {
 }
 @media screen and (max-width: 65rem) {
   .home-page{
-    margin-top: 7rem;
+    margin-top: 6rem;
   }
 }
 </style>
