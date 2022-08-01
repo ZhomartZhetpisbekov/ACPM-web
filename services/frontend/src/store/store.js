@@ -29,17 +29,29 @@ export default new Vuex.Store({
               { path: "mass-media", name: "СМИ о нас" },
             ],
           },
-          { name: "События", path: "events", routerName: "Information" },
-          { name: "Образование", path: "education", routerName: "Information" },
+          {
+            name: "События",
+            path: "events",
+            routerName: "Information",
+            children: [],
+          },
+          {
+            name: "Образование",
+            path: "education",
+            routerName: "Information",
+            children: [],
+          },
           {
             name: "Клинические протоколы",
             path: "clinical-protocols",
             routerName: "Information",
+            children: [],
           },
           {
             name: "Новости в медицине",
             path: "news",
             routerName: "News",
+            children: [],
           },
         ],
       },
@@ -68,6 +80,9 @@ export default new Vuex.Store({
         ...state.menu.pages.headerNavTop,
         ...state.menu.pages.headerNavBottom,
       ];
+    },
+    headerBottomChildren(state, payload) {
+      return state.menu.pages.headerNavBottom[payload];
     },
   },
   mutations: {

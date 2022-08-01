@@ -11,28 +11,43 @@
       />
     </div>
     <SearchBar />
-    <ul class="mobile-dropdown__list">
-      <NavItem
-        v-for="(item, ind) in headerLinks"
-        :key="ind"
-        :styling="'mobile'"
-        :title="item.name"
-        :pagePath="item.path"
-      />
-    </ul>
+    <div class="mobile-dropdown__info">
+      <ul class="mobile-dropdown__sections">
+        <MobileMenuItem
+          v-for="(item, ind) in headerLinks"
+          :key="ind"
+          :currentSection="ind == current"
+          :sectionName="item.name"
+          :styling="'left'"
+          :pagePath="item.path"
+          :id="ind"
+          @changeCurrentSection="(payload) => clickHandler(payload)"
+        />
+      </ul>
+      <ul class="mobile-dropdown__list">
+        <MobileMenuItem
+          v-for="(item, ind) in headerLinks[current].children"
+          :key="ind"
+          :sectionName="item.name"
+          :styling="'right'"
+        />
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 import NavItem from "../atoms/NavItem.vue";
 import SearchBar from "../atoms/SearchBar.vue";
-import DropDown from "../atoms/DropDown.vue";
+import DropDown from "../atoms/LangsDropDown.vue";
+import MobileMenuItem from "../atoms/MobileMenuItem.vue";
 export default {
   name: "MobileDropdown",
   components: {
     NavItem,
     SearchBar,
     DropDown,
+    MobileMenuItem,
   },
   props: {
     isActive: {
@@ -42,6 +57,16 @@ export default {
   computed: {
     headerLinks() {
       return this.$store.getters.headerBottomItems;
+    },
+  },
+  data() {
+    return {
+      current: 0,
+    };
+  },
+  methods: {
+    clickHandler(payload) {
+      this.current = payload;
     },
   },
 };
@@ -55,6 +80,8 @@ export default {
   top: 6rem;
   left: 0;
   right: 0;
+  /* bottom: 0; */
+  height: 100vh;
   padding: 1rem;
   background: var(--footer-bg-color);
   padding-bottom: 2em;
@@ -72,8 +99,27 @@ export default {
   display: block;
 }
 
-.mobile-dropdown__list {
+.mobile-dropdown__info {
   margin-top: 1.5rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  display: flex;
+  /* justify-content: space-between; */
+
+  border-top: 2px solid var(--search-bar-color);
+}
+
+.mobile-dropdown__sections {
+  width: calc(100% / 2);
+  list-style: none;
+}
+
+.mobile-dropdown__list {
+  width: calc(100% / 2);
+  list-style: none;
+  height: 100vh;
+  background: #fff;
+  /* width: 100%; */
 }
 
 @media screen and (min-width: 65rem) {

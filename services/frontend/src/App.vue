@@ -28,11 +28,11 @@ export default {
 <style>
 /* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"); */
 @import url('http://fonts.cdnfonts.com/css/gotham-pro?styles=24950,24948,24951,24952,14946,24949,24953');
-@import url(//db.onlinewebfonts.com/c/07a38bbad54db72a40b406bed1c72f53?family=Gotham+Pro);
+/* @import url(//db.onlinewebfonts.com/c/07a38bbad54db72a40b406bed1c72f53?family=Gotham+Pro); */
 @import "./assets/variables.css";
 
 @font-face {
-  font-family: "Gotham Pro Light";
+  font-family: "Gotham Pro";
   src: url("//db.onlinewebfonts.com/t/07a38bbad54db72a40b406bed1c72f53.eot");
   src: url("//db.onlinewebfonts.com/t/07a38bbad54db72a40b406bed1c72f53.eot?#iefix")
       format("embedded-opentype"),

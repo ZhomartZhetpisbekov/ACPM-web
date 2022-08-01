@@ -79,6 +79,7 @@ li:hover {
 
 .top > p {
   height: 1.175rem;
+  font-weight: medium;
 }
 
 .bottom {
