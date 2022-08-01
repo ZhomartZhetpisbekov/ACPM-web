@@ -7,15 +7,7 @@
         @openMenu="(payload) => toggleMenu(payload)"
       />
       <HeaderBottom :scrolledDown="scrolledDown" />
-      <div class="mobile-dropdown" :class="{ menuOpen: isActive }">
-        <NavItem
-          v-for="(item, ind) in headerLinks"
-          :key="ind"
-          :styling="'mobile'"
-          :title="item.name"
-          :pagePath="item.path"
-        />
-      </div>
+      <MobileDropdown :isActive="isActive" />
     </div>
   </header>
 </template>
@@ -24,7 +16,7 @@
 import HeaderTop from "../molecules/HeaderTop.vue";
 import HeaderBottom from "../molecules/HeaderBottom.vue";
 import HeaderMiddle from "../molecules/HeaderMiddle.vue";
-import NavItem from "../atoms/NavItem.vue";
+import MobileDropdown from "../molecules/MobileDropdown.vue";
 
 export default {
   name: "BaseHeader",
@@ -32,18 +24,15 @@ export default {
     HeaderTop,
     HeaderMiddle,
     HeaderBottom,
-    NavItem,
+
+    MobileDropdown,
   },
   props: {
     title: {
       type: String,
     },
   },
-  computed: {
-    headerLinks() {
-      return this.$store.getters.headerAllItems;
-    },
-  },
+
   data() {
     return {
       isActive: false,
@@ -97,7 +86,7 @@ export default {
   justify-content: center;
   background: var(--bg-color);
   color: var(--text-color);
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .header-content {
@@ -109,37 +98,19 @@ export default {
   height: 100%;
 }
 
-.mobile-dropdown {
-  display: none;
-  width: 100%;
-  position: absolute;
-  top: 7em;
-  background: #313a59;
-  padding-bottom: 2em;
-}
-
-.menuOpen {
-  display: block;
-}
-
 .squeeze {
   height: 7.25rem;
 }
 
-@media screen and (min-width: 65rem) {
-  .mobile-dropdown {
-    display: none;
-  }
-}
-
 @media screen and (max-width: 65rem) {
   .header {
-    height: 6em;
+    height: 6rem;
+    border-bottom: 3px solid var(--search-bar-color);
   }
   .header-content {
-    height: 6em;
+    height: 6rem;
     justify-content: center;
-    padding: 0 1rem;
+    padding: 0rem;
   }
 }
 </style>
