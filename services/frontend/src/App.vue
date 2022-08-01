@@ -2,7 +2,7 @@
   <section>
     <BaseHeader />
     <router-view />
-    <BaseFooter :title="'footfetish'" />
+    <BaseFooter />
   </section>
 </template>
 

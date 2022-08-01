@@ -4,68 +4,88 @@
       <h2>Новости</h2>
     </div>
 
-    <LeadNews />
+    <!-- <LeadNews />
 
-    <h3>ACPM Новости</h3>
+    <h3>ACPM Новости</h3> -->
 
     <div class="news-container">
       <SingleNews
-        v-for="(item, index) in temporaryNews"
+        :imgPath="temporaryNews[0].imgPath"
+        :title="temporaryNews[0].title"
+        :text="temporaryNews[0].text"
+        :date="temporaryNews[0].date"
+        :isLeadNews="true"
+      />
+
+      <SingleNews
+        v-for="(item, index) in temporaryNews.slice(1, 4)"
         :key="index"
         :imgPath="item.imgPath"
         :title="item.title"
+        :text="item.text"
         :date="item.date"
+        :isLeadNews="false"
       />
     </div>
+
+    <div class="more-news-btn">
+      <a href="">Показать еще</a>
+    </div>
+
+    <BecomeMember />
   </div>
 </template>
 
 <script>
-import LeadNews from "../molecules/LeadNews.vue";
+// import LeadNews from "../molecules/LeadNews.vue";
 import SingleNews from "../molecules/SingleNews.vue";
+import BecomeMember from "../molecules/BecomeMember.vue";
 
 export default {
   name: "NewsPage",
-  components: { LeadNews, SingleNews },
-  methods: {
-  },
+  components: { SingleNews, BecomeMember },
+  methods: {},
   data() {
     return {
       temporaryNews: [
         {
           imgPath: "1",
           title:
-            "On Inaugural World Bronchiectasis Day, International Lung Health Organizations Raise Awareness",
+            "On Inaugural World Bronchiectasis Day, International Lung Health",
+          text: "On Inaugural World Bronchiectasis Day, International Lung Health Organizations Raise Awareness On Inaugural World Bronchiectasis Day, International Lung Health Organizations Raise Awareness",
           date: "07 July, 2022",
         },
         {
           imgPath: "2",
-          title: "ERS journals awarded highest Journal Impact Factors to date",
+          title: "ERS journals awarded highest Journal Impact Factors to date ERS",
+          text: "ERS journals awarded highest Journal Impact Factors to date ERS journals awarded highest Journal Impact Factors to date ERS journals awarded highest Journal Impact Factors to date",
           date: "22 June, 2022",
         },
         {
           imgPath: "3",
           title:
-            "Be aware that onsite spaces are limited – we recommend early registration to avoid disappointment.",
+            "Be aware that onsite spaces are limited – we recommend early",
+          text: "Be aware that onsite spaces are limited – we recommend early registration to avoid disappointment Be aware that onsite spaces are limited – we recommend early registration to avoid disappointment.",
           date: "22 January, 2022",
-        },
-        {
-          imgPath: "2",
-          title: "ERS journals awarded highest Journal Impact Factors to date",
-          date: "22 June, 2022",
         },
         {
           imgPath: "1",
-          title:
-            "On Inaugural World Bronchiectasis Day, International Lung Health Organizations Raise Awareness",
-          date: "07 July, 2022",
+          title: "ERS journals awarded highest Journal Impact Factors to date ERS",
+          text: "ERS journals awarded highest Journal Impact Factors to date ERS journals awarded highest Journal Impact Factors to date ERS journals awarded highest Journal Impact Factors to date",
+          date: "22 June, 2022",
         },
-        {
-          imgPath: "3",
-          title:
-            "Be aware that onsite spaces are limited – we recommend early registration to avoid disappointment.",
-          date: "22 January, 2022",
-        },
+        // {
+        //   imgPath: "1",
+        //   title:
+        //     "On Inaugural World Bronchiectasis Day, International Lung Health Organizations Raise Awareness",
+        //   date: "07 July, 2022",
+        // },
+        // {
+        //   imgPath: "3",
+        //   title:
+        //     "Be aware that onsite spaces are limited – we recommend early registration to avoid disappointment.",
+        //   date: "22 January, 2022",
+        // },
       ],
     };
   },
@@ -92,26 +112,33 @@ export default {
 }
 
 .banner h2 {
-  width: 85%;
+  width: 83%;
   margin: auto auto 10px;
   font-weight: 500;
   font-size: 42px;
   color: #fff;
 }
 
-h3 {
-  font-weight: 700;
-  font-size: 24px;
-  width: 85%;
-  margin: auto auto 20px;
-  color: #005963;
+.news-container {
+  width: 83%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 
-.news-container {
-  width: 91%;
+.more-news-btn {
+  width: 83%;
   margin: auto;
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 40px;
+}
+
+.more-news-btn a {
+  padding: 10px 20px;
+  background: #00ACB1;
+  color: #fff;
+  border-radius: 30px;
 }
 
 @media only screen and (max-width: 720px) {

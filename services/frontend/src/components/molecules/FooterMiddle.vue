@@ -77,7 +77,7 @@ export default {
 }
 
 h2 {
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: bold;
   margin-bottom: 14px;
 }

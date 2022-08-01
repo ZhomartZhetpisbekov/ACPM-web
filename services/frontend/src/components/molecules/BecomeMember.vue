@@ -73,6 +73,7 @@ p {
 a {
   padding: 15px 40px;
   background: #00acb1;
+  color: #fff;
   border-radius: 30px;
   transition: all 0.25s ease;
 }
