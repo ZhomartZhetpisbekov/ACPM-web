@@ -5,12 +5,12 @@
         <img class="squeezedLogo" :src="require('@/assets/Header/logo.png')" />
       </div>
       <NavItem
-        v-for="(item, ind) in headerBottomLinks"
+        v-for="(item, ind) in $t('header.navBottom')"
         :key="ind"
         :styling="!scrolledDown ? 'bottom' : 'bottomSqueezed'"
-        :title="item.name"
-        :pagePath="item.path"
-        :routerName="item.routerName"
+        :title="item"
+        :pagePath="headerBottomLinks[ind].path"
+        :routerName="headerBottomLinks[ind].routerName"
       />
     </ul>
   </nav>

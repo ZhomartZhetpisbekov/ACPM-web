@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import i18n from '../../plugins/i18n';
+
 export default {
   name: "DropDown",
   data() {
@@ -44,7 +46,7 @@ export default {
       languages: [
         { link: "ru", name: "Russian" },
         { link: "kz", name: "Kazakh" },
-        { link: "eng", name: "English" },
+        { link: "en", name: "English" },
       ],
     };
   },
@@ -57,6 +59,8 @@ export default {
       const copied = this.languages[num];
       this.languages[num] = this.languages[0];
       this.languages[0] = copied;
+      i18n.locale = this.languages[0].link;
+      console.log(this.languages[0].link, i18n.locale);
     },
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <div class="upcomming-events-container">
-    <h2>Предстоящие мероприятия</h2>
+    <h2>{{ $t('upcommingEvents') }}</h2>
     <div class="events-container">
       <a @click="scroll_left"
         ><img src="../../assets/HomePage/left.png" alt=""

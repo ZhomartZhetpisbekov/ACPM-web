@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="footer-title">
-      <h2>ACPM</h2>
+      <h2>{{ $t('footer.title') }}</h2>
     </div>
     <FooterMiddle />
   </footer>

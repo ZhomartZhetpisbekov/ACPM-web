@@ -1,14 +1,14 @@
 <template>
   <div class="about-us-banner">
     <div class="content-container">
-      <h2>О нас</h2>
+      <h2>{{ $t('aboutUs.title') }}</h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis
         rhoncus hendrerit. Quisque mattis ante sit amet dictum finibus.
       </p>
       <div class="buttons-container">
-        <a href="#">Вступить</a>
-        <a href="#">Подробнее</a>
+        <a href="#">{{ $t('aboutUs.joinBtn') }}</a>
+        <a href="#">{{ $t('aboutUs.readMoreBtn') }}</a>
       </div>
     </div>
   </div>
@@ -56,9 +56,9 @@ p {
 }
 
 .buttons-container {
-  width: 53%;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
 }
 
 a {
