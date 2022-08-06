@@ -57,16 +57,16 @@ export default {
       // pageImgs: ["news", "contacts", "cabinet"],
     };
   },
-  mounted() {
-    this.fetchNews();
-  },
+  // mounted() {
+  //   this.fetchNews();
+  // },
   methods: {
-    async fetchNews() {
-      this.loading = true;
-      await this.$store.dispatch("getNews");
+    // async fetchNews() {
+    //   this.loading = true;
+    //   await this.$store.dispatch("getNews"); 
 
-      this.loading = false;
-    },
+    //   this.loading = false;
+    // },
     changeLocale(locale) {
       i18n.locale = locale;
     },
@@ -80,7 +80,6 @@ nav {
   display: flex;
   justify-content: flex-end;
   /* margin-right: 4rem; */
-  /* font-family: "Gotham Pro Bold"; */
 }
 ul {
   margin-top: 1rem;

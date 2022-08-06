@@ -145,10 +145,11 @@ export default new Vuex.Store({
     async getNews({ commit }) {
       return await api.get("/news").then((res) => {
         commit("SET_NEWS", res.data);
-        console.log(res.data);
+        // console.log('store_actions', res.data);
         return res.data;
       });
     },
+
     // async getProduct({ commit }, productId) {
     //   localStorage.setItem("id", productId);
     //   return await api.get(`/menu/${productId}`).then((res) => {

@@ -3,6 +3,7 @@ import i18n from "../plugins/i18n";
 
 const api = axios.create({
   baseURL: `http://192.168.54.178/api/v1/${i18n.locale}`,
+  base: 'http://192.168.54.178',
 });
 
 api.interceptors.request.use(

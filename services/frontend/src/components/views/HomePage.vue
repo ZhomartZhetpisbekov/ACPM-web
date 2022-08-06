@@ -20,10 +20,11 @@ export default {
 <style>
 /* Footer */
 .home-page {
-  /* border: 1px solid #fff; */
   margin-top: 12rem;
   width: 100%;
-  /* height: 250vh; */
+  font-family: 'Gotham Pro';
+  letter-spacing: 1.2px;
+  line-height: 23px;
 }
 @media screen and (max-width: 65rem) {
   .home-page{
