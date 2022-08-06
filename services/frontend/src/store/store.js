@@ -81,9 +81,9 @@ export default new Vuex.Store({
         ...state.menu.pages.headerNavBottom,
       ];
     },
-    headerBottomChildren(state, payload) {
-      return state.menu.pages.headerNavBottom[payload];
-    },
+    // headerBottomChildren(state, payload) {
+    //   return state.menu.pages.headerNavBottom[payload];
+    // },
   },
   mutations: {
     // SET_PRODUCTS(state, products) {
@@ -138,8 +138,8 @@ export default new Vuex.Store({
     // },
   },
   actions: {
-    // async getProducts({ commit }) {
-    //   return await api.get("/restaurants").then((res) => {
+    // async getNews({ commit }) {
+    //   return await api.get("/news").then((res) => {
     //     commit("SET_PRODUCTS", res.data);
     //     return res.data;
     //   });
