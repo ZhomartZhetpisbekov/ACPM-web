@@ -1,7 +1,7 @@
 <template>
   <div class="grid-container">
     <FooterMiddleBox
-      v-for="(item, index) in footerNavGroups"
+      v-for="(item, index) in $t('footer.menuGroups')"
       :key="index"
       :footerNavs="item"
     />
@@ -20,7 +20,7 @@
           <a @click="temporaryNews"><i class="fa-brands fa-telegram fa-2x"></i></a>
         </div>
       </div>
-      <a class="contact-btn" href="#">Свяжитесь с нами</a>
+      <a class="contact-btn" href="#">{{ $t('footer.contactUs') }}</a>
     </div>
   </div>
 </template>
@@ -77,7 +77,7 @@ export default {
 }
 
 h2 {
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: bold;
   margin-bottom: 14px;
 }

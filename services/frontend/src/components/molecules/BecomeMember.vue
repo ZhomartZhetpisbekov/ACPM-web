@@ -1,7 +1,7 @@
 <template>
   <div class="become-member">
     <div class="content-container">
-      <h2>Станьте частью сообщества!</h2>
+      <h2>{{ $t('becomeMember.title') }}</h2>
       <div class="text-content">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
@@ -15,7 +15,7 @@
           aliquet varius.
         </p>
       </div>
-      <a href="#">Узнать больше</a>
+      <a href="#">{{ $t('becomeMember.readMoreBtn') }}</a>
     </div>
     <div class="image-container"></div>
   </div>
@@ -73,6 +73,7 @@ p {
 a {
   padding: 15px 40px;
   background: #00acb1;
+  color: #fff;
   border-radius: 30px;
   transition: all 0.25s ease;
 }

@@ -1,12 +1,17 @@
 <template>
-  <div>
-    <div class="single-news-block">
-      <a href="">
-        <img :src="require(`../../assets/tempNews/${imgPath}.png`)" alt="" />
-        <p>{{ title }}</p>
+  <div class="single-news-block" :class="{ active: isLeadNews }">
+    <a href="" class="img-container" :class="{ activeImg: isLeadNews }">
+      <img :src="require(`../../assets/tempNews/${imgPath}.png`)" alt="" />
+    </a>
+    <a href="" class="text-container" :class="{ activeText: isLeadNews }">
+      <div class="text-block">
+        <h3>{{ title }}</h3>
+        <p>
+          {{ text }}
+        </p>
         <span>{{ date }}</span>
-      </a>
-    </div>
+      </div>
+    </a>
   </div>
 </template>
 
@@ -20,8 +25,14 @@ export default {
     title: {
       type: String,
     },
+    text: {
+      type: String,
+    },
     date: {
       type: String,
+    },
+    isLeadNews: {
+      type: Boolean,
     },
   },
 };
@@ -30,24 +41,87 @@ export default {
 <style scoped>
 /* Single News */
 .single-news-block {
-  width: 80%;
-  margin: auto;
-  text-align: left;
+  display: flex;
   margin-bottom: 50px;
   color: #000;
 }
 
-img {
+.active {
+  margin-bottom: 80px;
+}
+
+.img-container {
+  width: 30%;
+}
+
+.activeImg {
+  width: 55%;
+  /* height: 350px; */
+}
+
+.img-container img {
   width: 100%;
-  margin-bottom: 10px;
+  /* object-fit: cover; */
 }
 
-p {
-  margin: auto;
-  margin-bottom: 20px;
+.text-container {
+  width: 70%;
 }
 
-span {
-  color: gray;
+.activeText {
+  width: 45%;
+}
+
+.text-block {
+  width: 100%;
+  height: 100%;
+  padding: 20px 20px 20px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.text-block h3 {
+  font-size: 1.8rem;
+  color: #005963;
+}
+
+.text-block p {
+  font-size: 1rem;
+}
+
+.text-block span {
+  color: #70a2a7;
+}
+
+@media only screen and (max-width: 720px) {
+  .single-news-block {
+    flex-direction: column;
+  }
+  .img-container {
+    width: 100%;
+  }
+
+  .activeImg {
+    width: 100%;
+  }
+
+  .img-container img {
+    width: 100%;
+  }
+
+  .text-container {
+    width: 100%;
+  }
+
+  .activeText {
+    width: 100%;
+  }
+
+  .text-block {
+    gap: 20px;
+    padding: 10px;
+    text-align: center;
+  }
 }
 </style>

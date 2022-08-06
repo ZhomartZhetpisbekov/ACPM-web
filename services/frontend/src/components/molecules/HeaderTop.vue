@@ -5,20 +5,20 @@
         <img :src="require('@/assets/Header/kz.svg')" alt="" />
       </li>
       <li>
-        <img :src="require('@/assets/Header/ru.svg')" alt="" />
+        <img @click="changeLocale('ru')" :src="require('@/assets/Header/ru.svg')" alt="" />
       </li>
       <li>
-        <img :src="require('@/assets/Header/eng.svg')" alt="" />
+        <img @click="changeLocale('en')" :src="require('@/assets/Header/en.svg')" alt="" />
       </li>
       <NavItem
-        v-for="(item, ind) in headerTopLinks"
+        v-for="(item, ind) in $t('header.navTop')"
         :key="ind"
         :styling="'top'"
         :active="pageActive[ind]"
-        :title="item.name"
-        :imgPath="item.path"
-        :pagePath="item.path"
-        :routerName="item.routerName"
+        :title="item"
+        :imgPath="headerTopLinks[ind].path"
+        :pagePath="headerTopLinks[ind].path"
+        :routerName="headerTopLinks[ind].routerName"
       />
     </ul>
   </nav>
@@ -26,6 +26,7 @@
 
 <script>
 import NavItem from "../atoms/NavItem.vue";
+import i18n from '../../plugins/i18n';
 
 export default {
   name: "HeaderTop",
@@ -36,6 +37,9 @@ export default {
     headerTopLinks() {
       return this.$store.getters.headerTopItems;
     },
+    // topLinksTitle() {
+    //   return $t('header.navTop');
+    // }
   },
   data() {
     return {
@@ -45,6 +49,11 @@ export default {
       // pageImgs: ["news", "contacts", "cabinet"],
     };
   },
+  methods: {
+    changeLocale(locale) {
+      i18n.locale = locale;
+    }
+  }
 };
 </script>
 
