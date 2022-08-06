@@ -80,6 +80,7 @@ nav {
   display: flex;
   justify-content: flex-end;
   /* margin-right: 4rem; */
+  /* font-family: "Gotham Pro Bold"; */
 }
 ul {
   margin-top: 1rem;

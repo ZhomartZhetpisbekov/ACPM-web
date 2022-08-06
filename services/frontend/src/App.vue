@@ -27,10 +27,10 @@ export default {
 
 <style>
 /* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"); */
-@import url('http://fonts.cdnfonts.com/css/gotham-pro?styles=24950,24948,24951,24952,14946,24949,24953');
+/* @import url("http://fonts.cdnfonts.com/css/gotham-pro?styles=24950,24948,24951,24952,14946,24949,24953"); */
 /* @import url(//db.onlinewebfonts.com/c/07a38bbad54db72a40b406bed1c72f53?family=Gotham+Pro); */
 @import "./assets/variables.css";
-
+/* 
 @font-face {
   font-family: "Gotham Pro";
   src: url("//db.onlinewebfonts.com/t/07a38bbad54db72a40b406bed1c72f53.eot");
@@ -44,6 +44,21 @@ export default {
       format("truetype"),
     url("//db.onlinewebfonts.com/t/07a38bbad54db72a40b406bed1c72f53.svg#Gotham Pro")
       format("svg");
+} */
+
+@font-face {
+  font-family: "Gotham Pro Med";
+  src: url("assets/Gotham_Pro_Font/GothaProMed.otf");
+}
+
+@font-face {
+  font-family: "Gotham Pro Bold";
+  src: url("assets/Gotham_Pro_Font/GothaProBol.otf");
+}
+
+@font-face {
+  font-family: "Gotham Pro";
+  src: url("assets/Gotham_Pro_Font/GothaProReg.otf");
 }
 
 *,
@@ -55,7 +70,7 @@ export default {
 }
 
 body {
-  font-family: "Gotham Pro", sans-serif;
+  font-family: "Gotham Pro Med", "Gotham Pro", "Gotham Pro Bold", sans-serif;
   width: 100vw;
   overflow-x: hidden;
   background: var(--bg-color);
