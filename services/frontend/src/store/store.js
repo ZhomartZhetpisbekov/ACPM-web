@@ -1,12 +1,13 @@
 import Vue from "vue";
 import Vuex from "vuex";
-// import api from "../services/api";
+import api from "../services/api";
 // import router from "../router";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    news: [],
     menu: {
       pages: {
         headerNavTop: [
@@ -86,6 +87,9 @@ export default new Vuex.Store({
     // },
   },
   mutations: {
+    SET_NEWS(state, news) {
+      state.news = news;
+    },
     // SET_PRODUCTS(state, products) {
     //   state.products = products;
     // },
@@ -138,12 +142,13 @@ export default new Vuex.Store({
     // },
   },
   actions: {
-    // async getNews({ commit }) {
-    //   return await api.get("/news").then((res) => {
-    //     commit("SET_PRODUCTS", res.data);
-    //     return res.data;
-    //   });
-    // },
+    async getNews({ commit }) {
+      return await api.get("/news").then((res) => {
+        commit("SET_NEWS", res.data);
+        console.log(res.data);
+        return res.data;
+      });
+    },
     // async getProduct({ commit }, productId) {
     //   localStorage.setItem("id", productId);
     //   return await api.get(`/menu/${productId}`).then((res) => {

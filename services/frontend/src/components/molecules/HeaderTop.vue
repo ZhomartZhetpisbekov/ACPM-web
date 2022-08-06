@@ -5,10 +5,18 @@
         <img :src="require('@/assets/Header/kz.svg')" alt="" />
       </li>
       <li>
-        <img @click="changeLocale('ru')" :src="require('@/assets/Header/ru.svg')" alt="" />
+        <img
+          @click="changeLocale('ru')"
+          :src="require('@/assets/Header/ru.svg')"
+          alt=""
+        />
       </li>
       <li>
-        <img @click="changeLocale('en')" :src="require('@/assets/Header/en.svg')" alt="" />
+        <img
+          @click="changeLocale('en')"
+          :src="require('@/assets/Header/en.svg')"
+          alt=""
+        />
       </li>
       <NavItem
         v-for="(item, ind) in $t('header.navTop')"
@@ -26,7 +34,7 @@
 
 <script>
 import NavItem from "../atoms/NavItem.vue";
-import i18n from '../../plugins/i18n';
+import i18n from "../../plugins/i18n";
 
 export default {
   name: "HeaderTop",
@@ -49,11 +57,20 @@ export default {
       // pageImgs: ["news", "contacts", "cabinet"],
     };
   },
+  mounted() {
+    this.fetchNews();
+  },
   methods: {
+    async fetchNews() {
+      this.loading = true;
+      await this.$store.dispatch("getNews");
+
+      this.loading = false;
+    },
     changeLocale(locale) {
       i18n.locale = locale;
-    }
-  }
+    },
+  },
 };
 </script>
 
