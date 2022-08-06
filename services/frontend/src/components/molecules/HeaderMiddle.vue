@@ -79,6 +79,7 @@ export default {
   margin-right: 1rem;
 }
 .header-middle_name {
+  font-family: 'Gotham Pro Bold';
   font-size: 3rem;
   letter-spacing: 0;
   color: var(--main-text-color);
