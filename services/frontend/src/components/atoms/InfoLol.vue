@@ -25,6 +25,6 @@ export default {
 
 <style scoped>
 p {
-  margin-top: 1rem;
+  line-height: 1.5rem;
 }
 </style>

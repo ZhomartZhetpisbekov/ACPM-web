@@ -24,9 +24,9 @@ export default {
   margin-top: 12em;
   display: flex;
   width: 100%;
-  padding: 2em 0;
+  padding: 0 8rem 4rem 8rem;
   flex-direction: row;
-  background: #252b42;
+  /* background: #252b42; */
 }
 @media screen and (max-width: 65rem) {
   .information {

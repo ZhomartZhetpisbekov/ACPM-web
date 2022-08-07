@@ -1,7 +1,8 @@
 <template>
   <div>
-    <h2 class="information-title">Общество</h2>
-    <ul>
+    <!-- <h2 class="information-title">Общество</h2> -->
+    <ul class="information-menu">
+      <li class="information-menu__title">{{ this.headerTitle }}</li>
       <InfoItem
         v-for="(item, ind) in menuItmes"
         :key="ind"
@@ -30,13 +31,21 @@ export default {
   },
   computed: {
     menuItmes() {
-      return this.$store.state.menu.pages.headerNavBottom[0].children;
+      return this.$store.state.menu.pages.headerNavBottom[this.findTitle]
+        .children;
+    },
+    headerBottom() {
+      return this.$store.state.menu.pages.headerNavBottom;
+    },
+    headerTitle() {
+      return this.headerBottom[this.findTitle].name;
     },
   },
   data() {
     return {
       currentActive: 0,
       isActive: false,
+      findTitle: 0,
     };
   },
   methods: {
@@ -48,6 +57,10 @@ export default {
     const computedCurrentSection = this.menuItmes.findIndex(
       (item) => item.path === this.$router.currentRoute.params.item
     );
+    const damn = this.headerBottom.findIndex(
+      (item) => item.path === this.$router.currentRoute.params.name
+    );
+    damn === -1 ? (this.findTitle = 0) : (this.findTitle = damn);
     computedCurrentSection === -1
       ? (this.currentActive = 0)
       : (this.currentActive = computedCurrentSection);
@@ -59,6 +72,10 @@ export default {
         const computedCurrentSection = this.menuItmes.findIndex(
           (item) => item.path === toParams.item
         );
+        const damn = this.headerBottom.findIndex(
+          (item) => item.path === this.$router.currentRoute.params.name
+        );
+        damn === -1 ? (this.findTitle = 0) : (this.findTitle = damn);
         computedCurrentSection === -1
           ? (this.currentActive = 0)
           : (this.currentActive = computedCurrentSection);
@@ -69,18 +86,22 @@ export default {
 </script>
 
 <style scoped>
-.information-title {
-  margin-left: 7rem;
-  margin-bottom: 1.375rem;
-  font-size: 2em;
-  color: white;
-  display: flex;
-  align-items: center;
+.information-menu {
+  background: var(--footer-bg-color);
 }
 
-@media screen and (max-width: 65rem) {
+.information-menu__title {
+  list-style: none;
+  padding: 1rem;
+  font-family: "Gotham Pro Bold";
+  background: var(--menu-title);
+  color: var(--text-color);
+  width: 16rem;
+}
+
+/* @media screen and (max-width: 65rem) {
   .information-title {
     margin-left: 4rem;
   }
-}
+} */
 </style>

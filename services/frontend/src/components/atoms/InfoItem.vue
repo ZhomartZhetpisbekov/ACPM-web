@@ -53,35 +53,35 @@ export default {
 
 <style scoped>
 li {
-  color: white;
+  color: var(--text-color);
   display: flex;
   align-items: center;
   transition: all 0.375s ease;
-  border-top-right-radius: 1.5rem;
-  border-bottom-right-radius: 1.5rem;
-  width: 24rem;
+  padding: 1rem;
+  font-family: "Gotham Pro";
+  font-size: 0.875rem;
+  /* border-top-right-radius: 1.5rem; */
+  /* border-bottom-right-radius: 1.5rem;/ */
+  width: 16rem;
+  border-top: 1px solid var(--search-bar-color);
 }
 
 li:hover {
-  background: #23a6f0;
-  color: white;
+  background: var(--active-color);
+  font-family: "Gotham Pro Med";
+  font-style: italic;
   cursor: pointer;
 }
 
-.info-middle {
-  font-size: 1rem;
-  padding: 0.875rem 3rem 0.875rem 7rem;
-}
-
 .active {
-  background: white;
-  color: black;
-  font-size: 1.375rem;
-  margin: 0;
+  background: var(--active-color);
+  font-family: "Gotham Pro Med";
+  font-style: italic;
+  /* border: none; */
 }
 
 @media screen and (max-width: 65rem) {
-  .info-middle {
+  /* .info-middle {
     padding: 0.875rem 0 0.875rem 4rem;
   }
   li {
@@ -89,6 +89,6 @@ li:hover {
   }
   .active {
     font-size: 1.175rem;
-  }
+  } */
 }
 </style>

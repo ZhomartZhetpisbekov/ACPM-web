@@ -35,6 +35,10 @@ export default {
 .mobile-menu__item:hover {
   cursor: pointer;
 }
+
+.mobile-menu__item {
+  line-height: 1.5rem;
+}
 .mobile-menu__item.left {
   font-size: 0.875rem;
   padding: 1rem;

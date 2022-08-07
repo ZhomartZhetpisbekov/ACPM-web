@@ -1,6 +1,6 @@
 <template>
   <div class="info-text">
-    <InfoPath :paths="this.ablur" />
+    <!-- <InfoPath :paths="this.ablur" /> -->
     <h1 class="info-text_title">{{ parsedpath() }}</h1>
     <!-- <router-view></router-view> -->
     <InfoLol />
@@ -9,11 +9,11 @@
 
 <script>
 import InfoLol from "../atoms/InfoLol";
-import InfoPath from "../atoms/InfoPath";
+// import InfoPath from "../atoms/InfoPath";
 export default {
   name: "InfoText",
   components: {
-    InfoPath,
+    // InfoPath,
     InfoLol,
   },
   data() {
@@ -47,11 +47,14 @@ export default {
 
 <style scoped>
 .info-text {
-  margin: 0 4rem;
-  color: white;
+  margin-left: 4rem;
+  color: var(--text-color);
+  font-family: 'Gotham Pro';
 }
 .info-text_title {
+  font-family: 'Gotham Pro Bold';
   font-size: 2rem;
-  margin-top: 0.5rem;
+  /* margin-top: 0.5rem; */
+  margin-bottom: 2rem;
 }
 </style>
