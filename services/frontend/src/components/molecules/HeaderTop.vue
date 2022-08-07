@@ -45,9 +45,6 @@ export default {
     headerTopLinks() {
       return this.$store.getters.headerTopItems;
     },
-    // topLinksTitle() {
-    //   return $t('header.navTop');
-    // }
   },
   data() {
     return {
@@ -57,18 +54,11 @@ export default {
       // pageImgs: ["news", "contacts", "cabinet"],
     };
   },
-  // mounted() {
-  //   this.fetchNews();
-  // },
   methods: {
-    // async fetchNews() {
-    //   this.loading = true;
-    //   await this.$store.dispatch("getNews"); 
-
-    //   this.loading = false;
-    // },
     changeLocale(locale) {
-      i18n.locale = locale;
+      this.$store.commit('SET_LANG', locale);
+      i18n.locale = this.$store.state.currentLanguage;
+      this.$router.go();
     },
   },
 };

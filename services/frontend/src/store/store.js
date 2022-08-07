@@ -7,6 +7,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    currentLanguage: localStorage.getItem('currentLanguage'),
     news: [],
     menu: {
       pages: {
@@ -90,6 +91,10 @@ export default new Vuex.Store({
     SET_NEWS(state, news) {
       state.news = news;
     },
+    SET_LANG(state, lang) {
+      localStorage.setItem('currentLanguage', lang);
+      state.currentLanguage = lang;
+    }
     // SET_PRODUCTS(state, products) {
     //   state.products = products;
     // },

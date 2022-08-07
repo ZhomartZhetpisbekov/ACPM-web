@@ -53,7 +53,6 @@ h2 {
 
 p {
   line-height: 25px;
-  font-family: "Gotham Pro Bold" sans-serif;
 }
 
 .buttons-container {

@@ -21,6 +21,7 @@ a {
   color: #005963;
   margin-bottom: 10px;
   transition: all 0.25s ease;
+  font-family: 'Gotham Pro';
 }
 
 a:hover {

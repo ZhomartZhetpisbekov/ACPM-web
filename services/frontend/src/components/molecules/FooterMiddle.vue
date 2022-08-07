@@ -33,23 +33,23 @@ export default {
   components: {
     FooterMiddleBox,
   },
-  data() {
-    return {
-      footerNavGroups: [
-        [
-          "Меню",
-          "Общество",
-          "События",
-          "Образование",
-          "Клинические протоколы",
-          "Новости в медицине",
-        ],
-        ["Членство", "Войти в мой кабинет", "Стать членом"],
-        ["Ссылки", "European Lung Found", "European Respiratory System"],
-        ["Пресса", "Press queries"],
-      ],
-    };
-  },
+  // data() {
+  //   return {
+  //     footerNavGroups: [
+  //       [
+  //         "Меню",
+  //         "Общество",
+  //         "События",
+  //         "Образование",
+  //         "Клинические протоколы",
+  //         "Новости в медицине",
+  //       ],
+  //       ["Членство", "Войти в мой кабинет", "Стать членом"],
+  //       ["Ссылки", "European Lung Found", "European Respiratory System"],
+  //       ["Пресса", "Press queries"],
+  //     ],
+  //   };
+  // },
   methods: {
     temporaryNews() {
         this.$router.push({
@@ -113,6 +113,7 @@ a:hover {
   text-decoration: none;
   white-space: nowrap;
   transition: all 0.3s ease;
+  font-family: 'Gotham Pro';
 }
 
 .contact-btn:hover {
