@@ -1,7 +1,7 @@
 <template>
   <div class="single-news-block" :class="{ active: isLeadNews }">
     <a href="" class="img-container" :class="{ activeImg: isLeadNews }">
-      <img :src="require(`../../assets/tempNews/${imgPath}.png`)" alt="" />
+      <img :src="imgPath" alt="" />
     </a>
     <a href="" class="text-container" :class="{ activeText: isLeadNews }">
       <div class="text-block">
@@ -61,7 +61,8 @@ export default {
 
 .img-container img {
   width: 100%;
-  /* object-fit: cover; */
+  height: 150px;
+  object-fit: cover;
 }
 
 .text-container {

@@ -10,17 +10,17 @@
 
     <div class="news-container">
       <SingleNews
-        :imgPath="temporaryNews[0].imgPath"
-        :title="temporaryNews[0].title"
-        :text="temporaryNews[0].text"
-        :date="temporaryNews[0].date"
+        :imgPath="`http://192.168.54.178${news[0].main_image}`"
+        :title="news[0].title"
+        :text="news[0].text"
+        :date="news[0].date"
         :isLeadNews="true"
       />
 
       <SingleNews
-        v-for="(item, index) in temporaryNews.slice(1, 4)"
+        v-for="(item, index) in news.slice(1)"
         :key="index"
-        :imgPath="item.imgPath"
+        :imgPath="`http://192.168.54.178${item.main_image}`"
         :title="item.title"
         :text="item.text"
         :date="item.date"
@@ -40,11 +40,30 @@
 // import LeadNews from "../molecules/LeadNews.vue";
 import SingleNews from "../molecules/SingleNews.vue";
 import BecomeMember from "../molecules/BecomeMember.vue";
+import api from "../../services/api";
 
 export default {
   name: "NewsPage",
   components: { SingleNews, BecomeMember },
-  methods: {},
+  mounted() {
+    this.fetchNews();
+  },
+  methods: {
+    async fetchNews() {
+      this.loading = true;
+      await this.$store.dispatch("getNews"); 
+
+      this.loading = false;
+    },
+  },
+  computed: {
+    imgPath() {
+      return `${api.defaults.base}`
+    },
+    news() {
+      return this.$store.state.news
+    }
+  },
   data() {
     return {
       temporaryNews: [
@@ -92,12 +111,19 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 /* News Page */
 .news-page {
   margin-top: 12rem;
   width: 100%;
   color: #000;
+  font-family: 'Gotham Pro';
+  letter-spacing: 1.1px;
+  line-height: 23px;
+}
+
+h3 {
+  line-height: 30px;
 }
 
 .banner {
