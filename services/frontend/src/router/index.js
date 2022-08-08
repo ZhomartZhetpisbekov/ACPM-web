@@ -4,6 +4,7 @@ import HomePage from "../components/views/HomePage.vue";
 import InformationPage from "../components/views/InformationPage.vue";
 import NewsPage from "../components/views/NewsPage.vue";
 import ArticlePage from "../components/views/ArticlePage.vue";
+import LoginPage from "../components/views/LoginPage.vue";
 
 // import InfoLol from "../components/atoms/InfoLol";
 
@@ -30,9 +31,15 @@ const routes = [
   },
   {
     path: "/news/:id",
-    name: 'Article',
+    name: "Article",
     component: ArticlePage,
-    props: true
+    props: true,
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: LoginPage,
+    props: true,
   },
   {
     path: "/:name/:item?",

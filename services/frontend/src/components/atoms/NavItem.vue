@@ -38,7 +38,15 @@ export default {
   },
   methods: {
     changePage() {
-      if (this.$router.currentRoute.path !== "/" + this.pagePath)
+      if (
+        this.active == true &&
+        this.$router.currentRoute.params.name != "Login"
+      ) {
+        this.$router.push({
+          name: "Login",
+        });
+      }
+      else if (this.$router.currentRoute.path !== "/" + this.pagePath)
         this.$router.push({
           name: this.routerName,
           params: { name: this.pagePath },
@@ -80,13 +88,13 @@ li:hover {
 .top > p {
   height: 0.875rem;
   /* font-weight: normal; */
-  font-family: 'Gotham Pro Med';
+  font-family: "Gotham Pro Med";
 }
 
 .bottom {
   font-size: 1rem;
   /* font-weight: normal; */
-  font-family: 'Gotham Pro Med';
+  font-family: "Gotham Pro Med";
   border-bottom: 2px solid var(--bg-color);
 }
 /* 
