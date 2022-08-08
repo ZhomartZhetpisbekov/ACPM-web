@@ -10,6 +10,8 @@ export default new Vuex.Store({
     currentLanguage: localStorage.getItem('currentLanguage'),
     news: [],
     article: [],
+    society: [],
+    categoryDetails: [],
     menu: {
       pages: {
         headerNavTop: [
@@ -20,8 +22,8 @@ export default new Vuex.Store({
         headerNavBottom: [
           {
             name: "Общество",
-            path: "society",
-            routerName: "Information",
+            path: "soska",
+            routerName: "Society",
             children: [
               { path: "about-us", name: "О нас" },
               { path: "history", name: "История создания" },
@@ -95,10 +97,17 @@ export default new Vuex.Store({
     SET_ARTICLE(state, article) {
       state.article = article;
     },
+    SET_SOCIETY(state, society) {
+      state.society = society;
+    },
+    SET_CATEGORY_DETAILS(state, categoryDetails) {
+      state.categoryDetails = categoryDetails;
+    },
     SET_LANG(state, lang) {
       localStorage.setItem('currentLanguage', lang);
       state.currentLanguage = lang;
-    }
+    },
+
     // SET_PRODUCTS(state, products) {
     //   state.products = products;
     // },
@@ -155,7 +164,7 @@ export default new Vuex.Store({
       return await api.get(`/api/v1/${state.currentLanguage}/news`).then((res) => {
         commit("SET_NEWS", res.data);
         // console.log('store_actions', res.data);
-        return res.data;
+        // return res.data;
       });
     },
     async getArticle({commit}, id) {
@@ -164,8 +173,18 @@ export default new Vuex.Store({
         console.log(res.data);
         // return res.data
       })
+    },
+    async getSociety({commit, state}) {
+      return await api.get(`/api/v1/${state.currentLanguage}/society`).then((res) => {
+        commit("SET_SOCIETY", res.data);
+      })
+    },
+    async getCategoryDetails({commit, state}, category) {
+      return await api.get(`/api/v1/${state.currentLanguage}/society/${category}`).then((res) => {
+        commit("SET_CATEGORY_DETAILS", res.data);
+      })
     }
-
+ 
     // async getProduct({ commit }, productId) {
     //   localStorage.setItem("id", productId);
     //   return await api.get(`/menu/${productId}`).then((res) => {

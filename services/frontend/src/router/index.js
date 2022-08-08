@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomePage from "../components/views/HomePage.vue";
 import InformationPage from "../components/views/InformationPage.vue";
+import SocietyPage from "../components/views/SocietyPage";
 import NewsPage from "../components/views/NewsPage.vue";
 import ArticlePage from "../components/views/ArticlePage.vue";
 import LoginPage from "../components/views/LoginPage.vue";
@@ -40,6 +41,11 @@ const routes = [
     name: "Login",
     component: LoginPage,
     props: true,
+  },
+  {
+    path: "/soska/:category?",
+    name: "Society",
+    component: SocietyPage,
   },
   {
     path: "/:name/:item?",
