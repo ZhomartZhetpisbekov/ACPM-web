@@ -1,11 +1,13 @@
 <template>
   <div class="news-page">
-    <div class="banner">
+    <!-- <div class="banner">
       <h2>Новости</h2>
-    </div>
+    </div> -->
+    <h2>Новости</h2>
 
     <div class="news-container">
       <SingleNews
+        :articleId="news[0].id"
         :imgPath="`${imgPath}${news[0].main_image}`"
         :title="news[0].title"
         :text="news[0].text"
@@ -14,8 +16,9 @@
       />
 
       <SingleNews
-        v-for="(item, index) in news.slice(1)"
+        v-for="(item, index) in news.slice(1, 4)"
         :key="index"
+        :articleId="item.id"
         :imgPath="`${imgPath}${item.main_image}`"
         :title="item.title"
         :text="item.text"
@@ -27,13 +30,13 @@
     <div class="more-news-btn">
       <a href="">Показать еще</a>
     </div>
+    <router-view></router-view>
 
     <BecomeMember />
   </div>
 </template>
 
 <script>
-// import LeadNews from "../molecules/LeadNews.vue";
 import SingleNews from "../molecules/SingleNews.vue";
 import BecomeMember from "../molecules/BecomeMember.vue";
 import api from "../../services/api";
@@ -43,7 +46,7 @@ export default {
   components: { SingleNews, BecomeMember },
   mounted() {
     this.fetchNews();
-    console.log(this.news);
+    // console.log(this.news);
   },
   methods: {
     async fetchNews() {
@@ -55,7 +58,7 @@ export default {
   },
   computed: {
     imgPath() {
-      return `${api.defaults.base}`
+      return `${api.defaults.baseURL}`
     },
     news() {
       return this.$store.state.news
@@ -108,10 +111,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /* News Page */
 .news-page {
-  margin-top: 12rem;
+  margin-top: 13rem;
   width: 100%;
   color: #000;
   font-family: 'Gotham Pro';
@@ -119,11 +122,11 @@ export default {
   line-height: 23px;
 }
 
-h3 {
+/* h3 {
   line-height: 30px;
-}
+} */
 
-.banner {
+/* .banner {
   width: 100%;
   height: 200px;
   background-image: url(../../assets/HomePage/background-img.png);
@@ -132,14 +135,14 @@ h3 {
   display: flex;
   align-items: flex-end;
   margin-bottom: 80px;
-}
+} */
 
-.banner h2 {
-  width: 83%;
-  margin: auto auto 10px;
-  font-weight: 500;
+h2 {
+  /* width: 82.5%; */
+  margin-left: 8rem;
+  padding: 10px 0;
   font-size: 42px;
-  color: #fff;
+  color: #005963;
 }
 
 .news-container {

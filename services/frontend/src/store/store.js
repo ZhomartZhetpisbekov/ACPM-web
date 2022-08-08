@@ -9,6 +9,7 @@ export default new Vuex.Store({
   state: {
     currentLanguage: localStorage.getItem('currentLanguage'),
     news: [],
+    article: [],
     menu: {
       pages: {
         headerNavTop: [
@@ -23,7 +24,7 @@ export default new Vuex.Store({
             routerName: "Information",
             children: [
               { path: "about-us", name: "О нас" },
-              { path: "history", name: "История Создания" },
+              { path: "history", name: "История создания" },
               { path: "purpose", name: "Цель, миссия" },
               { path: "membership", name: "Членство" },
               { path: "partnership", name: "Сотрудничество" },
@@ -62,7 +63,7 @@ export default new Vuex.Store({
       " ": "Главная",
       society: "Общество",
       "about-us": "О нас",
-      history: "История Создания",
+      history: "История создания",
       purpose: "Цель, миссия",
       membership: "Членство",
       partnership: "Сотрудничество",
@@ -90,6 +91,9 @@ export default new Vuex.Store({
   mutations: {
     SET_NEWS(state, news) {
       state.news = news;
+    },
+    SET_ARTICLE(state, article) {
+      state.article = article;
     },
     SET_LANG(state, lang) {
       localStorage.setItem('currentLanguage', lang);
@@ -147,13 +151,20 @@ export default new Vuex.Store({
     // },
   },
   actions: {
-    async getNews({ commit }) {
-      return await api.get("/news").then((res) => {
+    async getNews({ commit, state }) {
+      return await api.get(`/api/v1/${state.currentLanguage}/news`).then((res) => {
         commit("SET_NEWS", res.data);
         // console.log('store_actions', res.data);
         return res.data;
       });
     },
+    async getArticle({commit}, id) {
+      return await api.get(`/api/v1/news/${id}`).then((res) => {
+        commit("SET_ARTICLE", res.data);
+        console.log(res.data);
+        // return res.data
+      })
+    }
 
     // async getProduct({ commit }, productId) {
     //   localStorage.setItem("id", productId);

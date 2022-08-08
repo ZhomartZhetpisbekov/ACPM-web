@@ -1,10 +1,7 @@
 import axios from "axios";
-// import i18n from "../plugins/i18n";
-import store from "../store/store";
 
 const api = axios.create({
-  baseURL: `http://192.168.28.178/api/v1/${store.state.currentLanguage}`,
-  base: 'http://192.168.28.178',
+  baseURL: `http://192.168.0.11`,
 });
 
 api.interceptors.request.use(

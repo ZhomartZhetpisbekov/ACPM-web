@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import HomePage from "../components/views/HomePage.vue";
 import InformationPage from "../components/views/InformationPage.vue";
 import NewsPage from "../components/views/NewsPage.vue";
+import ArticlePage from "../components/views/ArticlePage.vue";
 
 // import InfoLol from "../components/atoms/InfoLol";
 
@@ -18,6 +19,20 @@ const routes = [
     path: "/news",
     name: "News",
     component: NewsPage,
+    // children: [
+    //   {
+    //     path: "/:articleTitle",
+    //     name: 'Article',
+    //     component: ArticlePage,
+    //   },
+    // ],
+    // props: true,
+  },
+  {
+    path: "/news/:id",
+    name: 'Article',
+    component: ArticlePage,
+    props: true
   },
   {
     path: "/:name/:item?",
@@ -30,7 +45,7 @@ const routes = [
     //   },
     // ],
     props: true,
-  }
+  },
 ];
 
 const router = new VueRouter({

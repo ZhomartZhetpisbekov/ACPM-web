@@ -22,7 +22,7 @@ export default {
   mounted() {
     i18n.locale = this.$store.state.currentLanguage;
     localStorage.setItem('currentLanguage', i18n.locale);
-    console.log('i18n locale:', i18n.locale);
+    // console.log('i18n locale:', i18n.locale);
   },
 
   data: () => ({

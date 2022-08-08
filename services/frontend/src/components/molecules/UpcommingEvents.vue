@@ -101,8 +101,8 @@ a img {
 }
 
 h2 {
-  width: 83%;
-  margin: auto;
+  /* width: 83%; */
+  margin-left: 8rem;
   margin-bottom: 25px;
   color: #F38023;
 }
