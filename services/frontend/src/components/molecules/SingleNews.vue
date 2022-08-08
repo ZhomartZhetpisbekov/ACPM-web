@@ -1,6 +1,6 @@
 <template>
   <div class="single-news-block" :class="{ active: isLeadNews }">
-    <a href="" class="img-container" :class="{ activeImg: isLeadNews }">
+    <a @click="goToArticle()" class="img-container" :class="{ activeImg: isLeadNews }">
       <img :src="imgPath" alt="" />
     </a>
     <a href="" class="text-container" :class="{ activeText: isLeadNews }">
@@ -9,7 +9,6 @@
         <p>
           {{ shortText.slice(0, 250) + '..'}}
         </p>
-        <!-- <div class="html-string-container" v-html="htmlString"></div> -->
         <span>{{ date }}</span>
       </div>
     </a>
@@ -17,8 +16,6 @@
 </template>
 
 <script>
-// let doc = new DOMParser().parseFromString(str, 'text/html');
-
 export default {
   name: "SingleNews",
   props: {
@@ -37,6 +34,9 @@ export default {
     isLeadNews: {
       type: Boolean,
     },
+    articleId: {
+      type: Number,
+    }
   },
   data() {
     return {
@@ -44,9 +44,11 @@ export default {
       shortText: new DOMParser().parseFromString(this.text, 'text/html').querySelector('p').textContent,
     }
   },
-  // mounted() {
-  //   console.log(this.shortText);
-  // }
+  methods: {
+    goToArticle() {
+      this.$router.push(`/news/${this.articleId}`)
+    },
+  },
 };
 </script>
 
@@ -101,10 +103,7 @@ export default {
 .text-block h3 {
   font-size: 1.8rem;
   color: #005963;
-}
-
-.text-block .html-string-container {
-  font-size: 1rem;
+  line-height: 30px;
 }
 
 .text-block span {
