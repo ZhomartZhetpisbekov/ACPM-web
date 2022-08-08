@@ -1,14 +1,14 @@
 <template>
   <div class="about-us-banner">
     <div class="content-container">
-      <h2>{{ $t('aboutUs.title') }}</h2>
+      <h2>{{ $t("aboutUs.title") }}</h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis
         rhoncus hendrerit. Quisque mattis ante sit amet dictum finibus.
       </p>
       <div class="buttons-container">
-        <a href="#">{{ $t('aboutUs.joinBtn') }}</a>
-        <a href="#">{{ $t('aboutUs.readMoreBtn') }}</a>
+        <a href="#">{{ $t("aboutUs.joinBtn") }}</a>
+        <a href="#">{{ $t("aboutUs.readMoreBtn") }}</a>
       </div>
     </div>
   </div>
@@ -62,17 +62,18 @@ p {
 }
 
 a {
-  background: #00acb1;
   padding: 10px 30px;
   border-radius: 20px;
   text-decoration: none;
   margin-right: 10px;
-  color: #fff;
+  background: var(--main-text-color);
+  color: var(--bg-color);
+  font-family: 'Gotham Pro Med';
   transition: all ease 0.3s;
 }
 
 a:hover {
-  background: #f38023;
+  background: var(--secondary-color);
   color: #fff;
 }
 
