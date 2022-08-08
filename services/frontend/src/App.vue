@@ -9,6 +9,7 @@
 <script>
 import BaseHeader from "./components/UI/Header.vue";
 import BaseFooter from "./components/UI/Footer.vue";
+import i18n from "./plugins/i18n";
 
 export default {
   name: "App",
@@ -17,6 +18,11 @@ export default {
     BaseHeader,
     // HomePage,
     BaseFooter,
+  },
+  mounted() {
+    i18n.locale = this.$store.state.currentLanguage;
+    localStorage.setItem('currentLanguage', i18n.locale);
+    console.log('i18n locale:', i18n.locale);
   },
 
   data: () => ({

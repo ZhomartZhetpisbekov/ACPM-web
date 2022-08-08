@@ -26,6 +26,10 @@ export default {
   letter-spacing: 1.2px;
   line-height: 23px;
 }
+
+h2, h3 {
+  font-family: 'Gotham Pro Med';
+}
 @media screen and (max-width: 65rem) {
   .home-page{
     margin-top: 6rem;

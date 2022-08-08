@@ -7,8 +7,9 @@
       <div class="text-block">
         <h3>{{ title }}</h3>
         <p>
-          {{ text }}
+          {{ shortText.slice(0, 250) + '..'}}
         </p>
+        <!-- <div class="html-string-container" v-html="htmlString"></div> -->
         <span>{{ date }}</span>
       </div>
     </a>
@@ -16,6 +17,8 @@
 </template>
 
 <script>
+// let doc = new DOMParser().parseFromString(str, 'text/html');
+
 export default {
   name: "SingleNews",
   props: {
@@ -35,6 +38,15 @@ export default {
       type: Boolean,
     },
   },
+  data() {
+    return {
+      htmlString: this.text,
+      shortText: new DOMParser().parseFromString(this.text, 'text/html').querySelector('p').textContent,
+    }
+  },
+  // mounted() {
+  //   console.log(this.shortText);
+  // }
 };
 </script>
 
@@ -61,8 +73,12 @@ export default {
 
 .img-container img {
   width: 100%;
-  height: 150px;
+  height: 220px;
   object-fit: cover;
+}
+
+.activeImg img {
+  height: 350px;
 }
 
 .text-container {
@@ -87,7 +103,7 @@ export default {
   color: #005963;
 }
 
-.text-block p {
+.text-block .html-string-container {
   font-size: 1rem;
 }
 

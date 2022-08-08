@@ -4,13 +4,9 @@
       <h2>Новости</h2>
     </div>
 
-    <!-- <LeadNews />
-
-    <h3>ACPM Новости</h3> -->
-
     <div class="news-container">
       <SingleNews
-        :imgPath="`http://192.168.54.178${news[0].main_image}`"
+        :imgPath="`${imgPath}${news[0].main_image}`"
         :title="news[0].title"
         :text="news[0].text"
         :date="news[0].date"
@@ -20,7 +16,7 @@
       <SingleNews
         v-for="(item, index) in news.slice(1)"
         :key="index"
-        :imgPath="`http://192.168.54.178${item.main_image}`"
+        :imgPath="`${imgPath}${item.main_image}`"
         :title="item.title"
         :text="item.text"
         :date="item.date"
@@ -47,6 +43,7 @@ export default {
   components: { SingleNews, BecomeMember },
   mounted() {
     this.fetchNews();
+    console.log(this.news);
   },
   methods: {
     async fetchNews() {
@@ -66,33 +63,33 @@ export default {
   },
   data() {
     return {
-      temporaryNews: [
-        {
-          imgPath: "1",
-          title:
-            "On Inaugural World Bronchiectasis Day, International Lung Health",
-          text: "On Inaugural World Bronchiectasis Day, International Lung Health Organizations Raise Awareness On Inaugural World Bronchiectasis Day, International Lung Health Organizations Raise Awareness",
-          date: "07 July, 2022",
-        },
-        {
-          imgPath: "2",
-          title: "ERS journals awarded highest Journal Impact Factors to date ERS",
-          text: "ERS journals awarded highest Journal Impact Factors to date ERS journals awarded highest Journal Impact Factors to date ERS journals awarded highest Journal Impact Factors to date",
-          date: "22 June, 2022",
-        },
-        {
-          imgPath: "3",
-          title:
-            "Be aware that onsite spaces are limited – we recommend early",
-          text: "Be aware that onsite spaces are limited – we recommend early registration to avoid disappointment Be aware that onsite spaces are limited – we recommend early registration to avoid disappointment.",
-          date: "22 January, 2022",
-        },
-        {
-          imgPath: "1",
-          title: "ERS journals awarded highest Journal Impact Factors to date ERS",
-          text: "ERS journals awarded highest Journal Impact Factors to date ERS journals awarded highest Journal Impact Factors to date ERS journals awarded highest Journal Impact Factors to date",
-          date: "22 June, 2022",
-        },
+      // temporaryNews: [
+      //   {
+      //     imgPath: "1",
+      //     title:
+      //       "On Inaugural World Bronchiectasis Day, International Lung Health",
+      //     text: "On Inaugural World Bronchiectasis Day, International Lung Health Organizations Raise Awareness On Inaugural World Bronchiectasis Day, International Lung Health Organizations Raise Awareness",
+      //     date: "07 July, 2022",
+      //   },
+      //   {
+      //     imgPath: "2",
+      //     title: "ERS journals awarded highest Journal Impact Factors to date ERS",
+      //     text: "ERS journals awarded highest Journal Impact Factors to date ERS journals awarded highest Journal Impact Factors to date ERS journals awarded highest Journal Impact Factors to date",
+      //     date: "22 June, 2022",
+      //   },
+      //   {
+      //     imgPath: "3",
+      //     title:
+      //       "Be aware that onsite spaces are limited – we recommend early",
+      //     text: "Be aware that onsite spaces are limited – we recommend early registration to avoid disappointment Be aware that onsite spaces are limited – we recommend early registration to avoid disappointment.",
+      //     date: "22 January, 2022",
+      //   },
+      //   {
+      //     imgPath: "1",
+      //     title: "ERS journals awarded highest Journal Impact Factors to date ERS",
+      //     text: "ERS journals awarded highest Journal Impact Factors to date ERS journals awarded highest Journal Impact Factors to date ERS journals awarded highest Journal Impact Factors to date",
+      //     date: "22 June, 2022",
+      //   },
         // {
         //   imgPath: "1",
         //   title:
@@ -105,7 +102,7 @@ export default {
         //     "Be aware that onsite spaces are limited – we recommend early registration to avoid disappointment.",
         //   date: "22 January, 2022",
         // },
-      ],
+      // ],
     };
   },
 };

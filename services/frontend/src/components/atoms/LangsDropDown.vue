@@ -59,8 +59,10 @@ export default {
       const copied = this.languages[num];
       this.languages[num] = this.languages[0];
       this.languages[0] = copied;
-      i18n.locale = this.languages[0].link;
-      console.log(this.languages[0].link, i18n.locale);
+      // i18n.locale = this.languages[0].link;
+      this.$store.commit('SET_LANG', this.languages[0].link);
+      i18n.locale = this.$store.state.currentLanguage;
+      this.$router.go();
     },
   },
 };

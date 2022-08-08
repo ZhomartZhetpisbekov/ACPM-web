@@ -34,7 +34,7 @@ export default {
 
 h2 {
   font-size: 2.5rem;
-  font-weight: 900;
+  font-family: 'Gotham Pro Med';
 }
 
 @media only screen and (max-width: 60rem) {

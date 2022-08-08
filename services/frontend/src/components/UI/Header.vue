@@ -87,7 +87,6 @@ export default {
   background: var(--bg-color);
   color: var(--text-color);
   font-weight: 400;
-  font-family: 'Gotham Pro Bold';
 }
 
 .header-content {
