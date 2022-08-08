@@ -11,7 +11,16 @@
           }
         "
       />
-      <h1 class="header-middle_name">ACPM</h1>
+      <h1
+        class="header-middle_name"
+        @click="
+          () => {
+            if (currentRouteName !== 'Home') this.$router.push('/');
+          }
+        "
+      >
+        {{ $t("footer.title") }}
+      </h1>
     </div>
     <SearchBar />
     <div class="icon-one" :class="{ active: isActive }" @click="clickHandler">
@@ -79,7 +88,7 @@ export default {
   margin-right: 1rem;
 }
 .header-middle_name {
-  font-family: 'Gotham Pro Bold';
+  font-family: "Gotham Pro Bold";
   font-size: 3rem;
   letter-spacing: 0;
   color: var(--main-text-color);
@@ -123,7 +132,7 @@ export default {
   left: 10%;
   width: 2rem;
   height: 0.25rem;
-  background: var(--text-color);
+  background: var(--footer-border-color);
   position: relative;
   /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
   transition: 0.5s;
@@ -143,7 +152,7 @@ export default {
   cursor: pointer;
   padding: 1em 0;
   display: none;
-  color: var(--text-color);
+  color: var(--footer-border-color);
 }
 
 .hamburger-one:before,
@@ -152,7 +161,7 @@ export default {
   position: absolute;
   width: 2rem;
   height: 0.25rem;
-  background: var(--text-color);
+  background: var(--footer-border-color);
   /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
   transition: 0.5s;
 }
@@ -171,7 +180,6 @@ export default {
 .icon-one.active .hamburger-one:after {
   top: 0;
   transform: rotate(135deg);
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .squeezeMenu > li,

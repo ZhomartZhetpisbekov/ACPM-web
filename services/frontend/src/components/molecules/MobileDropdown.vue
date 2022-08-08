@@ -30,6 +30,8 @@
           :key="ind"
           :sectionName="item.name"
           :styling="'right'"
+          :pageName="headerLinks[current].path"
+          :pagePath="item.path"
         />
       </ul>
     </div>

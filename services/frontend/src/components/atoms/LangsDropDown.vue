@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import i18n from '../../plugins/i18n';
+import i18n from "../../plugins/i18n";
 
 export default {
   name: "DropDown",
@@ -70,7 +70,7 @@ export default {
 .languages {
   height: 2rem;
   width: 7.75rem;
-
+  font-family: 'Gotham Pro';
   background: var(--search-bar-color);
 }
 
@@ -100,15 +100,15 @@ export default {
   left: 1rem;
   /* min-width: 160px; */
   /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--text-color);
   z-index: 1;
 }
 
 .dropdown-content div {
   padding: 0 0.5rem;
-  border-top: 1px black solid;
-  border-left: 1px black solid;
-  border-right: 1px black solid;
+  border-top: 1px var(--text-color) solid;
+  border-left: 1px var(--text-color) solid;
+  border-right: 1px var(--text-color) solid;
   width: 7.75rem;
 }
 

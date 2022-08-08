@@ -79,12 +79,14 @@ li:hover {
 
 .top > p {
   height: 0.875rem;
-  font-weight: medium;
+  /* font-weight: normal; */
+  font-family: 'Gotham Pro Med';
 }
 
 .bottom {
   font-size: 1rem;
-  font-weight: normal;
+  /* font-weight: normal; */
+  font-family: 'Gotham Pro Med';
   border-bottom: 2px solid var(--bg-color);
 }
 /* 
@@ -110,7 +112,7 @@ p {
   }
   .top > p {
     font-size: 0.875rem;
-    height: 1rem;
+    height: 0.75rem;
   }
 }
 </style>

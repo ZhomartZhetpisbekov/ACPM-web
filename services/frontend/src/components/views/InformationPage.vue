@@ -31,6 +31,13 @@ export default {
 @media screen and (max-width: 65rem) {
   .information {
     margin-top: 7rem;
+    padding: 0rem 2rem 4rem 2rem;
   }
 }
+
+/* @media screen and (max-width: 40rem) {
+  .information {
+    padding: 0 1.5rem 4rem 1.5rem;
+  }
+} */
 </style>

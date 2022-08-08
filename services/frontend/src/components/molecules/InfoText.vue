@@ -47,12 +47,11 @@ export default {
 
 <style scoped>
 .info-text {
-  margin-left: 4rem;
   color: var(--text-color);
-  font-family: 'Gotham Pro';
+  font-family: "Gotham Pro";
 }
 .info-text_title {
-  font-family: 'Gotham Pro Bold';
+  font-family: "Gotham Pro Bold";
   font-size: 2rem;
   /* margin-top: 0.5rem; */
   margin-bottom: 2rem;

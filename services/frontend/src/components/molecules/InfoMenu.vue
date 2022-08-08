@@ -87,6 +87,7 @@ export default {
 
 <style scoped>
 .information-menu {
+  margin-right: 4rem;
   background: var(--footer-bg-color);
 }
 
@@ -99,9 +100,9 @@ export default {
   width: 16rem;
 }
 
-/* @media screen and (max-width: 65rem) {
-  .information-title {
-    margin-left: 4rem;
+@media screen and (max-width: 65rem) {
+  .information-menu {
+    display: none;
   }
-} */
+}
 </style>
