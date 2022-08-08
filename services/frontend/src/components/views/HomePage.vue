@@ -29,6 +29,7 @@ export default {
 
 h2, h3 {
   font-family: 'Gotham Pro Med';
+  line-height: 2rem;
 }
 @media screen and (max-width: 65rem) {
   .home-page{

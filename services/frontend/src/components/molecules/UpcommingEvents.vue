@@ -101,8 +101,7 @@ a img {
 }
 
 h2 {
-  /* width: 83%; */
-  margin-left: 8rem;
+  padding: 0 8rem;
   margin-bottom: 25px;
   color: #F38023;
 }
@@ -111,10 +110,22 @@ h2 {
   width: 33%;
 }
 
+@media only screen and (max-width: 65rem) {
+  h2 {
+    padding: 0;
+    width: 83%;
+    margin: 0 auto 25px;
+  }
+}
+
 @media only screen and (max-width: 720px) {
   .custom-slider-item {
     width: 80%;
   }
+
+  /* h2 {
+    padding: 0;
+  } */
 }
 
 @media only screen and (max-width: 530px) {

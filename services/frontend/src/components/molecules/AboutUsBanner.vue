@@ -76,10 +76,18 @@ a:hover {
   color: #fff;
 }
 
+@media only screen and (max-width: 65rem) {
+  .content-container {
+    margin-left: 2rem;
+    width: 60%;
+  }
+}
+
 @media only screen and (max-width: 720px) {
   .content-container {
     margin: auto;
-    width: 80%;
+    width: 100%;
+    padding: 0 2rem;
   }
 
   .buttons-container {

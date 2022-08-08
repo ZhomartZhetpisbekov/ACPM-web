@@ -9,7 +9,7 @@
       </div>
       <div class="similar-news-container">
         <h3>Другие новости</h3>
-        <SimilarNewsBox 
+        <SimilarNewsBox
           v-for="(item, index) in news.slice(0, 3)"
           :key="index"
           :title="item.title"
@@ -17,10 +17,12 @@
         />
       </div>
     </div>
-    <a href="">
-      <i class="fa-solid fa-arrow-left-long" style="color: #005963"></i>
-      Вернуться на страницу новостей
-    </a>
+    <div class="go-back-btn">
+      <a @click="goBack">
+        <i class="fa-solid fa-arrow-left-long"></i>
+        Вернуться на страницу новостей
+      </a>
+    </div>
   </div>
 </template>
 
@@ -53,14 +55,17 @@ export default {
     async fetchArticle() {
       let newId = this.$router.currentRoute.params.id;
       this.loading = true;
-      await this.$store.dispatch("getArticle", newId); 
+      await this.$store.dispatch("getArticle", newId);
       this.loading = false;
     },
     async fetchNews() {
       this.loading = true;
-      await this.$store.dispatch("getNews"); 
+      await this.$store.dispatch("getNews");
       this.loading = false;
     },
+    goBack() {
+      this.$router.back();
+    }
   },
 };
 </script>
@@ -83,11 +88,13 @@ span {
   font-family: "Gotham Pro";
   letter-spacing: 1.1px;
   line-height: 23px;
+  text-align: center;
 }
 
 .article-page-container {
   display: flex;
   justify-content: space-between;
+  text-align: left;
 }
 
 .article-container {
@@ -108,5 +115,34 @@ span {
   width: 100%;
   height: 380px;
   object-fit: cover;
+}
+
+.go-back-btn {
+  margin: 30px 0 30px;
+}
+
+.go-back-btn a {
+  color: #005963;
+}
+
+@media only screen and (max-width: 65rem) {
+  .article-page {
+    padding: 0 2rem;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .article-page-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .article-container {
+    width: 100%;
+  }
+
+  .similar-news-container {
+    width: 100%;
+  }
 }
 </style>
