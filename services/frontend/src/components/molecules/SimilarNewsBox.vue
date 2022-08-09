@@ -1,5 +1,5 @@
 <template>
-  <div class="similar-news-box">
+  <div @click="goToArticle" class="similar-news-box">
     <p>
       {{ title }}
     </p>
@@ -17,8 +17,16 @@ export default {
     },
     date: {
       type: String
+    },
+    id: {
+      type: Number,
     }
   },
+  methods: {
+    goToArticle() {
+      this.$router.push(`/news/${this.id}`);
+    }
+  }
 }
 </script>
 
@@ -27,6 +35,7 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    cursor: pointer;
   }
 
   p {

@@ -42,6 +42,54 @@ const messages = {
       ],
       contactUs: "Свяжитесь с нами",
     },
+    loginPage: {
+      loginTitle: "Зайти в свой аккаунт",
+      login: "Войти",
+      registration: "Создать аккаунт",
+      username: "Имя пользователя",
+      password: "Пароль",
+      remember: "Запомнить меня",
+      forget: "Забыли пароль?",
+    },
+  },
+  kz: {
+    header: {
+      navTop: ["Жаңалықтар", "Контактілер", "Аккаунт"],
+      navBottom: [
+        "Қоғам",
+        "Оқиғалар",
+        "Білім",
+        "Клиникалық хаттамалар",
+        "Жаңалықтар",
+      ],
+    },
+    aboutUs: {
+      title: "Біз туралы",
+      joinBtn: "Кіру",
+      readMoreBtn: "Оқу",
+    },
+    upcommingEvents: "Оқиғалар",
+    becomeMember: {
+      title: "Мүше болe!",
+      readMoreBtn: "Оқу",
+    },
+    footer: {
+      title: "АСРМ",
+      menuGroups: [
+        [
+          "Меню",
+          "Қоғам",
+          "Оқиғалар",
+          "Білім",
+          "Клиникалық хаттамалар",
+          "Жаңалықтар",
+        ],
+        ["Мүшелік", "Кіру", "Мүше болу"],
+        ["Сілтемелер", "European Lung Found", "European Respiratory System"],
+        ["БАҚ", "Press queries"],
+      ],
+      contactUs: "Бізбен хабарласыңыз",
+    },
   },
   en: {
     header: {
@@ -80,6 +128,15 @@ const messages = {
         ["Press", "Press queries"],
       ],
       contactUs: "Contact us",
+    },
+    loginPage: {
+      loginTitle: "Login to Your Account",
+      login: "Log in",
+      registration: "Sign up",
+      username: "Username",
+      password: "Password",
+      remember: "Remember me",
+      forget: "Forgot password?",
     },
   },
 };
