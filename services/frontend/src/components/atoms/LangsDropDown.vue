@@ -24,13 +24,13 @@
         />
         <p>{{ languages[1].name }}</p>
       </div>
-      <div class="languages_language" @click="changeLang(2)">
+      <!-- <div class="languages_language" @click="changeLang(2)">
         <img
           :src="require('@/assets/Header/' + languages[2].link + '.svg')"
           class="languages-logo"
         />
         <p>{{ languages[2].name }}</p>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -45,7 +45,7 @@ export default {
       expanded: false,
       languages: [
         { link: "ru", name: "Russian" },
-        { link: "kz", name: "Kazakh" },
+        // { link: "kz", name: "Kazakh" },
         { link: "en", name: "English" },
       ],
     };
@@ -60,20 +60,31 @@ export default {
       this.languages[num] = this.languages[0];
       this.languages[0] = copied;
       // i18n.locale = this.languages[0].link;
-      this.$store.commit('SET_LANG', this.languages[0].link);
+      this.$store.commit("SET_LANG", this.languages[0].link);
       i18n.locale = this.$store.state.currentLanguage;
       this.$router.go();
     },
+  },
+  created() {
+    if (this.$store.state.currentLanguage != "ru") {
+      this.languages = [
+        { link: "en", name: "English" },
+        { link: "ru", name: "Russian" },
+        // { link: "kz", name: "Kazakh" },
+      ];
+    }
   },
 };
 </script>
 
 <style scoped>
 .languages {
+  font-size: 0.875rem;
   height: 2rem;
   width: 7.75rem;
-  font-family: 'Gotham Pro';
+  font-family: "Gotham Pro";
   background: var(--search-bar-color);
+  color: var(--text-color);
 }
 
 /* .languages:hover .dropdown-content {
@@ -99,7 +110,7 @@ export default {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  left: 1rem;
+  /* left: 1rem; */
   /* min-width: 160px; */
   /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
   border-bottom: 1px solid var(--text-color);

@@ -75,7 +75,7 @@ li:hover {
 .top {
   border-radius: 1rem;
   font-size: 1rem;
-  margin: 0 1rem;
+  /* margin: 0 1rem; */
   padding: 0.5rem 0;
 }
 

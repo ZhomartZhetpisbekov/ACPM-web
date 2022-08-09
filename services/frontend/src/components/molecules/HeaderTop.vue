@@ -1,7 +1,7 @@
 <template>
   <nav>
     <ul>
-      <li>
+      <!-- <li>
         <img :src="require('@/assets/Header/kz.svg')" alt="" />
       </li>
       <li>
@@ -17,7 +17,7 @@
           :src="require('@/assets/Header/en.svg')"
           alt=""
         />
-      </li>
+      </li> -->
       <NavItem
         v-for="(item, ind) in $t('header.navTop')"
         :key="ind"
@@ -28,6 +28,7 @@
         :pagePath="headerTopLinks[ind].path"
         :routerName="headerTopLinks[ind].routerName"
       />
+      <LangsDropDown />
     </ul>
   </nav>
 </template>
@@ -35,11 +36,13 @@
 <script>
 import NavItem from "../atoms/NavItem.vue";
 import i18n from "../../plugins/i18n";
+import LangsDropDown from "../atoms/LangsDropDown.vue"
 
 export default {
   name: "HeaderTop",
   components: {
     NavItem,
+    LangsDropDown
   },
   computed: {
     headerTopLinks() {
@@ -76,6 +79,7 @@ ul {
   list-style: none;
   display: flex;
   align-items: center;
+  gap: 1.5rem;
   color: var(--header-top-color);
 }
 

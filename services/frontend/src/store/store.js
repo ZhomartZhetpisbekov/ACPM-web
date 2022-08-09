@@ -7,10 +7,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    currentLanguage: localStorage.getItem('currentLanguage'),
+    currentLanguage: localStorage.getItem("currentLanguage"),
     news: [],
     article: [],
     society: [],
+    searchResults: [],
     categoryDetails: [],
     menu: {
       pages: {
@@ -22,7 +23,7 @@ export default new Vuex.Store({
         headerNavBottom: [
           {
             name: "Общество",
-            path: "soska",
+            path: "society",
             routerName: "Society",
             children: [
               { path: "about-us", name: "О нас" },
@@ -104,87 +105,49 @@ export default new Vuex.Store({
       state.categoryDetails = categoryDetails;
     },
     SET_LANG(state, lang) {
-      localStorage.setItem('currentLanguage', lang);
+      localStorage.setItem("currentLanguage", lang);
       state.currentLanguage = lang;
     },
-
-    // SET_PRODUCTS(state, products) {
-    //   state.products = products;
-    // },
-    // SET_PRODUCT(state, product) {
-    //   state.product = product;
-    //   state.cartRest.push(product.data.restaurant_name);
-    //   state.cartRest.push(product.data.location);
-    // },
-    // ADD_PRODUCT_CART(state, p) {
-    //   let productInCart = state.cart.find((item) => {
-    //     return item.p.product_id === p.p.product_id;
-    //   });
-    //   if (productInCart) {
-    //     productInCart.c += 1;
-    //     return;
-    //   }
-    //   state.cart.push(p);
-    // },
-    // REMOVE_PRODUCT_CART(state, p) {
-    //   let productInCart = state.cart.find((item) => {
-    //     return item.p.product_id === p.p.product_id;
-    //   });
-    //   if (productInCart) {
-    //     if (productInCart.c > 1) {
-    //       productInCart.c -= 1;
-    //       return;
-    //     } else {
-    //       state.cart = state.cart.filter((item) => {
-    //         return item.p.product_id !== p.p.product_id;
-    //       });
-    //     }
-    //   }
-    // },
-    // CLEAR_CART(state) {
-    //   state.cart = [];
-    //   state.cartRest = [];
-    // },
-    // LOGIN(state, resp) {
-    //   localStorage.setItem("token", resp.access_token);
-    //   state.login = true;
-    // },
-    // REGISTER(state, resp) {
-    //   console.log(resp);
-    // },
-    // SCROLLING(state, id) {
-    //   state.productSelectedId = id;
-    // },
-    // SET_ORDERS(state, given) {
-    //   state.orders = given;
-    // },
+    SET_SEARCH_RESULTS(state, payload) {
+      state.searchResults = payload;
+    },
   },
   actions: {
     async getNews({ commit, state }) {
-      return await api.get(`/api/v1/${state.currentLanguage}/news`).then((res) => {
-        commit("SET_NEWS", res.data);
-        // console.log('store_actions', res.data);
-        // return res.data;
-      });
+      return await api
+        .get(`/api/v1/${state.currentLanguage}/news`)
+        .then((res) => {
+          commit("SET_NEWS", res.data);
+          // console.log('store_actions', res.data);
+          // return res.data;
+        });
     },
-    async getArticle({commit}, id) {
+    async getArticle({ commit }, id) {
       return await api.get(`/api/v1/news/${id}`).then((res) => {
         commit("SET_ARTICLE", res.data);
         console.log(res.data);
         // return res.data
-      })
+      });
     },
-    async getSociety({commit, state}) {
-      return await api.get(`/api/v1/${state.currentLanguage}/society`).then((res) => {
-        commit("SET_SOCIETY", res.data);
-      })
+    async getSociety({ commit, state }) {
+      return await api
+        .get(`/api/v1/${state.currentLanguage}/society`)
+        .then((res) => {
+          commit("SET_SOCIETY", res.data);
+        });
     },
-    async getCategoryDetails({commit, state}, category) {
-      return await api.get(`/api/v1/${state.currentLanguage}/society/${category}`).then((res) => {
-        commit("SET_CATEGORY_DETAILS", res.data);
-      })
-    }
- 
+    async getCategoryDetails({ commit, state }, category) {
+      return await api
+        .get(`/api/v1/${state.currentLanguage}/society/${category}`)
+        .then((res) => {
+          commit("SET_CATEGORY_DETAILS", res.data);
+        });
+    },
+    async getSearchResults({ commit }, payload) {
+      return await api.get(`/api/v1/search/${payload}`).then((res) => {
+        commit("SET_SEARCH_RESULTS", res.data);
+      });
+    },
     // async getProduct({ commit }, productId) {
     //   localStorage.setItem("id", productId);
     //   return await api.get(`/menu/${productId}`).then((res) => {
