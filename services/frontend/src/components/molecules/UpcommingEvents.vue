@@ -1,6 +1,6 @@
 <template>
   <div class="upcomming-events-container">
-    <h2>{{ $t('upcommingEvents') }}</h2>
+    <h2>{{ $t("upcommingEvents") }}</h2>
     <div class="events-container">
       <a @click="scroll_left"
         ><img src="../../assets/HomePage/left.png" alt=""
@@ -9,9 +9,6 @@
         <slider
           ref="slider"
           :options="options"
-          @slide="slide"
-          @tap="onTap"
-          @init="onInit"
         >
           <slideritem
             v-for="(item, index) in events"
@@ -40,10 +37,22 @@ export default {
   data() {
     return {
       events: [
-        [1, "conference1", "Tematisk fosk. Set sofanygon pesåsam Tematisk fosk. Set sofanygon pesåsam Tematisk fosk. Set sofanygon pesåsam."],
-        [2, "conference2", "TemaSet anygon peså sofanygon gon pesåpesåsam TemaSet anygon peså sofanygon gon pesåpesåsam TemaSet anygon peså sofanygon gon pesåpesåsam."],
+        [
+          1,
+          "conference1",
+          "Tematisk fosk. Set sofanygon pesåsam Tematisk fosk. Set sofanygon pesåsam Tematisk fosk. Set sofanygon pesåsam.",
+        ],
+        [
+          2,
+          "conference2",
+          "TemaSet anygon peså sofanygon gon pesåpesåsam TemaSet anygon peså sofanygon gon pesåpesåsam TemaSet anygon peså sofanygon gon pesåpesåsam.",
+        ],
         [3, "conference3", "Teså sofanym. emaSet anygon polka"],
-        [4, "conference2", "Labaduba, coriga on polka. Ikola pirodka hu'swetor."],
+        [
+          4,
+          "conference2",
+          "Labaduba, coriga on polka. Ikola pirodka hu'swetor.",
+        ],
         [5, "conference1", "Lorino furiaka, boriko 08.2012 kamdetro."],
         [6, "conference3", "Teno furiaka, boriklka"],
         [7, "conference1", "Lorino furiaka, boriko 08.2012 kamdetro."],
@@ -58,6 +67,7 @@ export default {
         slidesToScroll: 1,
         autoplay: 5000,
         loop: true,
+        pagination: false,
       },
     };
   },
@@ -67,7 +77,7 @@ export default {
     },
     scroll_right() {
       this.$refs.slider.$emit("slideNext");
-    },
+    }
   },
   components: {
     EventItem,
@@ -103,7 +113,7 @@ a img {
 h2 {
   padding: 0 8rem;
   margin-bottom: 25px;
-  color: #F38023;
+  color: #f38023;
 }
 
 .custom-slider-item {

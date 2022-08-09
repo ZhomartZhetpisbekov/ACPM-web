@@ -1,7 +1,7 @@
 <template>
   <div class="article-page">
     <div class="article-page-container">
-      <div class="article-container">
+      <div v-if="article" class="article-container">
         <img :src="this.imgPath" alt="" />
         <h3>{{ article.title }}</h3>
         <span>{{ article.date }}</span>
@@ -10,8 +10,9 @@
       <div class="similar-news-container">
         <h3>Другие новости</h3>
         <SimilarNewsBox
-          v-for="(item, index) in news.slice(0, 3)"
+          v-for="(item, index) in news.filter((elem) => elem.id != article.id).slice(0, 3)"
           :key="index"
+          :id="item.id"
           :title="item.title"
           :date="item.date"
         />
@@ -46,14 +47,23 @@ export default {
       return `${api.defaults.baseURL}${this.article.main_image}`;
     },
   },
-  mounted() {
-    this.fetchArticle();
-    this.fetchNews();
-    this.getArticle();
+  // mounted() {
+  //   this.fetchArticle();
+  //   this.fetchNews();
+  // },
+  watch: {
+    $route: {
+      immediate: true,
+      handler() {
+        this.fetchArticle();
+        this.fetchNews();
+      },
+    },
   },
   methods: {
     async fetchArticle() {
       let newId = this.$router.currentRoute.params.id;
+      console.log(newId);
       this.loading = true;
       await this.$store.dispatch("getArticle", newId);
       this.loading = false;

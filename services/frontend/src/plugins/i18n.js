@@ -49,8 +49,52 @@ const messages = {
       username: "Имя пользователя",
       password: "Пароль",
       remember: "Запомнить меня",
+<<<<<<< HEAD
       forget: "Забыли пароль?"
     }
+=======
+      forget: "Забыли пароль?",
+    },
+  },
+  kz: {
+    header: {
+      navTop: ["Жаңалықтар", "Контактілер", "Аккаунт"],
+      navBottom: [
+        "Қоғам",
+        "Оқиғалар",
+        "Білім",
+        "Клиникалық хаттамалар",
+        "Жаңалықтар",
+      ],
+    },
+    aboutUs: {
+      title: "Біз туралы",
+      joinBtn: "Кіру",
+      readMoreBtn: "Оқу",
+    },
+    upcommingEvents: "Оқиғалар",
+    becomeMember: {
+      title: "Мүше болe!",
+      readMoreBtn: "Оқу",
+    },
+    footer: {
+      title: "АСРМ",
+      menuGroups: [
+        [
+          "Меню",
+          "Қоғам",
+          "Оқиғалар",
+          "Білім",
+          "Клиникалық хаттамалар",
+          "Жаңалықтар",
+        ],
+        ["Мүшелік", "Кіру", "Мүше болу"],
+        ["Сілтемелер", "European Lung Found", "European Respiratory System"],
+        ["БАҚ", "Press queries"],
+      ],
+      contactUs: "Бізбен хабарласыңыз",
+    },
+>>>>>>> eb15e55d264eb8c689043f7031d054a9a6784aec
   },
   en: {
     header: {
@@ -97,8 +141,13 @@ const messages = {
       username: "Username",
       password: "Password",
       remember: "Remember me",
+<<<<<<< HEAD
       forget: "Forgot password?"
     }
+=======
+      forget: "Forgot password?",
+    },
+>>>>>>> eb15e55d264eb8c689043f7031d054a9a6784aec
   },
 };
 
