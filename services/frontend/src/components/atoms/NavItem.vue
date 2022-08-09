@@ -45,6 +45,7 @@ export default {
         this.$router.push({
           name: "Login",
         });
+        this.$router.go()
       }
       else if (this.$router.currentRoute.path !== "/" + this.pagePath)
         this.$router.push({

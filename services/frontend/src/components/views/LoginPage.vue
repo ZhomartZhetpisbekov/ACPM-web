@@ -1,29 +1,33 @@
 <template>
   <section class="login-page">
     <form>
-      <h3>Login to Your Account</h3>
+      <h3>{{ $t("loginPage.loginTitle") }}</h3>
 
-      <label for="username">Username</label>
+      <label for="username">{{ $t("loginPage.username") }}</label>
       <input type="text" placeholder="Email or Phone" id="username" />
 
-      <label for="password">Password</label>
+      <label for="password">{{ $t("loginPage.password") }}</label>
       <input type="password" placeholder="Password" id="password" />
 
       <div class="actions-container">
         <div class="checkbox-container">
           <input type="checkbox" />
-          <label> Remember me</label>
+          <label> {{ $t("loginPage.remember") }}</label>
         </div>
 
-        <span> Forgot password?</span>
+        <span> {{ $t("loginPage.forget") }}</span>
       </div>
-
-      <button>Log In</button>
+      <div class="login-page__buttons">
+        <button>{{ $t("loginPage.login") }}</button>
+        <button>{{ $t("loginPage.registration") }}</button>
+      </div>
     </form>
   </section>
 </template>
 
 <script>
+// import i18n from "../../plugins/i18n";
+
 export default {
   name: "LoginPage",
 };
@@ -36,7 +40,6 @@ export default {
   width: 100vw;
   /* height: 100vh; */
   margin-bottom: 4rem;
-
   align-items: center;
 }
 
@@ -97,8 +100,8 @@ form > input {
 
 .checkbox-container > label,
 .actions-container > span {
-    height: 0.875rem;
-    color: black;
+  height: 0.875rem;
+  color: black;
 }
 
 .actions-container {
@@ -107,16 +110,35 @@ form > input {
   justify-content: space-between;
 }
 
-button {
+.login-page__buttons {
+  width: 100%;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  width: 100%;
-  background-color: var(--secondary-color);
-  color: var(--footer-bg-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+
+button {
+  width: 50%;
   padding: 1rem 0;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
-  border-radius: 2rem;
+  border-radius: 10rem;
   cursor: pointer;
 }
+
+.login-page__buttons > button:first-child {
+  background-color: var(--secondary-color);
+  color: var(--footer-bg-color);
+}
+
+.login-page__buttons > button:last-child {
+  color: var(--secondary-color);
+  background: inherit;
+  border: 1px solid var(--secondary-color);
+}
+
+
 </style>

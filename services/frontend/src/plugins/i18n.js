@@ -42,6 +42,15 @@ const messages = {
       ],
       contactUs: "Свяжитесь с нами",
     },
+    loginPage: {
+      loginTitle: "Зайти в свой аккаунт",
+      login: "Войти",
+      registration: "Создать аккаунт",
+      username: "Имя пользователя",
+      password: "Пароль",
+      remember: "Запомнить меня",
+      forget: "Забыли пароль?"
+    }
   },
   en: {
     header: {
@@ -81,6 +90,15 @@ const messages = {
       ],
       contactUs: "Contact us",
     },
+    loginPage: {
+      loginTitle: "Login to Your Account",
+      login: "Log in",
+      registration: "Sign up",
+      username: "Username",
+      password: "Password",
+      remember: "Remember me",
+      forget: "Forgot password?"
+    }
   },
 };
 
