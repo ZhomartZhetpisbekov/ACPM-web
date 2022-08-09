@@ -49,10 +49,6 @@ const messages = {
       username: "Имя пользователя",
       password: "Пароль",
       remember: "Запомнить меня",
-<<<<<<< HEAD
-      forget: "Забыли пароль?"
-    }
-=======
       forget: "Забыли пароль?",
     },
   },
@@ -94,7 +90,6 @@ const messages = {
       ],
       contactUs: "Бізбен хабарласыңыз",
     },
->>>>>>> eb15e55d264eb8c689043f7031d054a9a6784aec
   },
   en: {
     header: {
@@ -141,13 +136,8 @@ const messages = {
       username: "Username",
       password: "Password",
       remember: "Remember me",
-<<<<<<< HEAD
-      forget: "Forgot password?"
-    }
-=======
       forget: "Forgot password?",
     },
->>>>>>> eb15e55d264eb8c689043f7031d054a9a6784aec
   },
 };
 
