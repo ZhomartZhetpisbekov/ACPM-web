@@ -31,6 +31,15 @@ export default {
     clickHandler() {
       if (this.styling == "left") {
         this.$emit("changeCurrentSection", this.id);
+        if (
+          this.pagePath == "news" &&
+          this.$router.currentRoute.name != "News"
+        ) {
+          this.$router.push({
+            name: "News",
+          });
+          this.$router.go();
+        }
       } else {
         if (
           this.$router.currentRoute.path !==
@@ -43,8 +52,7 @@ export default {
               item: this.pagePath,
             },
           });
-          this.addClass = "active";
-          this.$emit("changeActive", this.index);
+          this.$router.go();
         }
       }
     },
@@ -59,14 +67,13 @@ export default {
 
 .mobile-menu__item {
   line-height: 1.5rem;
-  
 }
 .mobile-menu__item.left {
   font-size: 0.875rem;
   padding: 1rem;
   color: var(--text-color);
   border-bottom: 1px solid var(--footer-bg-color);
-  font-family: 'Gotham Pro Med';
+  font-family: "Gotham Pro Med";
 }
 
 .mobile-menu__item.right {
@@ -75,7 +82,7 @@ export default {
   color: var(--text-color);
   padding: 1rem;
   border-bottom: var(--search-bar-color) 1px solid;
-  font-family: 'Gotham Pro';
+  font-family: "Gotham Pro";
 }
 
 .current {

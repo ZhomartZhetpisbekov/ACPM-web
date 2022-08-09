@@ -1,13 +1,28 @@
 <template>
   <div class="searchbar">
     <!-- <img class="icon" :src="require('@/assets/Header/search.svg')" alt="" /> -->
-    <input type="text" placeholder="Search" />
+    <input
+      type="text"
+      :ref="this.searchRef"
+      @change="searchHandler()"
+      placeholder="Search"
+    />
   </div>
 </template>
 
 <script>
 export default {
   name: "SearchBar",
+  data() {
+    return {
+      searchRef: "",
+    };
+  },
+  methods: {
+    searchHandler() {
+      console.log(searchRef);
+    },
+  },
 };
 </script>
 
