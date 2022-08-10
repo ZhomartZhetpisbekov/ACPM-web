@@ -93,6 +93,8 @@ a:hover {
 
 @media only screen and (max-width: 720px) {
   .become-member {
+    width: 100%;
+    border: 0;
     flex-direction: column;
   }
 

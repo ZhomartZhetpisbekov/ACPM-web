@@ -1,11 +1,12 @@
 <template>
   <div>
-    <ul class="information-menu">
-      <li class="information-menu__title">{{ $t('header.navBottom[0]') }}</li>
+    <ul v-if="category" class="information-menu">
+      <li class="information-menu__title">{{ $t(`header.menu.${category.group}`) }}</li>
       <InfoItem2
         v-for="(item, ind) in categoryList"
         :key="ind"
         :title="item.category"
+        :group="category.group"
       />
     </ul>
   </div>
@@ -24,7 +25,7 @@ export default {
     category: {
       type: Object,
     }
-  }
+  },
 }
 </script>
 

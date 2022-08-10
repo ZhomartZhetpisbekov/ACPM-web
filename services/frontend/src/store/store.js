@@ -12,9 +12,13 @@ export default new Vuex.Store({
     article: [],
     society: [],
     searchResults: [],
-    categoryDetails: [],
+    societyDetails: [],
     events: [],
     eventsDetails: [],
+    education: [],
+    educationDetails: [],
+    protocols: [],
+    protocolsDetails: [],
     menu: {
       pages: {
         headerNavTop: [
@@ -40,19 +44,19 @@ export default new Vuex.Store({
           {
             name: "События",
             path: "events",
-            routerName: "Information",
+            routerName: "Events",
             children: [],
           },
           {
             name: "Образование",
             path: "education",
-            routerName: "Information",
+            routerName: "Education",
             children: [],
           },
           {
             name: "Клинические протоколы",
-            path: "clinical-protocols",
-            routerName: "Information",
+            path: "protocols",
+            routerName: "Protocols",
             children: [],
           },
           {
@@ -103,14 +107,26 @@ export default new Vuex.Store({
     SET_SOCIETY(state, society) {
       state.society = society;
     },
-    SET_CATEGORY_DETAILS(state, categoryDetails) {
-      state.categoryDetails = categoryDetails;
+    SET_SOCIETY_DETAILS(state, societyDetails) {
+      state.societyDetails = societyDetails;
     },
     SET_EVENTS(state, events) {
       state.events = events;
     },
     SET_EVENTS_DETAILS(state, eventsDetails) {
       state.eventsDetails = eventsDetails;
+    },
+    SET_EDUCATION(state, education) {
+      state.education = education;
+    },
+    SET_EDUCATION_DETAILS(state, educationDetails) {
+      state.educationDetails = educationDetails;
+    },
+    SET_PROTOCOLS(state, protocols) {
+      state.protocols = protocols;
+    },
+    SET_PROTOCOLS_DETAILS(state, protocolsDetails) {
+      state.protocolsDetails = protocolsDetails;
     },
     SET_LANG(state, lang) {
       localStorage.setItem("currentLanguage", lang);
@@ -137,6 +153,20 @@ export default new Vuex.Store({
         // return res.data
       });
     },
+    async getGroup({ commit, state }, group) {
+      return await api
+        .get(`/api/v1/${state.currentLanguage}/${group}`)
+        .then((res) => {
+          commit("SET_GROUP", res.data);
+        });
+    },
+    async getCategoryDetails({ commit, state }, group, category) {
+      return await api
+        .get(`/api/v1/${state.currentLanguage}/${group}/${category}`)
+        .then((res) => {
+          commit("SET_CATEGORY_DETAILS", res.data);
+        });
+    },
     async getSociety({ commit, state }) {
       return await api
         .get(`/api/v1/${state.currentLanguage}/society`)
@@ -144,11 +174,11 @@ export default new Vuex.Store({
           commit("SET_SOCIETY", res.data);
         });
     },
-    async getCategoryDetails({ commit, state }, category) {
+    async getSocietyDetails({ commit, state }, category) {
       return await api
         .get(`/api/v1/${state.currentLanguage}/society/${category}`)
         .then((res) => {
-          commit("SET_CATEGORY_DETAILS", res.data);
+          commit("SET_SOCIETY_DETAILS", res.data);
         });
     },
     async getEvents({ commit, state }) {
@@ -163,6 +193,34 @@ export default new Vuex.Store({
         .get(`/api/v1/${state.currentLanguage}/events/${category}`)
         .then((res) => {
           commit("SET_EVENTS_DETAILS", res.data);
+        });
+    },
+    async getEducation({ commit, state }) {
+      return await api
+        .get(`/api/v1/${state.currentLanguage}/education`)
+        .then((res) => {
+          commit("SET_EDUCATION", res.data);
+        });
+    },
+    async getEducationDetails({ commit, state }, category) {
+      return await api
+        .get(`/api/v1/${state.currentLanguage}/education/${category}`)
+        .then((res) => {
+          commit("SET_EDUCATION_DETAILS", res.data);
+        });
+    },
+    async getProtocols({ commit, state }) {
+      return await api
+        .get(`/api/v1/${state.currentLanguage}/protocols`)
+        .then((res) => {
+          commit("SET_PROTOCOLS", res.data);
+        });
+    },
+    async getProtocolsDetails({ commit, state }, category) {
+      return await api
+        .get(`/api/v1/${state.currentLanguage}/protocols/${category}`)
+        .then((res) => {
+          commit("SET_PROTOCOLS_DETAILS", res.data);
         });
     },
     async getSearchResults({ commit }, payload) {
