@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import api from "../services/api";
-// import router from "../router/index";
+import router from "../router/index";
 
 Vue.use(Vuex);
 
@@ -87,6 +87,11 @@ export default new Vuex.Store({
     SET_SEARCH_RESULTS(state, payload) {
       state.searchResults = payload;
     },
+    LOGIN(state, resp) {
+      $cookies.set("token", resp.access);
+      localStorage.setItem("token", resp.access);
+      state.login = true;
+    },
   },
   actions: {
     async getNews({ commit, state }) {
@@ -114,36 +119,39 @@ export default new Vuex.Store({
     },
     async getCategoryDetails({ commit, state }, payload) {
       return await api
-        .get(`/api/v1/${state.currentLanguage}/${payload.group}/${payload.category}`)
+        .get(
+          `/api/v1/${state.currentLanguage}/${payload.group}/${payload.category}`
+        )
         .then((res) => {
           commit("SET_CATEGORY_DETAILS", res.data);
         });
     },
-    async getSearchResults({ commit }, payload) {
-      return await api.get(`/api/v1/search/${payload}`).then((res) => {
-        commit("SET_SEARCH_RESULTS", res.data);
-      });
+    async getSearchResults({ commit, state }, payload) {
+      return await api
+        .get(`/api/v1/${state.currentLanguage}/search/${payload}`)
+        .then((res) => {
+          commit("SET_SEARCH_RESULTS", res.data);
+        });
     },
-    // async getProduct({ commit }, productId) {
-    //   localStorage.setItem("id", productId);
-    //   return await api.get(`/menu/${productId}`).then((res) => {
-    //     commit("SET_PRODUCT", res.data);
-    //     return res.data;
-    //   });
-    // },
-    // async getOrders({ commit }) {
-    //   const { data } = await api.get("/orders").then(({ data }) => data);
-    //   commit("SET_ORDERS", data.order);
-    // },
-    // addProductToCart({ commit }, p) {
-    //   commit("ADD_PRODUCT_CART", p);
-    // },
-    // removeProductToCart({ commit }, p) {
-    //   commit("REMOVE_PRODUCT_CART", p);
-    // },
-    // clearCart({ commit }) {
-    //   commit("CLEAR_CART");
-    // },
+    loginUser({ commit, state }, user) {
+      let bodyFormData = new FormData();
+      bodyFormData.append("username", user.email);
+      bodyFormData.append("password", user.password);
+      api
+        .post("auth/jwt/create", bodyFormData)
+        .then((response) => {
+          console.log(response.data);
+          commit("LOGIN", response.data);
+          state.loginPassed = true;
+          router.push("/news");
+          // console.log("Log in!");
+        })
+        .catch((error) => {
+          console.log("Password or email incorrect!\n");
+          console.log(error);
+          // this.state.loginEr = "Неправильный пароль !";
+        });
+    },
     // registerUser({ commit }, user) {
     //   api
     //     .post("register", {
