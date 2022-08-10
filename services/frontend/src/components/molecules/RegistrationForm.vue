@@ -5,6 +5,7 @@
       :key="index"
       :inputLabel="item.label"
       :inputPlaceholder="item.placeholder"
+      :inputType="item.type"
     />
   </div>
 </template>

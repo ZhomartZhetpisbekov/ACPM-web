@@ -1,7 +1,13 @@
 <template>
   <div>
     <label class="input_label">{{ inputLabel }} </label>
-    <input :placeholder="inputPlaceholder" type="text" />
+    <input
+      v-if="inputType == 'tel'"
+      :placeholder="inputPlaceholder"
+      :type="inputType"
+      pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"
+    />
+    <input v-else :placeholder="inputPlaceholder" :type="inputType" />
   </div>
 </template>
 
@@ -15,6 +21,9 @@ export default {
     inputPlaceholder: {
       type: String,
     },
+    inputType: {
+      type: String,
+    },
   },
 };
 </script>
@@ -25,6 +34,7 @@ div {
 }
 
 .input_label {
+  margin-top: 1rem;
   display: block;
   font-size: 1rem;
   font-weight: 500;
@@ -41,7 +51,7 @@ input {
   margin-top: 0.5rem;
   font-size: 0.875rem;
   font-weight: 300;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   align-content: stretch;
 }
 ::placeholder {

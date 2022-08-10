@@ -3,14 +3,28 @@
     <form @submit="submitHandler">
       <h3>Create an account</h3>
 
-      <div class="registration-information account-information">
-        <label>Account information</label>
+      <div class="account-information">
+        <label class="registration-information">Account information</label>
         <registration-form :info="accountInfo" />
         <registration-form :info="accountInfo2" />
       </div>
-      <div class="registration-information personal-information">
-        <label> Personal information </label>
+      <div class="personal-information">
+        <label class="registration-information">Personal information</label>
         <registration-form :info="personalInfo" />
+      </div>
+      <div class="address-information">
+        <label class="registration-information">Address</label>
+        <registration-form :info="address1" />
+        <registration-form :info="address2" />
+        <registration-form :info="address3" />
+      </div>
+      <div class="work-information">
+        <label class="registration-information">Work information</label>
+        <registration-form :info="workInfo1" />
+        <registration-form :info="workInfo2" />
+      </div>
+      <div class="registration-page__buttons">
+        <button type="submit">{{ $t("loginPage.registration") }}</button>
       </div>
     </form>
   </section>
@@ -30,22 +44,48 @@ export default {
       lastNameRef: "",
       middleNameRef: "",
       accountInfo: [
-        { label: "Username", placeholder: "" },
-        { label: "Email", placeholder: "john@email.com" },
+        { label: "Username", placeholder: "", type: "text" },
+        { label: "Email", placeholder: "john@email.com", type: "email" },
       ],
       accountInfo2: [
-        { label: "Password", placeholder: "min. 8 characters, not username" },
-        { label: "Confirm password", placeholder: "***********" },
+        {
+          label: "Password",
+          placeholder: "min. 8 characters, not username",
+          type: "password",
+        },
+        { label: "Confirm password", placeholder: "***********", type: "password" },
       ],
       personalInfo: [
-        { label: "First name", placeholder: "" },
-        { label: "Middle name", placeholder: "" },
-        { label: "Last name", placeholder: "" },
+        { label: "First name", placeholder: "", type: "text" },
+        { label: "Middle name", placeholder: "", type: "text" },
+        { label: "Last name", placeholder: "", type: "text" },
+      ],
+      address1: [
+        { label: "Street address line 1", placeholder: "", type: "text" },
+      ],
+      address2: [
+        { label: "Street address line 2", placeholder: "", type: "text" },
+      ],
+      address3: [
+        { label: "Country", placeholder: "", type: "text" },
+        { label: "City", placeholder: "", type: "text" },
+      ],
+      workInfo1: [
+        { label: "Occupation", placeholder: "", type: "text" },
+        { label: "Job title", placeholder: "", type: "text" },
+      ],
+      workInfo2: [
+        { label: "Place of work", placeholder: "", type: "text" },
+        {
+          label: "Phone number",
+          placeholder: "+X (XXX) XXX - XXXX",
+          type: "tel",
+        },
       ],
     };
   },
   methods: {
-    submitHandler(e) {
+    submitHandler() {
       console.log("s");
     },
   },
@@ -62,9 +102,21 @@ export default {
   align-items: center;
 }
 
-.account-information {
-  display: flex;
+.personal-information,
+.address-information,
+.work-information {
+  margin-top: 1rem;
 }
+.account-information {
+  margin-top: 1.5rem;
+}
+
+/* .account-information > label,
+.personal-information > label,
+.address-information > label,
+.work-information > label {
+  margin-bottom: 1rem;
+} */
 
 form {
   background-color: var(--login-bg-color);
@@ -150,10 +202,10 @@ button {
   cursor: pointer;
 }
 
-.registration-information label {
+/* label.registration-information {
   margin-top: 1.5rem;
   margin-bottom: 1rem;
-}
+} */
 
 @media screen and (max-width: 65rem) {
   .registration-page {
