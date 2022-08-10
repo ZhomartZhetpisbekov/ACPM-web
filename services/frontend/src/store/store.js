@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import api from "../services/api";
-// import router from "../router";
+import router from "../router/index";
 
 Vue.use(Vuex);
 
@@ -135,6 +135,11 @@ export default new Vuex.Store({
     SET_SEARCH_RESULTS(state, payload) {
       state.searchResults = payload;
     },
+    LOGIN(state, resp) {
+      this.$cookies.set("token", resp.access);
+      localStorage.setItem("token", resp.access);
+      state.login = true;
+    },
   },
   actions: {
     async getNews({ commit, state }) {
@@ -228,6 +233,27 @@ export default new Vuex.Store({
         commit("SET_SEARCH_RESULTS", res.data);
       });
     },
+
+    loginUser({ commit, state }, user) {
+      let bodyFormData = new FormData();
+      bodyFormData.append("username", user.email);
+      bodyFormData.append("password", user.password);
+      api
+        .post("auth/jwt/create", bodyFormData)
+        .then((response) => {
+          console.log(response.data);
+          commit("LOGIN", response.data);
+          state.loginPassed = true;
+          router.push("/news");
+          // console.log("Log in!");
+        })
+        .catch((error) => {
+          console.log("Password or email incorrect!\n");
+          console.log(error);
+          // this.state.loginEr = "Неправильный пароль !";
+        });
+    },
+
     // async getProduct({ commit }, productId) {
     //   localStorage.setItem("id", productId);
     //   return await api.get(`/menu/${productId}`).then((res) => {
