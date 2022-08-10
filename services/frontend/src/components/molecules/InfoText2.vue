@@ -1,5 +1,5 @@
 <template>
-  <div class="info-text">
+  <div v-if="category" class="info-text">
     <h1 class="info-text_title">{{ category.title }}</h1>
     <img :src="`${imgPath}${category.main_image}`" alt="">
     <div class="parsed-html" v-html="category.text"></div>
@@ -18,9 +18,9 @@ export default {
       type: Object,
     }
   },
-  mounted() {
-    console.log(this.category);
-  },
+  // mounted() {
+  //   console.log(this.category);
+  // },
   computed: {
     imgPath() {
       return `${api.defaults.baseURL}`

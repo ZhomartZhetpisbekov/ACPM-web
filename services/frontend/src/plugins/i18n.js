@@ -9,11 +9,18 @@ const messages = {
       navTop: ["Новости", "Контакты", "Личный Кабинет"],
       navBottom: [
         "Общество",
-        "События",
+        "Конгрессы",
         "Образование",
         "Клинические протоколы",
         "Новости в медицине",
       ],
+      menu: {
+        society: "Общество",
+        events: "Конгрессы",
+        education: "Образование",
+        protocols: "Клинические протоколы",
+        news: "Новости в медицине"
+      }
     },
     aboutUs: {
       title: "О нас",
@@ -62,6 +69,13 @@ const messages = {
         "Клиникалық хаттамалар",
         "Жаңалықтар",
       ],
+      menu: {
+        society: "Қоғам",
+        events: "Оқиғалар",
+        education: "Білім",
+        protocols: "Клиникалық хаттамалар",
+        news: "Жаңалықтар"
+      }
     },
     aboutUs: {
       title: "Біз туралы",
@@ -101,6 +115,13 @@ const messages = {
         "Clinical protocols",
         "News in medicine",
       ],
+      menu: {
+        society: "Society",
+        events: "Events",
+        education: "Education",
+        protocols: "Clinical Protocols",
+        news: "News in medicine"
+      }
     },
     aboutUs: {
       title: "About us",

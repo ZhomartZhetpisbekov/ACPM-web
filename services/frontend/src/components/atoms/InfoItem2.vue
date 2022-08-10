@@ -15,6 +15,9 @@ export default {
   props: {
     title: {
       type: String,
+    },
+    group: {
+      type: String
     }
   },
   data() {
@@ -27,7 +30,7 @@ export default {
   },
   methods: {
     changeRoute() {
-      this.$router.push(`/soska/${this.title}`);
+      this.$router.push(`/${this.group}/${this.title}`);
       this.activeGiven = true;
       console.log(this.$router.currentRoute.params.category);
     },

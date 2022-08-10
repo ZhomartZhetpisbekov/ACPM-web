@@ -1,6 +1,7 @@
 <template>
-  <div v-if="societyList.length > 0" class="information">
-    <InfoMenu2 :categoryList="societyList" />
+  <div v-if="groupList.length > 0" class="information">
+    <InfoMenu2 :categoryList="groupList"
+      :category="categoryDetails" />
     <InfoText2 :category="categoryDetails" />
   </div>
 </template>
@@ -16,8 +17,8 @@ export default {
     InfoText2,
   },
   computed: {
-    societyList() {
-      return this.$store.state.society;
+    groupList() {
+      return this.$store.state.group;
     },
     categoryDetails() {
       return this.$store.state.categoryDetails[0];
@@ -25,13 +26,14 @@ export default {
   },
   data() {
     return {
+      group: 'society',
       category: "",
       // currentRoute: this.$router.currentRoute,
     };
   },
   mounted() {
-    this.fetchSociety();
-    this.fetchCategoryDetails();
+    this.fetchGroup().then(() => {this.fetchCategoryDetails()});
+    // this.fetchCategoryDetails();
     // console.log(this.$router.currentRoute);
   },
   watch: {
@@ -43,17 +45,17 @@ export default {
     },
   },
   methods: {
-    async fetchSociety() {
+    async fetchGroup() {
       this.loading = true;
-      await this.$store.dispatch("getSociety");
+      await this.$store.dispatch("getGroup", this.group);
       this.loading = false;
     },
     async fetchCategoryDetails() {
       !this.$router.currentRoute.params.category
-        ? (this.category = "О нас")
+        ? (this.category = this.$store.state.group[0].category)
         : (this.category = this.$router.currentRoute.params.category);
       this.loading = true;
-      await this.$store.dispatch("getCategoryDetails", this.category);
+      await this.$store.dispatch("getSocietyDetails", this.group, this.category);
       this.loading = false;
     },
   },

@@ -1,9 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import HomePage from "../components/views/HomePage.vue";
-import InformationPage from "../components/views/InformationPage.vue";
+// import InformationPage from "../components/views/InformationPage.vue";
 import SocietyPage from "../components/views/SocietyPage";
 import EventsPage from "../components/views/EventsPage";
+import EducationPage from "../components/views/EducationPage";
+import ProtocolsPage from "../components/views/ProtocolsPage";
 import NewsPage from "../components/views/NewsPage.vue";
 import ArticlePage from "../components/views/ArticlePage.vue";
 import LoginPage from "../components/views/LoginPage.vue";
@@ -44,27 +46,37 @@ const routes = [
     props: true,
   },
   {
-    path: "/soska/:category?",
+    path: "/society/:category?",
     name: "Society",
     component: SocietyPage,
   },
   {
-    path: "/evangelion/:category?",
+    path: "/events/:category?",
     name: "Events",
     component: EventsPage,
   },
   {
-    path: "/:name/:item?",
-    name: "Information",
-    component: InformationPage,
-    // children: [
-    //   {
-    //     path: "",
-    //     component: InfoLol,
-    //   },
-    // ],
-    props: true,
+    path: "/education/:category?",
+    name: "Education",
+    component: EducationPage,
   },
+  {
+    path: "/protocols/:category?",
+    name: "Protocols",
+    component: ProtocolsPage,
+  },
+  // {
+  //   path: "/:name/:item?",
+  //   name: "Information",
+  //   component: InformationPage,
+  //   // children: [
+  //   //   {
+  //   //     path: "",
+  //   //     component: InfoLol,
+  //   //   },
+  //   // ],
+  //   props: true,
+  // },
 ];
 
 const router = new VueRouter({

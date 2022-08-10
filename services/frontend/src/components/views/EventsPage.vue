@@ -1,7 +1,9 @@
 <template>
-  <div class="information">
-    <InfoMenu2 :categoryList="eventsList" />
-    <InfoText2 :category="eventsDetails" />
+  <div v-if="groupList.length > 0" class="information">
+    <InfoMenu2 
+      :categoryList="groupList"
+      :category="categoryDetails" />
+    <InfoText2 :category="categoryDetails" />
   </div>
 </template>
 
@@ -16,44 +18,45 @@ export default {
     InfoText2,
   },
   computed: {
-    eventsList() {
-      return this.$store.state.events;
+    groupList() {
+      return this.$store.state.group;
     },
-    eventsDetails() {
-      return this.$store.state.eventsDetails[0];
+    categoryDetails() {
+      return this.$store.state.categoryDetails[0];
     },
   },
   data() {
     return {
-      eventTitle: "",
+      group: 'events',
+      category: "",
       // currentRoute: this.$router.currentRoute,
     };
   },
   mounted() {
-    this.fetchEvents();
-    this.fetchEventsDetails();
+    this.fetchGroup().then(() => {this.fetchCategoryDetails()});
+    // this.fetchCategoryDetails();
     // console.log(this.$router.currentRoute);
   },
   watch: {
     $route: {
       immediate: true,
       handler() {
-        this.fetchEventsDetails();
+        this.fetchCategoryDetails();
       },
     },
   },
   methods: {
-    async fetchEvents() {
+    async fetchGroup() {
       this.loading = true;
-      await this.$store.dispatch("getEvents");
+      await this.$store.dispatch("getGroup", this.group);
       this.loading = false;
     },
-    async fetchEventsDetails() {
+    async fetchCategoryDetails() {
       !this.$router.currentRoute.params.category
-        ? (this.eventTitle = "О нас")
-        : (this.eventTitle = this.$router.currentRoute.params.category);
+        ? (this.category = this.$store.state.group[0].category)
+        : (this.category = this.$router.currentRoute.params.category);
       this.loading = true;
-      await this.$store.dispatch("getEventsDetails", this.eventTitle);
+      await this.$store.dispatch("getSocietyDetails", this.group, this.category);
       this.loading = false;
     },
   },
