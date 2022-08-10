@@ -132,10 +132,6 @@ h2 {
   .custom-slider-item {
     width: 80%;
   }
-
-  /* h2 {
-    padding: 0;
-  } */
 }
 
 @media only screen and (max-width: 530px) {

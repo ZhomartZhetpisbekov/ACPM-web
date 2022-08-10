@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import HomePage from "../components/views/HomePage.vue";
 import InformationPage from "../components/views/InformationPage.vue";
 import SocietyPage from "../components/views/SocietyPage";
+import EventsPage from "../components/views/EventsPage";
 import NewsPage from "../components/views/NewsPage.vue";
 import ArticlePage from "../components/views/ArticlePage.vue";
 import LoginPage from "../components/views/LoginPage.vue";
@@ -46,6 +47,11 @@ const routes = [
     path: "/soska/:category?",
     name: "Society",
     component: SocietyPage,
+  },
+  {
+    path: "/evangelion/:category?",
+    name: "Events",
+    component: EventsPage,
   },
   {
     path: "/:name/:item?",

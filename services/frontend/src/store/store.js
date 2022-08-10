@@ -13,6 +13,8 @@ export default new Vuex.Store({
     society: [],
     searchResults: [],
     categoryDetails: [],
+    events: [],
+    eventsDetails: [],
     menu: {
       pages: {
         headerNavTop: [
@@ -104,6 +106,12 @@ export default new Vuex.Store({
     SET_CATEGORY_DETAILS(state, categoryDetails) {
       state.categoryDetails = categoryDetails;
     },
+    SET_EVENTS(state, events) {
+      state.events = events;
+    },
+    SET_EVENTS_DETAILS(state, eventsDetails) {
+      state.eventsDetails = eventsDetails;
+    },
     SET_LANG(state, lang) {
       localStorage.setItem("currentLanguage", lang);
       state.currentLanguage = lang;
@@ -125,7 +133,7 @@ export default new Vuex.Store({
     async getArticle({ commit }, id) {
       return await api.get(`/api/v1/news/${id}`).then((res) => {
         commit("SET_ARTICLE", res.data);
-        console.log(res.data);
+        // console.log(res.data);
         // return res.data
       });
     },
@@ -141,6 +149,20 @@ export default new Vuex.Store({
         .get(`/api/v1/${state.currentLanguage}/society/${category}`)
         .then((res) => {
           commit("SET_CATEGORY_DETAILS", res.data);
+        });
+    },
+    async getEvents({ commit, state }) {
+      return await api
+        .get(`/api/v1/${state.currentLanguage}/events`)
+        .then((res) => {
+          commit("SET_EVENTS", res.data);
+        });
+    },
+    async getEventsDetails({ commit, state }, category) {
+      return await api
+        .get(`/api/v1/${state.currentLanguage}/events/${category}`)
+        .then((res) => {
+          commit("SET_EVENTS_DETAILS", res.data);
         });
     },
     async getSearchResults({ commit }, payload) {

@@ -24,13 +24,13 @@
         />
         <p>{{ languages[1].name }}</p>
       </div>
-      <!-- <div class="languages_language" @click="changeLang(2)">
+      <div class="languages_language" @click="changeLang(2)">
         <img
           :src="require('@/assets/Header/' + languages[2].link + '.svg')"
           class="languages-logo"
         />
         <p>{{ languages[2].name }}</p>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -44,8 +44,8 @@ export default {
     return {
       expanded: false,
       languages: [
-        { link: "ru", name: "Russian" },
-        // { link: "kz", name: "Kazakh" },
+        { link: "ru", name: "Русский" },
+        { link: "kz", name: "Қазақ" },
         { link: "en", name: "English" },
       ],
     };
@@ -66,11 +66,18 @@ export default {
     },
   },
   created() {
-    if (this.$store.state.currentLanguage != "ru") {
+    if (this.$store.state.currentLanguage == "en") {
       this.languages = [
         { link: "en", name: "English" },
-        { link: "ru", name: "Russian" },
-        // { link: "kz", name: "Kazakh" },
+        { link: "ru", name: "Русский" },
+        { link: "kz", name: "Қазақ" },
+      ];
+    }
+    if (this.$store.state.currentLanguage == "kz") {
+      this.languages = [
+        { link: "kz", name: "Kazakh" },
+        { link: "en", name: "English" },
+        { link: "ru", name: "Русский" },
       ];
     }
   },

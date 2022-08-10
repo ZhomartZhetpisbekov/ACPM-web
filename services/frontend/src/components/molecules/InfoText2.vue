@@ -2,7 +2,7 @@
   <div class="info-text">
     <h1 class="info-text_title">{{ category.title }}</h1>
     <img :src="`${imgPath}${category.main_image}`" alt="">
-    <div v-html="category.text"></div>
+    <div class="parsed-html" v-html="category.text"></div>
   </div>
 </template>
 
@@ -39,5 +39,16 @@ export default {
   font-size: 2rem;
   /* margin-top: 0.5rem; */
   margin-bottom: 2rem;
+}
+
+img {
+  width: 100%;
+}
+
+.parsed-html{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
 }
 </style>

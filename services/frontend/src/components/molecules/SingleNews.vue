@@ -98,6 +98,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  word-break: break-all;
 }
 
 .text-block h3 {

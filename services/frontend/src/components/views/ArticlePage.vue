@@ -1,16 +1,16 @@
 <template>
   <div class="article-page">
-    <div class="article-page-container">
-      <div v-if="article" class="article-container">
-        <img :src="this.imgPath" alt="" />
-        <h3>{{ article.title }}</h3>
-        <span>{{ article.date }}</span>
-        <div v-html="article.text"></div>
+    <div v-if="article.length > 0" class="article-page-container">
+      <div  class="article-container">
+        <img v-if="article.length > 0" :src="this.imgPath" alt="" />
+        <h3>{{ article[0].title }}</h3>
+        <span>{{ article[0].date }}</span>
+        <div v-html="article[0].text"></div>
       </div>
       <div class="similar-news-container">
         <h3>Другие новости</h3>
         <SimilarNewsBox
-          v-for="(item, index) in news.filter((elem) => elem.id != article.id).slice(0, 3)"
+          v-for="(item, index) in news.filter((elem) => elem.id != article[0].id).slice(0, 3)"
           :key="index"
           :id="item.id"
           :title="item.title"
@@ -41,10 +41,10 @@ export default {
       return this.$store.state.news;
     },
     article() {
-      return this.$store.state.article[0];
+      return this.$store.state.article;
     },
     imgPath() {
-      return `${api.defaults.baseURL}${this.article.main_image}`;
+      return `${api.defaults.baseURL}${this.article[0].main_image}`;
     },
   },
   // mounted() {
@@ -63,7 +63,6 @@ export default {
   methods: {
     async fetchArticle() {
       let newId = this.$router.currentRoute.params.id;
-      console.log(newId);
       this.loading = true;
       await this.$store.dispatch("getArticle", newId);
       this.loading = false;

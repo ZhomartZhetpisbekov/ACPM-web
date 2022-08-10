@@ -3,7 +3,7 @@
     <ul class="information-menu">
       <li class="information-menu__title">{{ $t('header.navBottom[0]') }}</li>
       <InfoItem2
-        v-for="(item, ind) in societyList"
+        v-for="(item, ind) in categoryList"
         :key="ind"
         :title="item.category"
       />
@@ -18,7 +18,7 @@ export default {
   name: 'InfoMenu2',
   components: {InfoItem2},
   props: {
-    societyList: {
+    categoryList: {
       type: Array,
     },
     category: {

@@ -1,6 +1,6 @@
 <template>
-  <div class="information">
-    <InfoMenu2 :societyList="societyList" />
+  <div v-if="societyList.length > 0" class="information">
+    <InfoMenu2 :categoryList="societyList" />
     <InfoText2 :category="categoryDetails" />
   </div>
 </template>

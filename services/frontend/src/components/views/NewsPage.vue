@@ -5,7 +5,7 @@
     </div> -->
     <h2>Новости</h2>
 
-    <div class="news-container">
+    <div v-if="news.length > 0" class="news-container">
       <SingleNews
         :articleId="news[0].id"
         :imgPath="`${imgPath}${news[0].main_image}`"
@@ -64,50 +64,6 @@ export default {
       return this.$store.state.news
     }
   },
-  data() {
-    return {
-      // temporaryNews: [
-      //   {
-      //     imgPath: "1",
-      //     title:
-      //       "On Inaugural World Bronchiectasis Day, International Lung Health",
-      //     text: "On Inaugural World Bronchiectasis Day, International Lung Health Organizations Raise Awareness On Inaugural World Bronchiectasis Day, International Lung Health Organizations Raise Awareness",
-      //     date: "07 July, 2022",
-      //   },
-      //   {
-      //     imgPath: "2",
-      //     title: "ERS journals awarded highest Journal Impact Factors to date ERS",
-      //     text: "ERS journals awarded highest Journal Impact Factors to date ERS journals awarded highest Journal Impact Factors to date ERS journals awarded highest Journal Impact Factors to date",
-      //     date: "22 June, 2022",
-      //   },
-      //   {
-      //     imgPath: "3",
-      //     title:
-      //       "Be aware that onsite spaces are limited – we recommend early",
-      //     text: "Be aware that onsite spaces are limited – we recommend early registration to avoid disappointment Be aware that onsite spaces are limited – we recommend early registration to avoid disappointment.",
-      //     date: "22 January, 2022",
-      //   },
-      //   {
-      //     imgPath: "1",
-      //     title: "ERS journals awarded highest Journal Impact Factors to date ERS",
-      //     text: "ERS journals awarded highest Journal Impact Factors to date ERS journals awarded highest Journal Impact Factors to date ERS journals awarded highest Journal Impact Factors to date",
-      //     date: "22 June, 2022",
-      //   },
-        // {
-        //   imgPath: "1",
-        //   title:
-        //     "On Inaugural World Bronchiectasis Day, International Lung Health Organizations Raise Awareness",
-        //   date: "07 July, 2022",
-        // },
-        // {
-        //   imgPath: "3",
-        //   title:
-        //     "Be aware that onsite spaces are limited – we recommend early registration to avoid disappointment.",
-        //   date: "22 January, 2022",
-        // },
-      // ],
-    };
-  },
 };
 </script>
 
@@ -121,21 +77,6 @@ export default {
   letter-spacing: 1.1px;
   line-height: 23px;
 }
-
-/* h3 {
-  line-height: 30px;
-} */
-
-/* .banner {
-  width: 100%;
-  height: 200px;
-  background-image: url(../../assets/HomePage/background-img.png);
-  background-position: center center;
-  background-size: cover;
-  display: flex;
-  align-items: flex-end;
-  margin-bottom: 80px;
-} */
 
 h2 {
   /* width: 82.5%; */
@@ -153,7 +94,8 @@ h2 {
 }
 
 .more-news-btn {
-  width: 83%;
+  width: 100%;
+  padding: 0 8rem;
   margin: auto;
   display: flex;
   flex-direction: row-reverse;
