@@ -1,48 +1,31 @@
 <template>
-  <div class="info-text">
-    <!-- <InfoPath :paths="this.ablur" /> -->
-    <h1 class="info-text_title">{{ parsedpath() }}</h1>
-    <!-- <router-view></router-view> -->
-    <InfoLol />
+  <div v-if="category" class="info-text">
+    <h1 class="info-text_title">{{ category.title }}</h1>
+    <img :src="`${imgPath}${category.main_image}`" alt="">
+    <div class="parsed-html" v-html="category.text"></div>
   </div>
 </template>
 
 <script>
-import InfoLol from "../atoms/InfoLol";
-// import InfoPath from "../atoms/InfoPath";
+import api from '../../services/api';
+
 export default {
-  name: "InfoText",
-  components: {
-    // InfoPath,
-    InfoLol,
+  name: 'InfoText',
+  // components: {InfoLol},
+  props: {
+    category: {
+      type: Object,
+    }
   },
-  data() {
-    return {
-      ablur: [...Object.values(this.$route.params)],
-    };
-  },
-  created() {
-    this.$watch(
-      () => this.$route.params,
-      (toParams) => {
-        // react to route changes...
-        this.ablur = [...Object.values(toParams)];
-      }
-    );
-  },
+  // mounted() {
+  //   console.log(this.category);
+  // },
   computed: {
-    parser() {
-      return this.$store.state.parser;
+    imgPath() {
+      return `${api.defaults.baseURL}`
     },
   },
-  methods: {
-    parsedpath() {
-      return this.ablur && this.ablur.length > 1
-        ? this.parser[this.ablur[1]]
-        : this.parser[this.ablur[0]];
-    },
-  },
-};
+}
 </script>
 
 <style scoped>
@@ -55,5 +38,20 @@ export default {
   font-size: 2rem;
   /* margin-top: 0.5rem; */
   margin-bottom: 2rem;
+}
+
+img {
+  width: 100%;
+}
+
+.parsed-html{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.parsed-html >>> img {
+  width: 50%;
 }
 </style>

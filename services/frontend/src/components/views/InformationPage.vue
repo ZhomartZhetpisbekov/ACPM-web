@@ -1,8 +1,9 @@
 <template>
-  <div class="information">
-    <InfoMenu />
-    <InfoText />
-    <!-- <router-view /> -->
+  <div v-if="groupList.length > 0" class="information">
+    <InfoMenu 
+      :categoryList="groupList"
+      :category="categoryDetails" />
+    <InfoText :category="categoryDetails" />
   </div>
 </template>
 
@@ -11,33 +12,64 @@ import InfoMenu from "../molecules/InfoMenu.vue";
 import InfoText from "../molecules/InfoText.vue";
 
 export default {
-  name: "InformationPage",
+  name: "SocietyPage",
   components: {
     InfoMenu,
     InfoText,
   },
+  computed: {
+    groupList() {
+      return this.$store.state.group;
+    },
+    categoryDetails() {
+      return this.$store.state.categoryDetails[0];
+    },
+  },
+  data() {
+    return {
+      group: "",
+      category: "",
+      // currentRoute: this.$router.currentRoute,
+    };
+  },
+  mounted() {
+    this.fetchGroup().then(() => {this.fetchCategoryDetails()});
+    // this.fetchCategoryDetails();
+    // console.log(this.$router.currentRoute);
+  },
+  watch: {
+    $route: {
+      immediate: true,
+      handler() {
+        this.fetchGroup().then(() => {this.fetchCategoryDetails()});
+      },
+    },
+  },
+  methods: {
+    async fetchGroup() {
+      this.group = this.$router.currentRoute.params.name;
+      this.loading = true;
+      await this.$store.dispatch("getGroup", this.group);
+      this.loading = false;
+    },
+    async fetchCategoryDetails() {
+      !this.$router.currentRoute.params.category
+        ? (this.category = this.$store.state.group[0].category)
+        : (this.category = this.$router.currentRoute.params.category);
+      this.loading = true;
+      await this.$store.dispatch("getCategoryDetails", {group: this.group, category: this.category});
+      this.loading = false;
+    },
+  },
 };
 </script>
 
-<style scoped>
+<style>
 .information {
   margin-top: 12em;
   display: flex;
   width: 100%;
   padding: 0 8rem 4rem 8rem;
   flex-direction: row;
-  /* background: #252b42; */
 }
-@media screen and (max-width: 65rem) {
-  .information {
-    margin-top: 7rem;
-    padding: 0rem 2rem 4rem 2rem;
-  }
-}
-
-/* @media screen and (max-width: 40rem) {
-  .information {
-    padding: 0 1.5rem 4rem 1.5rem;
-  }
-} */
 </style>

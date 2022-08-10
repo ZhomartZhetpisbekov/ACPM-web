@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import api from "../services/api";
-import router from "../router/index";
+// import router from "../router/index";
 
 Vue.use(Vuex);
 
@@ -10,15 +10,9 @@ export default new Vuex.Store({
     currentLanguage: localStorage.getItem("currentLanguage"),
     news: [],
     article: [],
-    society: [],
+    group: [],
+    categoryDetails: [],
     searchResults: [],
-    societyDetails: [],
-    events: [],
-    eventsDetails: [],
-    education: [],
-    educationDetails: [],
-    protocols: [],
-    protocolsDetails: [],
     menu: {
       pages: {
         headerNavTop: [
@@ -30,54 +24,30 @@ export default new Vuex.Store({
           {
             name: "Общество",
             path: "society",
-            routerName: "Society",
-            children: [
-              { path: "about-us", name: "О нас" },
-              { path: "history", name: "История создания" },
-              { path: "purpose", name: "Цель, миссия" },
-              { path: "membership", name: "Членство" },
-              { path: "partnership", name: "Сотрудничество" },
-              { path: "partners", name: "Партнеры" },
-              { path: "mass-media", name: "СМИ о нас" },
-            ],
+            routerName: "Information",
           },
           {
             name: "События",
             path: "events",
-            routerName: "Events",
-            children: [],
+            routerName: "Information",
           },
           {
             name: "Образование",
             path: "education",
-            routerName: "Education",
-            children: [],
+            routerName: "Information",
           },
           {
             name: "Клинические протоколы",
             path: "protocols",
-            routerName: "Protocols",
-            children: [],
+            routerName: "Information",
           },
           {
             name: "Новости в медицине",
             path: "news",
             routerName: "News",
-            children: [],
           },
         ],
       },
-    },
-    parser: {
-      " ": "Главная",
-      society: "Общество",
-      "about-us": "О нас",
-      history: "История создания",
-      purpose: "Цель, миссия",
-      membership: "Членство",
-      partnership: "Сотрудничество",
-      partners: "Партнеры",
-      "mass-media": "СМИ о нас",
     },
   },
   getters: {
@@ -104,29 +74,11 @@ export default new Vuex.Store({
     SET_ARTICLE(state, article) {
       state.article = article;
     },
-    SET_SOCIETY(state, society) {
-      state.society = society;
+    SET_GROUP(state, group) {
+      state.group = group;
     },
-    SET_SOCIETY_DETAILS(state, societyDetails) {
-      state.societyDetails = societyDetails;
-    },
-    SET_EVENTS(state, events) {
-      state.events = events;
-    },
-    SET_EVENTS_DETAILS(state, eventsDetails) {
-      state.eventsDetails = eventsDetails;
-    },
-    SET_EDUCATION(state, education) {
-      state.education = education;
-    },
-    SET_EDUCATION_DETAILS(state, educationDetails) {
-      state.educationDetails = educationDetails;
-    },
-    SET_PROTOCOLS(state, protocols) {
-      state.protocols = protocols;
-    },
-    SET_PROTOCOLS_DETAILS(state, protocolsDetails) {
-      state.protocolsDetails = protocolsDetails;
+    SET_CATEGORY_DETAILS(state, categoryDetails) {
+      state.categoryDetails = categoryDetails;
     },
     SET_LANG(state, lang) {
       localStorage.setItem("currentLanguage", lang);
@@ -134,11 +86,6 @@ export default new Vuex.Store({
     },
     SET_SEARCH_RESULTS(state, payload) {
       state.searchResults = payload;
-    },
-    LOGIN(state, resp) {
-      this.$cookies.set("token", resp.access);
-      localStorage.setItem("token", resp.access);
-      state.login = true;
     },
   },
   actions: {
@@ -165,67 +112,11 @@ export default new Vuex.Store({
           commit("SET_GROUP", res.data);
         });
     },
-    async getCategoryDetails({ commit, state }, group, category) {
+    async getCategoryDetails({ commit, state }, payload) {
       return await api
-        .get(`/api/v1/${state.currentLanguage}/${group}/${category}`)
+        .get(`/api/v1/${state.currentLanguage}/${payload.group}/${payload.category}`)
         .then((res) => {
           commit("SET_CATEGORY_DETAILS", res.data);
-        });
-    },
-    async getSociety({ commit, state }) {
-      return await api
-        .get(`/api/v1/${state.currentLanguage}/society`)
-        .then((res) => {
-          commit("SET_SOCIETY", res.data);
-        });
-    },
-    async getSocietyDetails({ commit, state }, category) {
-      return await api
-        .get(`/api/v1/${state.currentLanguage}/society/${category}`)
-        .then((res) => {
-          commit("SET_SOCIETY_DETAILS", res.data);
-        });
-    },
-    async getEvents({ commit, state }) {
-      return await api
-        .get(`/api/v1/${state.currentLanguage}/events`)
-        .then((res) => {
-          commit("SET_EVENTS", res.data);
-        });
-    },
-    async getEventsDetails({ commit, state }, category) {
-      return await api
-        .get(`/api/v1/${state.currentLanguage}/events/${category}`)
-        .then((res) => {
-          commit("SET_EVENTS_DETAILS", res.data);
-        });
-    },
-    async getEducation({ commit, state }) {
-      return await api
-        .get(`/api/v1/${state.currentLanguage}/education`)
-        .then((res) => {
-          commit("SET_EDUCATION", res.data);
-        });
-    },
-    async getEducationDetails({ commit, state }, category) {
-      return await api
-        .get(`/api/v1/${state.currentLanguage}/education/${category}`)
-        .then((res) => {
-          commit("SET_EDUCATION_DETAILS", res.data);
-        });
-    },
-    async getProtocols({ commit, state }) {
-      return await api
-        .get(`/api/v1/${state.currentLanguage}/protocols`)
-        .then((res) => {
-          commit("SET_PROTOCOLS", res.data);
-        });
-    },
-    async getProtocolsDetails({ commit, state }, category) {
-      return await api
-        .get(`/api/v1/${state.currentLanguage}/protocols/${category}`)
-        .then((res) => {
-          commit("SET_PROTOCOLS_DETAILS", res.data);
         });
     },
     async getSearchResults({ commit }, payload) {
@@ -233,27 +124,6 @@ export default new Vuex.Store({
         commit("SET_SEARCH_RESULTS", res.data);
       });
     },
-
-    loginUser({ commit, state }, user) {
-      let bodyFormData = new FormData();
-      bodyFormData.append("username", user.email);
-      bodyFormData.append("password", user.password);
-      api
-        .post("auth/jwt/create", bodyFormData)
-        .then((response) => {
-          console.log(response.data);
-          commit("LOGIN", response.data);
-          state.loginPassed = true;
-          router.push("/news");
-          // console.log("Log in!");
-        })
-        .catch((error) => {
-          console.log("Password or email incorrect!\n");
-          console.log(error);
-          // this.state.loginEr = "Неправильный пароль !";
-        });
-    },
-
     // async getProduct({ commit }, productId) {
     //   localStorage.setItem("id", productId);
     //   return await api.get(`/menu/${productId}`).then((res) => {
