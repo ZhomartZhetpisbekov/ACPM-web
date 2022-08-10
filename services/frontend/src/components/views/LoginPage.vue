@@ -1,13 +1,23 @@
 <template>
   <section class="login-page">
-    <form>
+    <form @submit="submitHandler">
       <h3>{{ $t("loginPage.loginTitle") }}</h3>
 
       <label for="username">{{ $t("loginPage.username") }}</label>
-      <input type="text" placeholder="Email or Phone" id="username" />
+      <input
+        v-model="usernameRef"
+        type="text"
+        placeholder="Email or Phone"
+        id="username"
+      />
 
       <label for="password">{{ $t("loginPage.password") }}</label>
-      <input type="password" placeholder="Password" id="password" />
+      <input
+        v-model="passwordRef"
+        type="password"
+        placeholder="Password"
+        id="password"
+      />
 
       <div class="actions-container">
         <div class="checkbox-container">
@@ -18,9 +28,11 @@
         <span> {{ $t("loginPage.forget") }}</span>
       </div>
       <div class="login-page__buttons">
-        <button>{{ $t("loginPage.login") }}</button>
-        <button>{{ $t("loginPage.registration") }}</button>
+        <button type="submit">{{ $t("loginPage.login") }}</button>
+        <!-- <button>{{ $t("loginPage.registration") }}</button> -->
+        <p>New user? Create an account!</p>
       </div>
+      
     </form>
   </section>
 </template>
@@ -30,6 +42,22 @@
 
 export default {
   name: "LoginPage",
+  data() {
+    return {
+      usernameRef: "",
+      passwordRef: "",
+    };
+  },
+  methods: {
+    submitHandler(e) {
+      e.preventDefault();
+      this.$store.dispatch("loginUser", {
+        email: this.usernameRef,
+        password: this.passwordRef,
+      });
+      console.log(this.usernameRef, this.passwordRef);
+    },
+  },
 };
 </script>
 
@@ -113,19 +141,20 @@ form > input {
 .login-page__buttons {
   width: 100%;
   margin-top: 2rem;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   display: flex;
-  justify-content: space-between;
-  gap: 3rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
 }
-
 
 button {
   width: 50%;
   padding: 1rem 0;
   font-size: 1rem;
   font-weight: 600;
-  border-radius: 10rem;
+  border-radius: 2rem;
   cursor: pointer;
 }
 
@@ -134,11 +163,9 @@ button {
   color: var(--footer-bg-color);
 }
 
-.login-page__buttons > button:last-child {
+/* .login-page__buttons > button:last-child {
   color: var(--secondary-color);
   background: inherit;
   border: 1px solid var(--secondary-color);
-}
-
-
+} */
 </style>
