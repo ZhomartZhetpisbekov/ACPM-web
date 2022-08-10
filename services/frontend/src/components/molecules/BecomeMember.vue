@@ -1,9 +1,10 @@
 <template>
   <div class="become-member">
-    <div class="content-container">
-      <h2>{{ $t('becomeMember.title') }}</h2>
-      <div class="text-content">
-        <p>
+    <div v-if="index" class="content-container">
+      <!-- <h2>{{ $t('becomeMember.title') }}</h2> -->
+      <h2>{{ index.title }}</h2>
+      <div v-html="index.text" class="text-content">
+        <!-- <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
           lobortis rhoncus hendrerit. Quisque mattis ante sit amet dictum
           finibus. Sed scelerisque augue eget gravida pellentesque.
@@ -13,7 +14,7 @@
           Morbi quis dui quam. Donec finibus eros nulla, in auctor tortor
           pharetra a. Ut interdum eros sit amet egestas cursus. Nulla fringilla
           aliquet varius.
-        </p>
+        </p> -->
       </div>
       <a href="#">{{ $t('becomeMember.readMoreBtn') }}</a>
     </div>
@@ -25,10 +26,21 @@
 export default {
   name: "BecomeMember",
   props: {},
-  data() {
-    return {};
+  computed: {
+    index() {
+      return this.$store.state.membership[0];
+    }
   },
-  methods: {},
+  mounted() {
+    this.fetchIndex();
+  },
+  methods: {
+    async fetchIndex() {
+      this.loading = true;
+      await this.$store.dispatch("getMembership");
+      this.loading = false;
+    },
+  },
 };
 </script>
 

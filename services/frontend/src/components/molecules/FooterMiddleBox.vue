@@ -2,9 +2,11 @@
   <div class="footer-items-box">
     <h2>{{ footerNavs[0] }}</h2>
     <FooterItem
-      v-for="(item, index) in footerNavs.slice(1)"
+      v-for="(item, index) in headerBottomLinks"
       :key="index"
-      :link="item"
+      :link="footerNavs[index + 1]"
+      :pagePath="item.path"
+      :routerName="item.routerName"
     />
   </div>
 </template>
@@ -20,6 +22,11 @@ export default {
     },
   },
   components: { FooterItem },
+  computed: {
+    headerBottomLinks() {
+      return this.$store.getters.headerBottomItems;
+    },
+  }
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <a href="#">{{ this.link }}</a>
+  <a @click="changePage">{{ this.link }}</a>
 </template>
 
 <script scoped>
@@ -8,6 +8,21 @@ export default {
   props: {
     link: {
       type: String,
+    },
+    pagePath: {
+      type: String,
+    },
+    routerName: {
+      type: String,
+    }
+  },
+  methods: {
+    changePage() {
+      if (this.$router.currentRoute.path !== "/" + this.pagePath)
+        this.$router.push({
+          name: this.routerName,
+          params: { name: this.pagePath },
+        });
     },
   },
 };
@@ -21,10 +36,11 @@ a {
   color: #005963;
   margin-bottom: 10px;
   transition: all 0.25s ease;
-  font-family: 'Gotham Pro';
+  font-family: "Gotham Pro";
+  cursor: pointer;
 }
 
 a:hover {
-  color: #F38023;
+  color: #f38023;
 }
 </style>

@@ -1,24 +1,31 @@
 <template>
   <div class="event-container">
-    <a href="" class="event-link-wrapper">
-      <img :src="require(`../../assets/HomePage/${eventInfo[1]}.jpeg`)" />
+    <!-- <a href="" class="event-link-wrapper" style="border: 1px solid purple"> -->
+    <img :src="`${imgPath}${eventInfo.main_image}`" />
+    <div class="text-box">
       <p>
-        {{ eventInfo[2] }} <br>
-        <a class="read-more">Read More...</a>
+        <!-- {{ eventInfo[2] }} -->
+        {{ eventInfo.announcement }}
       </p>
-    </a>
+      <p class="read-more">Read More...</p>
+    </div>
+    <!-- </a> -->
   </div>
 </template>
 
 <script scoped>
+import api from '../../services/api';
+
 export default {
   name: "EventItem",
   props: {
     eventInfo: {
-      type: Array,
+      type: Object,
     },
-    eventsNum: {
-      type: Number,
+  },
+  computed: {
+    imgPath() {
+      return `${api.defaults.baseURL}`
     },
   },
 };
@@ -37,7 +44,23 @@ img {
   display: block;
 }
 
-p {
+.text-box {
+  width: 100%;
+  min-height: 157px;
+  height: auto;
+  padding: 15px 20px;
+  background: #f0f5f6;
+  color: #000;
+  font-size: 1rem;
+}
+
+.text-box p {
+  width: 100%;
+  word-break: break-word;
+  white-space: normal;
+}
+
+/* p {
   background: #f0f5f6;
   color: #000;
   padding: 15px 20px;
@@ -48,9 +71,9 @@ p {
   margin: auto;
   height: 60px;
   width: 100%;
-}
+} */
 
 .read-more {
-  color: #17A2AB;
+  color: #17a2ab;
 }
 </style>

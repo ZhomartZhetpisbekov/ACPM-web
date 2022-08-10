@@ -54,4 +54,9 @@ img {
 .parsed-html >>> img {
   width: 50%;
 }
+
+.parsed-html >>> iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
 </style>

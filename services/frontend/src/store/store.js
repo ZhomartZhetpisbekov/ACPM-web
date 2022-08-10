@@ -13,6 +13,8 @@ export default new Vuex.Store({
     group: [],
     categoryDetails: [],
     searchResults: [],
+    aboutUs: [],
+    membership: [],
     menu: {
       pages: {
         headerNavTop: [
@@ -68,6 +70,12 @@ export default new Vuex.Store({
     // },
   },
   mutations: {
+    SET_ABOUT_US(state, aboutUs) {
+      state.aboutUs = aboutUs;
+    },
+    SET_MEMBERSHIP(state, membership) {
+      state.membership = membership;
+    },
     SET_NEWS(state, news) {
       state.news = news;
     },
@@ -88,12 +96,26 @@ export default new Vuex.Store({
       state.searchResults = payload;
     },
     LOGIN(state, resp) {
-      $cookies.set("token", resp.access);
+      // $cookies.set("token", resp.access);
       localStorage.setItem("token", resp.access);
       state.login = true;
     },
   },
   actions: {
+    async getAboutUs({ commit, state }) {
+      return await api
+        .get(`/api/v1/${state.currentLanguage}/index/about-us`)
+        .then((res) => {
+          commit("SET_ABOUT_US", res.data);
+        });
+    },
+    async getMembership({ commit, state }) {
+      return await api
+        .get(`/api/v1/${state.currentLanguage}/index/membership`)
+        .then((res) => {
+          commit("SET_MEMBERSHIP", res.data);
+        });
+    },
     async getNews({ commit, state }) {
       return await api
         .get(`/api/v1/${state.currentLanguage}/news`)

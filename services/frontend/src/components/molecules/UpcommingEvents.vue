@@ -15,7 +15,7 @@
             :key="index"
             class="custom-slider-item"
           >
-            <EventItem :eventInfo="item" :eventsNum="events.length" />
+            <EventItem :eventInfo="item"/>
           </slideritem>
           <div slot="loading">loading...</div>
         </slider>
@@ -36,27 +36,27 @@ export default {
   props: {},
   data() {
     return {
-      events: [
-        [
-          1,
-          "conference1",
-          "Tematisk fosk. Set sofanygon pesåsam Tematisk fosk. Set sofanygon pesåsam Tematisk fosk. Set sofanygon pesåsam.",
-        ],
-        [
-          2,
-          "conference2",
-          "TemaSet anygon peså sofanygon gon pesåpesåsam TemaSet anygon peså sofanygon gon pesåpesåsam TemaSet anygon peså sofanygon gon pesåpesåsam.",
-        ],
-        [3, "conference3", "Teså sofanym. emaSet anygon polka"],
-        [
-          4,
-          "conference2",
-          "Labaduba, coriga on polka. Ikola pirodka hu'swetor.",
-        ],
-        [5, "conference1", "Lorino furiaka, boriko 08.2012 kamdetro."],
-        [6, "conference3", "Teno furiaka, boriklka"],
-        [7, "conference1", "Lorino furiaka, boriko 08.2012 kamdetro."],
-      ],
+      // events: [
+      //   [
+      //     1,
+      //     "conference1",
+      //     "Tematisk fosk. Set sofanygon pesåsam Tematisk fosk. Set sofanygon pesåsam Tematisk fosk. Set sofanygon pesåsam.",
+      //   ],
+      //   [
+      //     2,
+      //     "conference2",
+      //     "TemaSet anygon peså sofanygon gon pesåpesåsam TemaSet anygon peså sofanygon gon pesåpesåsam TemaSet anygon peså sofanygon gon pesåpesåsam.",
+      //   ],
+      //   [3, "conference3", "Teså sofanym. emaSet anygon polka"],
+      //   [
+      //     4,
+      //     "conference2",
+      //     "Labaduba, coriga on polka. Ikola pirodka hu'swetor.",
+      //   ],
+      //   [5, "conference1", "Lorino furiaka, boriko 08.2012 kamdetro."],
+      //   [6, "conference3", "Teno furiaka, boriklka"],
+      //   [7, "conference1", "Lorino furiaka, boriko 08.2012 kamdetro."],
+      // ],
       //Slider configuration [obj]
       options: {
         currentPage: 0,
@@ -71,13 +71,27 @@ export default {
       },
     };
   },
+  computed: {
+    events() {
+      return this.$store.state.group;
+    }
+  },
+  mounted() {
+    this.fetchGroup();
+  },
   methods: {
     scroll_left() {
       this.$refs.slider.$emit("slidePre");
     },
     scroll_right() {
       this.$refs.slider.$emit("slideNext");
-    }
+    },
+    async fetchGroup() {
+      // this.group = this.$router.currentRoute.params.name;
+      this.loading = true;
+      await this.$store.dispatch("getGroup", 'events');
+      this.loading = false;
+    },
   },
   components: {
     EventItem,

@@ -1,14 +1,16 @@
 <template>
   <div class="about-us-banner">
-    <div class="content-container">
-      <h2>{{ $t("aboutUs.title") }}</h2>
-      <p>
+    <div v-if="index" class="content-container">
+      <!-- <h2>{{ $t("aboutUs.title") }}</h2> -->
+      <h2>{{ index.title }}</h2>
+      <!-- <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis
         rhoncus hendrerit. Quisque mattis ante sit amet dictum finibus.
-      </p>
+      </p> -->
+      <div v-html="index.text"></div>
       <div class="buttons-container">
         <a href="#">{{ $t("aboutUs.joinBtn") }}</a>
-        <a href="#">{{ $t("aboutUs.readMoreBtn") }}</a>
+        <a @click="goToSociety">{{ $t("aboutUs.readMoreBtn") }}</a>
       </div>
     </div>
   </div>
@@ -18,10 +20,24 @@
 export default {
   name: "AboutUsBanner",
   props: {},
-  data() {
-    return {};
+  computed: {
+    index() {
+      return this.$store.state.aboutUs[0];
+    }
   },
-  methods: {},
+  mounted() {
+    this.fetchIndex();
+  },
+  methods: {
+    async fetchIndex() {
+      this.loading = true;
+      await this.$store.dispatch("getAboutUs");
+      this.loading = false;
+    },
+    goToSociety() {
+      this.$router.push('society');
+    }
+  },
 };
 </script>
 

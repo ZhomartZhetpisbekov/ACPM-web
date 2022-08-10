@@ -98,7 +98,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .text-block h3 {
