@@ -19,8 +19,8 @@ const messages = {
         events: "Конгрессы",
         education: "Образование",
         protocols: "Клинические протоколы",
-        news: "Новости в медицине"
-      }
+        news: "Новости в медицине",
+      },
     },
     aboutUs: {
       title: "О нас",
@@ -50,7 +50,7 @@ const messages = {
       contactUs: "Свяжитесь с нами",
     },
     loginPage: {
-      loginTitle: "Зайти в свой аккаунт",
+      loginTitle: "Авторизация",
       login: "Войти",
       registration: "Создать аккаунт",
       username: "Имя пользователя",
@@ -74,8 +74,8 @@ const messages = {
         events: "Оқиғалар",
         education: "Білім",
         protocols: "Клиникалық хаттамалар",
-        news: "Жаңалықтар"
-      }
+        news: "Жаңалықтар",
+      },
     },
     aboutUs: {
       title: "Біз туралы",
@@ -104,6 +104,15 @@ const messages = {
       ],
       contactUs: "Бізбен хабарласыңыз",
     },
+    loginPage: {
+      loginTitle: "Login KZ",
+      login: "Log in",
+      registration: "Sign up",
+      username: "Username",
+      password: "Password",
+      remember: "Remember me",
+      forget: "Forgot password?",
+    },
   },
   en: {
     header: {
@@ -120,8 +129,8 @@ const messages = {
         events: "Events",
         education: "Education",
         protocols: "Clinical Protocols",
-        news: "News in medicine"
-      }
+        news: "News in medicine",
+      },
     },
     aboutUs: {
       title: "About us",
@@ -151,7 +160,7 @@ const messages = {
       contactUs: "Contact us",
     },
     loginPage: {
-      loginTitle: "Login to Your Account",
+      loginTitle: "Login",
       login: "Log in",
       registration: "Sign up",
       username: "Username",

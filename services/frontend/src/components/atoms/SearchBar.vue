@@ -9,10 +9,10 @@
     />
     <div v-if="searchRef.length > 0" class="search-results">
       <span>Top results:</span>
-      <p v-for="r of resultQuery" :key="r.id">
+      <p v-for="r of resultQuery" :key="r.id" @click="clickHandler(r.url)">
         {{ r.title }}
       </p>
-      <p class="view-more">View all results -></p>
+      <!-- <p class="view-more">View all results -></p> -->
     </div>
   </div>
 </template>
@@ -22,7 +22,7 @@ export default {
   name: "SearchBar",
   data() {
     return {
-      searchRef: '',
+      searchRef: "",
     };
   },
   methods: {
@@ -33,6 +33,12 @@ export default {
     },
     async getSearchRes() {
       await this.$store.dispatch("getSearchResults", this.searchRef);
+    },
+    clickHandler(url) {
+      console.log(this.$router);
+      this.$router.push("/");
+      this.$router.push(url);
+      this.$router.go();
     },
   },
   computed: {

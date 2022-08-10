@@ -7,10 +7,11 @@ import VueCookies from "vue-cookies";
 
 Vue.config.productionTip = false;
 
+Vue.use(VueCookies);
+
 new Vue({
   i18n,
   router,
-  VueCookies,
   store,
   render: (h) => h(App),
 }).$mount("#app");

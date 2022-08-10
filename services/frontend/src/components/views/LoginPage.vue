@@ -15,7 +15,7 @@
       <input
         v-model="passwordRef"
         type="password"
-        placeholder="Password"
+        placeholder="*********"
         id="password"
       />
 
@@ -32,7 +32,6 @@
         <!-- <button>{{ $t("loginPage.registration") }}</button> -->
         <p>New user? Create an account!</p>
       </div>
-      
     </form>
   </section>
 </template>
@@ -86,6 +85,7 @@ form h3 {
   font-family: "Gotham Pro Bold";
   font-size: 2rem;
   /* font-weight: 700; */
+  text-align: center;
   line-height: 2rem;
   /* text-align: center; */
 }
@@ -141,7 +141,6 @@ form > input {
 .login-page__buttons {
   width: 100%;
   margin-top: 2rem;
-  /* margin-bottom: 1rem; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -156,6 +155,7 @@ button {
   font-weight: 600;
   border-radius: 2rem;
   cursor: pointer;
+  font-family: "Gotham Pro Med";
 }
 
 .login-page__buttons > button:first-child {
@@ -163,9 +163,27 @@ button {
   color: var(--footer-bg-color);
 }
 
-/* .login-page__buttons > button:last-child {
-  color: var(--secondary-color);
-  background: inherit;
-  border: 1px solid var(--secondary-color);
-} */
+.login-page__buttons > p:last-child {
+  font-family: "Gotham Pro Med";
+  cursor: pointer;
+}
+
+@media screen and (max-width: 65rem) {
+  .login-page {
+    margin-top: 7rem;
+  }
+}
+
+@media screen and (max-width: 40rem) {
+  form {
+    width: 100%;
+    padding: 2rem;
+  }
+  .login-page {
+    margin-top: 6rem;
+  }
+  form h3 {
+    font-size: 1.5rem;
+  }
+}
 </style>
