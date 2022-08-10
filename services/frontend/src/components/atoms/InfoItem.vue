@@ -2,53 +2,53 @@
   <li
     class="info-middle"
     :class="{ active: this.activeGiven }"
-    @click="changePage"
+    @click="changeRoute"
   >
     <p>{{ this.title }}</p>
   </li>
 </template>
 
 <script>
+
 export default {
-  name: "NavItem",
+  name: 'InfoItem2',
   props: {
-    activeGiven: {
-      type: Boolean,
-    },
     title: {
       type: String,
     },
-    pagePath: {
+    group: {
+      type: String
+    },
+    category: {
       type: String,
-    },
-    index: {
-      type: Number,
-    },
+    }
   },
   data() {
     return {
-      currentPage: this.$router.currentRoute.path,
-    };
+      activeGiven: false,
+    }
+  },
+  mounted() {
+    this.checkActive();
   },
   methods: {
-    changePage() {
-      if (
-        this.$router.currentRoute.path !==
-        "/" + this.$router.currentRoute.params.name + "/" + this.pagePath
-      ) {
-        this.$router.push({
-          name: "Information",
-          params: {
-            name: this.$router.currentRoute.params.name,
-            item: this.pagePath,
-          },
-        });
-        this.addClass = "active";
-        this.$emit("changeActive", this.index);
-      }
+    changeRoute() {
+      this.$router.push(`/${this.group}/${this.category}`);
+      this.activeGiven = true;
+    },
+    checkActive() {
+      this.activeGiven = this.$router.currentRoute.params.category == this.category;
+    }
+  },
+  watch: {
+    $route: {
+      immediate: true,
+      handler() {
+        this.checkActive();
+      },
     },
   },
-};
+}
 </script>
 
 <style scoped>

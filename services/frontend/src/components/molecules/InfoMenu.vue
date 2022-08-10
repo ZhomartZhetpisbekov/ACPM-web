@@ -1,91 +1,36 @@
 <template>
   <div>
-    <!-- <h2 class="information-title">Общество</h2> -->
-    <ul class="information-menu">
-      <li class="information-menu__title">{{ this.headerTitle }}</li>
+    <ul v-if="category" class="information-menu">
+      <li class="information-menu__title">{{ $t(`header.menu.${category.group}`) }}</li>
       <InfoItem
-        v-for="(item, ind) in menuItmes"
+        v-for="(item, ind) in categoryList"
         :key="ind"
-        :activeGiven="ind == currentActive"
-        :title="item.name"
-        :pagePath="item.path"
-        :index="ind"
-        @changeActive="(payload) => toggleActive(payload)"
+        :category="item.category"
+        :title="item.title"
+        :group="category.group"
       />
     </ul>
   </div>
 </template>
 
 <script>
-import InfoItem from "../atoms/InfoItem.vue";
+import InfoItem from "../atoms/InfoItem.vue"
 
 export default {
-  name: "InfoMenu",
+  name: 'InfoMenu',
+  components: {InfoItem},
   props: {
-    name: {
-      type: String,
+    categoryList: {
+      type: Array,
     },
+    category: {
+      type: Object,
+    }
   },
-  components: {
-    InfoItem,
-  },
-  computed: {
-    menuItmes() {
-      return this.$store.state.menu.pages.headerNavBottom[this.findTitle]
-        .children;
-    },
-    headerBottom() {
-      return this.$store.state.menu.pages.headerNavBottom;
-    },
-    headerTitle() {
-      return this.headerBottom[this.findTitle].name;
-    },
-  },
-  data() {
-    return {
-      currentActive: 0,
-      isActive: false,
-      findTitle: 0,
-    };
-  },
-  methods: {
-    toggleActive(index) {
-      this.currentActive = index;
-    },
-  },
-  beforeMount() {
-    const computedCurrentSection = this.menuItmes.findIndex(
-      (item) => item.path === this.$router.currentRoute.params.item
-    );
-    const damn = this.headerBottom.findIndex(
-      (item) => item.path === this.$router.currentRoute.params.name
-    );
-    damn === -1 ? (this.findTitle = 0) : (this.findTitle = damn);
-    computedCurrentSection === -1
-      ? (this.currentActive = 0)
-      : (this.currentActive = computedCurrentSection);
-  },
-  created() {
-    this.$watch(
-      () => this.$route.params,
-      (toParams) => {
-        const computedCurrentSection = this.menuItmes.findIndex(
-          (item) => item.path === toParams.item
-        );
-        const damn = this.headerBottom.findIndex(
-          (item) => item.path === this.$router.currentRoute.params.name
-        );
-        damn === -1 ? (this.findTitle = 0) : (this.findTitle = damn);
-        computedCurrentSection === -1
-          ? (this.currentActive = 0)
-          : (this.currentActive = computedCurrentSection);
-      }
-    );
-  },
-};
+}
 </script>
 
-<style scoped>
+<style>
 .information-menu {
   margin-right: 4rem;
   background: var(--footer-bg-color);
