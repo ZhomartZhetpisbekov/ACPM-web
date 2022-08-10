@@ -30,7 +30,15 @@
       <div class="login-page__buttons">
         <button type="submit">{{ $t("loginPage.login") }}</button>
         <!-- <button>{{ $t("loginPage.registration") }}</button> -->
-        <p>New user? Create an account!</p>
+        <p
+          @click="
+            () => {
+              this.$router.push('/register');
+            }
+          "
+        >
+          New user? Create an account!
+        </p>
       </div>
     </form>
   </section>
@@ -87,12 +95,13 @@ form h3 {
   /* font-weight: 700; */
   text-align: center;
   line-height: 2rem;
+  margin-bottom: 2rem;
   /* text-align: center; */
 }
 
 form > label {
   display: block;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   font-size: 1rem;
   font-weight: 500;
   color: black;
@@ -108,6 +117,7 @@ form > input {
   margin-top: 0.5rem;
   font-size: 0.875rem;
   font-weight: 300;
+  margin-bottom: 1rem;
 }
 ::placeholder {
   color: var(--text-color);
