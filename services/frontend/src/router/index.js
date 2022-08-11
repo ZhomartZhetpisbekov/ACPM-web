@@ -6,6 +6,7 @@ import NewsPage from "../components/views/NewsPage.vue";
 import ArticlePage from "../components/views/ArticlePage.vue";
 import LoginPage from "../components/views/LoginPage.vue";
 import RegistrationPage from "../components/views/RegistrationPage";
+import AccountPage from "../components/views/AccountPage";
 
 Vue.use(VueRouter);
 
@@ -36,6 +37,12 @@ const routes = [
     path: "/register",
     name: "Registration",
     component: RegistrationPage,
+    props: true,
+  },
+  {
+    path: "/account",
+    name: "Account",
+    component: AccountPage,
     props: true,
   },
   {
