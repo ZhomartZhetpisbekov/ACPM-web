@@ -58,6 +58,14 @@ const messages = {
       remember: "Запомнить меня",
       forget: "Забыли пароль?",
     },
+    accountPage: {
+      title: "Личный кабинет",
+      accountSetting: "Настройки аккаунта",
+      membership: "Членство",
+      editInfo: "Редактировать",
+      deleteAccount: "Удалить аккаунт",
+      signOut: "Выйти"
+    }
   },
   kz: {
     header: {
@@ -113,6 +121,14 @@ const messages = {
       remember: "Remember me",
       forget: "Forgot password?",
     },
+    accountPage: {
+      title: "Личный кабинет KZ",
+      accountSetting: "Настройки аккаунта",
+      membership: "Членство",
+      editInfo: "Редактировать",
+      deleteAccount: "Удалить аккаунт",
+      signOut: "Выйти"
+    }
   },
   en: {
     header: {
@@ -168,6 +184,14 @@ const messages = {
       remember: "Remember me",
       forget: "Forgot password?",
     },
+    accountPage: {
+      title: "Account",
+      accountSetting: "Account settings",
+      membership: "Membership",
+      editInfo: "Edit information",
+      deleteAccount: "Delete account",
+      signOut: "Sign out"
+    }
   },
 };
 
