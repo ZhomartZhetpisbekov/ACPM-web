@@ -2,10 +2,12 @@ import Vue from "vue";
 import Vuex from "vuex";
 import api from "../services/api";
 import router from "../router/index";
+import { userStore } from "./user.module";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  modules: { a: userStore },
   state: {
     currentLanguage: localStorage.getItem("currentLanguage"),
     news: [],
@@ -97,7 +99,8 @@ export default new Vuex.Store({
     },
     LOGIN(state, resp) {
       // $cookies.set("token", resp.access);
-      localStorage.setItem("token", resp.access);
+      console.log(resp);
+      localStorage.setItem("token", resp.auth_token);
       state.login = true;
     },
   },
@@ -174,6 +177,21 @@ export default new Vuex.Store({
           // this.state.loginEr = "Неправильный пароль !";
         });
     },
+    getUserInformation({ commit }) {
+      api
+        .get("/auth/users/me", {
+          // auth: {"Basic" :`Basic ${localStorage.getItem("token")}`},
+
+          headers: {
+            Authorization:
+              "Basic " +
+              "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90e…iOjR9.-gWh9BiythO1dBqmwuM0t_cUoIdh5peA2JXo7i3cKFg",
+          },
+        })
+        .then((response) => console.log(response.data));
+      commit("SET_ABOUT_US", "lol");
+    },
+
     // registerUser({ commit }, user) {
     //   api
     //     .post("register", {

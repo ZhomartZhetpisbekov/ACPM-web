@@ -14,10 +14,11 @@ export default {
     },
     routerName: {
       type: String,
-    }
+    },
   },
   methods: {
     changePage() {
+      this.$store.dispatch("getUserInformation");
       if (this.$router.currentRoute.path !== "/" + this.pagePath)
         this.$router.push({
           name: this.routerName,

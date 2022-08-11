@@ -24,7 +24,9 @@
         <registration-form :info="workInfo2" />
       </div>
       <div class="registration-page__buttons">
-        <button type="submit">{{ $t("loginPage.registration") }}</button>
+        <button type="s, required: trueubmit">
+          {{ $t("loginPage.registration") }}
+        </button>
       </div>
     </form>
   </section>
@@ -44,49 +46,140 @@ export default {
       lastNameRef: "",
       middleNameRef: "",
       accountInfo: [
-        { label: "Username", placeholder: "", type: "text" },
-        { label: "Email", placeholder: "john@email.com", type: "email" },
+        {
+          label: "Username",
+          placeholder: "",
+          type: "text",
+          required: true,
+          committer: "SET_USERNAME",
+        },
+        {
+          label: "Email",
+          placeholder: "john@email.com",
+          type: "email",
+          required: true,
+          committer: "SET_EMAIL",
+        },
       ],
       accountInfo2: [
         {
           label: "Password",
           placeholder: "min. 8 characters, not username",
           type: "password",
+          required: true,
+          committer: "SET_PASSWORD",
         },
-        { label: "Confirm password", placeholder: "***********", type: "password" },
+        {
+          label: "Confirm password",
+          placeholder: "***********",
+          type: "password",
+          required: true,
+          committer: "SET_PASSWORD",
+        },
       ],
       personalInfo: [
-        { label: "First name", placeholder: "", type: "text" },
-        { label: "Middle name", placeholder: "", type: "text" },
-        { label: "Last name", placeholder: "", type: "text" },
+        {
+          label: "First name",
+          placeholder: "",
+          type: "text",
+          required: true,
+          committer: "SET_FNAME",
+        },
+        {
+          label: "Middle name",
+          placeholder: "",
+          type: "text",
+          required: false,
+          committer: "SET_MNAME",
+        },
+        {
+          label: "Last name",
+          placeholder: "",
+          type: "text",
+          required: true,
+          committer: "SET_LNAME",
+        },
+        {
+          label: "Date of birth",
+          placeholder: "dd/mm/yyyy",
+          type: "date",
+          required: true,
+          className: "date-class",
+          committer: "SET_BDATE",
+        },
       ],
       address1: [
-        { label: "Street address line 1", placeholder: "", type: "text" },
+        {
+          label: "Street address line 1",
+          placeholder: "",
+          type: "text",
+          required: true,
+          committer: "SET_ADDRESS1",
+        },
       ],
       address2: [
-        { label: "Street address line 2", placeholder: "", type: "text" },
+        {
+          label: "Street address line 2",
+          placeholder: "",
+          type: "text",
+          required: false,
+          committer: "SET_ADDRESS2",
+        },
       ],
       address3: [
-        { label: "Country", placeholder: "", type: "text" },
-        { label: "City", placeholder: "", type: "text" },
+        {
+          label: "Country",
+          placeholder: "",
+          type: "text",
+          required: true,
+          committer: "SET_COUNTRY",
+        },
+        {
+          label: "City",
+          placeholder: "",
+          type: "text",
+          required: true,
+          committer: "SET_CITY",
+        },
       ],
       workInfo1: [
-        { label: "Occupation", placeholder: "", type: "text" },
-        { label: "Job title", placeholder: "", type: "text" },
+        {
+          label: "Occupation",
+          placeholder: "",
+          type: "text",
+          required: true,
+          committer: "SET_OCCUPATION",
+        },
+        {
+          label: "Job title",
+          placeholder: "",
+          type: "text",
+          required: true,
+          committer: "SET_JOB",
+        },
       ],
       workInfo2: [
-        { label: "Place of work", placeholder: "", type: "text" },
+        {
+          label: "Place of work",
+          placeholder: "",
+          type: "text",
+          required: true,
+          committer: "SET_PWORK",
+        },
         {
           label: "Phone number",
           placeholder: "+X (XXX) XXX - XXXX",
           type: "tel",
+          required: true,
+          committer: "SET_PHONE",
         },
       ],
     };
   },
   methods: {
-    submitHandler() {
-      console.log("s");
+    submitHandler(e) {
+      e.preventDefault();
+      this.$store.dispatch("a/getRegistration");
     },
   },
 };
@@ -209,7 +302,7 @@ button {
 
 @media screen and (max-width: 65rem) {
   .registration-page {
-    margin-top: 7rem;
+    margin-top: 6rem;
   }
 }
 
