@@ -9,6 +9,7 @@
         :inputValue="item.value"
         :inputType="item.type"
         :isReadOnly="isReadOnly"
+        :inputName="item.name"
       />
     </div>
   </div>

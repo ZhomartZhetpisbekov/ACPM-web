@@ -65,6 +65,9 @@ export default {
       console.log(this.usernameRef, this.passwordRef);
     },
   },
+  created() {
+    if (localStorage.getItem("password")) this.$router.push("/account");
+  },
 };
 </script>
 

@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import api from "../services/api";
-// import router from "../router/index";
+import router from "../router/index";
 
 Vue.use(Vuex);
 
@@ -93,6 +93,7 @@ export const userStore = {
         .then((response) => {
           console.log(response);
           commit("REGISTER", response.data);
+          router.push('/login')
         })
         .catch((error) => {
           console.log(error);

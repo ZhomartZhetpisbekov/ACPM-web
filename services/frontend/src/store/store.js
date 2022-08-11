@@ -9,6 +9,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   modules: { a: userStore },
   state: {
+    loginPassed: false,
     currentLanguage: localStorage.getItem("currentLanguage"),
     news: [],
     article: [],
@@ -17,6 +18,7 @@ export default new Vuex.Store({
     searchResults: [],
     aboutUs: [],
     membership: [],
+    userInfo: {},
     menu: {
       pages: {
         headerNavTop: [
@@ -103,6 +105,9 @@ export default new Vuex.Store({
       localStorage.setItem("token", resp.auth_token);
       state.login = true;
     },
+    SET_USER_INFO(state, userInfo) {
+      state.userInfo = userInfo;
+    },
   },
   actions: {
     async getAboutUs({ commit, state }) {
@@ -163,12 +168,14 @@ export default new Vuex.Store({
       bodyFormData.append("username", user.email);
       bodyFormData.append("password", user.password);
       api
-        .post("auth/jwt/create", bodyFormData)
+        .post("auth/token/login", bodyFormData)
         .then((response) => {
           console.log(response.data);
           commit("LOGIN", response.data);
+          localStorage.setItem("username", user.email);
+          localStorage.setItem("password", user.password);
           state.loginPassed = true;
-          router.push("/news");
+          router.push("/account");
           // console.log("Log in!");
         })
         .catch((error) => {
@@ -181,16 +188,22 @@ export default new Vuex.Store({
       api
         .get("/auth/users/me", {
           // auth: {"Basic" :`Basic ${localStorage.getItem("token")}`},
-
-          headers: {
-            Authorization:
-              "Basic " +
-              "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90e…iOjR9.-gWh9BiythO1dBqmwuM0t_cUoIdh5peA2JXo7i3cKFg",
-          },
+            auth: {
+              username: localStorage.getItem("username"),
+              password: localStorage.getItem("password"),
+            },
         })
-        .then((response) => console.log(response.data));
-      commit("SET_ABOUT_US", "lol");
+        .then((response) => {
+          console.log(response.data);
+          commit("SET_USER_INFO", response.data);
+        });
+      // commit("SET_ABOUT_US", "lol");
     },
+    userLogOut() {
+      localStorage.removeItem('username');
+      localStorage.removeItem('password');
+      router.push('/login');
+    }
 
     // registerUser({ commit }, user) {
     //   api

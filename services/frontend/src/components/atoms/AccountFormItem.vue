@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div v-if="userValue || inputType == 'password' || inputName == 'middle_name'">
     <label class="input_label">{{ inputLabel }} </label>
     <input
       v-if="inputType == 'tel'"
-      :value="inputValue"
+      :value="userValue"
       :type="inputType"
       pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"
       :readonly="isReadOnly"
@@ -11,7 +11,7 @@
     />
     <input
       v-else
-      :value="inputValue"
+      :value="inputType == 'password' ? 'lolipendr' : userValue"
       :type="inputType"
       :readonly="isReadOnly"
       :class="{ activeInput: !isReadOnly }"
@@ -35,10 +35,16 @@ export default {
     isReadOnly: {
       type: Boolean,
     },
+    inputName: String,
   },
   mounted() {
     console.log(this.isReadOnly);
   },
+  computed:{
+    userValue() {
+      return this.$store.state.userInfo[this.inputName];
+    }
+  }
 };
 </script>
 

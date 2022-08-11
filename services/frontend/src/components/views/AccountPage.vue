@@ -20,12 +20,13 @@
             :isReadOnly="!isEditting"
           />
           <input v-if="isEditting" type="submit" value="Save" class="submit-btn">
+          name: ""
         </form>
       </div>
       <div class="user-actions-container">
         <a @click="editInfo" :class="{ activeLink: isEditting }">{{ $t('accountPage.editInfo') }}</a>
         <a>{{ $t('accountPage.deleteAccount') }}</a>
-        <a>{{ $t('accountPage.signOut') }}</a>
+        <a @click="signOutHandler">{{ $t('accountPage.signOut') }}</a>
       </div>
     </div>
   </div>
@@ -37,7 +38,20 @@ import AccountForm from "../molecules/AccountForm.vue";
 export default {
   name: "AccountPage",
   components: { AccountForm },
+  // computed: {
+  //   userInfo() {
+  //     return this.$store.state.userInfo;
+  //   }
+  // },
+  created() {
+    this.fetchUserInfo();
+  },
   methods: {
+    async fetchUserInfo() {
+      this.loading = true;
+      await this.$store.dispatch("getUserInformation");
+      this.loading = false;
+    },
     submitHandler(e) {
       e.preventDefault();
       this.isEditting = false;
@@ -47,6 +61,9 @@ export default {
     },
     toggleIsOnSettings(route) {
       route == 'membership' ? this.isOnSettings = false : this.isOnSettings = true;
+    },
+    signOutHandler() {
+      this.$store.dispatch("userLogOut");
     }
   },
   data() {
@@ -61,21 +78,25 @@ export default {
               label: "Username",
               value: "renaidn",
               type: "text",
+              name: "username"
             },
             {
               label: "Password",
               value: "*******",
               type: "password",
+              name: "password"
             },
             {
               label: "Email",
               value: "johndoe@gmail.com",
               type: "email",
+              name: "email"
             },
             {
               label: "Phone number",
               value: "7777-333-4444",
               type: "tel",
+              name: "phone"
             },
           ],
         },
@@ -86,22 +107,26 @@ export default {
               label: "First name",
               value: "Adina",
               type: "text",
+              name: "first_name"
             },
             {
               label: "Middle name",
               value: "",
               type: "text",
+              name: "middle_name"
             },
 
             {
               label: "Last name",
               value: "Maratkyzy",
               type: "text",
+              name: "last_name"
             },
             {
               label: "Date of birth",
               value: "06/04/2002",
               type: "date",
+              name: "date_of_Birth"
             },
           ],
         },
@@ -112,22 +137,26 @@ export default {
               label: "Street address line 1",
               value: "Great street 58",
               type: "text",
+              name: "address"
             },
             {
               label: "Street address line 2",
               value: "",
               type: "text",
+              name: "address"
             },
 
             {
               label: "Country",
               value: "Kazakhstan",
               type: "text",
+              name: "country"
             },
             {
               label: "City",
               value: "Nur-Sultan",
               type: "text",
+              name: "city"
             },
           ],
         },
@@ -138,16 +167,19 @@ export default {
               label: "Occupation",
               value: "Profession",
               type: "text",
+              name: "profession"
             },
             {
               label: "Job title",
               value: "Masters of profession",
               type: "text",
+              name: "job"
             },
             {
               label: "Place of work",
               value: "National Bank of Professions (NPB)",
               type: "text",
+              name: "place_of_work"
             },
           ],
         },
