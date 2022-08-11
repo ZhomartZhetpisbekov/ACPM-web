@@ -1,10 +1,12 @@
 <template>
   <section class="login-page">
-    <form @submit="submitHandler">
+    <form autocomplete="off" @submit="submitHandler">
       <h3>{{ $t("loginPage.loginTitle") }}</h3>
 
       <label for="username">{{ $t("loginPage.username") }}</label>
       <input
+        autocomplete="off"
+        required
         v-model="usernameRef"
         type="text"
         placeholder="Email or Phone"
@@ -13,10 +15,13 @@
 
       <label for="password">{{ $t("loginPage.password") }}</label>
       <input
+        autocomplete="off"
+        required
         v-model="passwordRef"
         type="password"
         placeholder="*********"
         id="password"
+        :minlength="8"
       />
 
       <div class="actions-container">
@@ -56,13 +61,12 @@ export default {
     };
   },
   methods: {
-    submitHandler(e) {
+    async submitHandler(e) {
       e.preventDefault();
-      this.$store.dispatch("loginUser", {
+      await this.$store.dispatch("loginUser", {
         email: this.usernameRef,
         password: this.passwordRef,
       });
-      console.log(this.usernameRef, this.passwordRef);
     },
   },
   created() {
