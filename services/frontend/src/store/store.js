@@ -89,6 +89,9 @@ export default new Vuex.Store({
     SET_GROUP(state, group) {
       state.group = group;
     },
+    EMPTY_GROUP(state) {
+      state.group = [];
+    },
     SET_CATEGORY_DETAILS(state, categoryDetails) {
       state.categoryDetails = categoryDetails;
     },
@@ -188,10 +191,10 @@ export default new Vuex.Store({
       api
         .get("/auth/users/me", {
           // auth: {"Basic" :`Basic ${localStorage.getItem("token")}`},
-            auth: {
-              username: localStorage.getItem("username"),
-              password: localStorage.getItem("password"),
-            },
+          auth: {
+            username: localStorage.getItem("username"),
+            password: localStorage.getItem("password"),
+          },
         })
         .then((response) => {
           console.log(response.data);
@@ -200,10 +203,10 @@ export default new Vuex.Store({
       // commit("SET_ABOUT_US", "lol");
     },
     userLogOut() {
-      localStorage.removeItem('username');
-      localStorage.removeItem('password');
-      router.push('/login');
-    }
+      localStorage.removeItem("username");
+      localStorage.removeItem("password");
+      router.push("/login");
+    },
 
     // registerUser({ commit }, user) {
     //   api

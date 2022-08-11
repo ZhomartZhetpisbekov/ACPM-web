@@ -24,14 +24,14 @@
           @changeCurrentSection="(payload) => clickHandler(payload)"
         />
       </ul>
-      <ul class="mobile-dropdown__list">
+      <ul v-if="groupList" class="mobile-dropdown__list">
         <MobileMenuItem
-          v-for="(item, ind) in headerLinks[current].children"
+          v-for="(item, ind) in groupList"
           :key="ind"
-          :sectionName="item.name"
+          :sectionName="item.title"
           :styling="'right'"
           :pageName="headerLinks[current].path"
-          :pagePath="item.path"
+          :pagePath="item.category"
         />
       </ul>
     </div>
@@ -56,19 +56,43 @@ export default {
       type: Boolean,
     },
   },
+  created() {
+    this.fetchGroup();
+    const checker = this.headerLinks.findIndex(
+      (item) => item.path == this.$route.params.name
+    );
+    checker == -1 ? (this.current = 0) : (this.current = checker);
+  },
   computed: {
     headerLinks() {
       return this.$store.getters.headerBottomItems;
     },
+
+    groupList() {
+      return this.$store.state.group;
+    },
   },
+
   data() {
     return {
       current: 0,
+      group: "",
     };
+  },
+  watch: {
+    current() {
+      this.fetchGroup();
+    },
   },
   methods: {
     clickHandler(payload) {
       this.current = payload;
+    },
+    async fetchGroup() {
+      this.group = this.headerLinks[this.current].path;
+      this.loading = true;
+      await this.$store.dispatch("getGroup", this.group);
+      this.loading = false;
     },
   },
 };

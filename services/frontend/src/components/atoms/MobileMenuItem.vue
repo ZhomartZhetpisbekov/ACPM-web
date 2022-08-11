@@ -45,13 +45,9 @@ export default {
           this.$router.currentRoute.path !==
           "/" + this.pageName + "/" + this.pagePath
         ) {
-          this.$router.push({
-            name: "Information",
-            params: {
-              name: this.pageName,
-              item: this.pagePath,
-            },
-          });
+          console.log(this.pageName, this.pagePath);
+          this.$router.push(`/${this.pageName}/${this.pagePath}`);
+
           this.$router.go();
         }
       }
