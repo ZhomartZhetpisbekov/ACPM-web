@@ -34,6 +34,7 @@
 
 <script>
 import AccountForm from "../molecules/AccountForm.vue";
+import i18n from "../../plugins/i18n";
 
 export default {
   name: "AccountPage",
@@ -46,6 +47,9 @@ export default {
   created() {
     this.fetchUserInfo();
   },
+  mounted() {
+    console.log('messages: ', i18n.messages[this.$store.state.currentLanguage]);
+  },
   methods: {
     async fetchUserInfo() {
       this.loading = true;
@@ -55,6 +59,7 @@ export default {
     submitHandler(e) {
       e.preventDefault();
       this.isEditting = false;
+      console.log('computed messages:', this.messages.accountPage.title);
     },
     editInfo() {
       this.isEditting = true;
@@ -64,6 +69,11 @@ export default {
     },
     signOutHandler() {
       this.$store.dispatch("userLogOut");
+    }
+  },
+  computed: {
+    messages() {
+      return this.$i18n.messages[this.$store.state.currentLanguage].accountPage.title;
     }
   },
   data() {

@@ -64,7 +64,10 @@ const messages = {
       membership: "Членство",
       editInfo: "Редактировать",
       deleteAccount: "Удалить аккаунт",
-      signOut: "Выйти"
+      signOut: "Выйти",
+      formDetails: [
+        {}
+      ]
     }
   },
   kz: {
@@ -130,6 +133,9 @@ const messages = {
       signOut: "Выйти"
     }
   },
+
+
+
   en: {
     header: {
       navTop: ["News", "Contacts", "Account"],

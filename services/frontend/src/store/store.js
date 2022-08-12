@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import api from "../services/api";
 import router from "../router/index";
 import { userStore } from "./user.module";
+import axios from "axios";
 
 Vue.use(Vuex);
 
@@ -104,7 +105,7 @@ export default new Vuex.Store({
     },
     LOGIN(state, resp) {
       // $cookies.set("token", resp.access);
-      console.log(resp);
+      // console.log(resp);
       localStorage.setItem("token", resp.auth_token);
       state.login = true;
     },
@@ -175,8 +176,6 @@ export default new Vuex.Store({
         .then((response) => {
           console.log(response.data);
           commit("LOGIN", response.data);
-          localStorage.setItem("username", user.email);
-          localStorage.setItem("password", user.password);
           state.loginPassed = true;
           router.push("/account");
           // console.log("Log in!");
@@ -188,23 +187,23 @@ export default new Vuex.Store({
         });
     },
     getUserInformation({ commit }) {
-      api
-        .get("/auth/users/me", {
-          // auth: {"Basic" :`Basic ${localStorage.getItem("token")}`},
-          auth: {
-            username: localStorage.getItem("username"),
-            password: localStorage.getItem("password"),
-          },
-        })
-        .then((response) => {
-          console.log(response.data);
+      var config = {
+        method: "get",
+        url: `${api.defaults.baseURL}/auth/users/me`,
+        headers: {
+          Authorization: `token ${localStorage.getItem("token")}`,
+        },
+      };
+      axios(config)
+        .then(function(response) {
           commit("SET_USER_INFO", response.data);
+        })
+        .catch(function(error) {
+          console.log(error);
         });
-      // commit("SET_ABOUT_US", "lol");
     },
     userLogOut() {
-      localStorage.removeItem("username");
-      localStorage.removeItem("password");
+      localStorage.removeItem("token");
       router.push("/login");
     },
 

@@ -66,7 +66,7 @@ export default {
     },
   },
   created() {
-    if (localStorage.getItem("password")) this.$router.push("/account");
+    if (localStorage.getItem("token")) this.$router.push("/account");
   },
 };
 </script>
