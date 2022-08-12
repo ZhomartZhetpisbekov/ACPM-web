@@ -1,8 +1,11 @@
 <template>
   <div :class="inputClass">
-    <label class="input_label required-field">{{ inputLabel }} </label>
+    <label class="input_label" :class="{ 'required-field': inputRequired }">
+      {{ inputLabel }}
+    </label>
     <input
       v-if="inputType == 'tel'"
+      autocomplete="off"
       :placeholder="inputPlaceholder"
       :type="inputType"
       pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"
@@ -13,6 +16,7 @@
     />
     <input
       v-else
+      autocomplete="off"
       :placeholder="inputPlaceholder"
       :type="inputType"
       :required="inputRequired"
