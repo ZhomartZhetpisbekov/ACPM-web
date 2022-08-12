@@ -2,8 +2,8 @@
   <div class="single-news-block" :class="{ active: isLeadNews }">
     <div @click="goToArticle()" class="img-container">
       <img :src="imgPath" alt="" />
-      <span class="mobile-view-date">{{ date }}</span>
     </div>
+    <!-- <a href="" class="text-container" :class="{ activeText: isLeadNews }"> -->
     <div class="text-block">
       <h3>{{ title }}</h3>
       <p>
@@ -11,6 +11,7 @@
       </p>
       <span>{{ date }}</span>
     </div>
+    <!-- </a> -->
   </div>
 </template>
 
@@ -65,62 +66,52 @@ span {
   color: #70a2a7;
 }
 .single-news-block {
-  /* border: 1px solid green; */
   padding: 0 8rem;
   display: flex;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .img-container {
-  width: 35%;
+  width: 55%;
 }
 
 .img-container img {
   width: 100%;
-  height: 100%;
   object-fit: cover;
-}
-
-.img-container .mobile-view-date {
-  display: none;
+  height: 22rem;
 }
 
 .text-block {
-  width: 65%;
+  width: 45%;
   padding: 0.5rem 0 0.5rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
   justify-content: space-around;
 }
 
-@media screen and (max-width: 65rem) {
+@media only screen and (max-width: 65rem) {
   .single-news-block {
     padding: 0 2rem;
   }
 }
 
-@media screen and (max-width: 40rem) {
-  /* .single-news-block {
-    padding: 0 1rem;
-  } */
-  h3 {
-    font-size: 1rem;
-  }
-  .img-container img {
-    height: 7rem;
-  }
-  .text-block {
+@media only screen and (max-width: 40rem) {
+  .single-news-block {
     padding: 0;
-    padding-left: 1.5rem;
-    justify-content: flex-start;
+    width: 100%;
+    flex-direction: column;
+    gap: 0.5rem;
   }
-  .text-block p,
-  span {
-    display: none;
+
+  .img-container {
+    width: 100%;
   }
-  .img-container .mobile-view-date {
-    display: block;
+
+  .text-block {
+    padding: 0.5rem 2rem;
+    width: 100%;
+    gap: 1rem;
   }
 }
+
 </style>

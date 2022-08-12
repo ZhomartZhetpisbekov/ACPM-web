@@ -1,31 +1,42 @@
 <template>
   <div v-if="category" class="info-text">
     <h1 class="info-text_title">{{ category.title }}</h1>
-    <img :src="`${imgPath}${category.main_image}`" alt="">
+    <img :src="`${imgPath}${category.main_image}`" alt="" />
     <div class="parsed-html" v-html="category.text"></div>
+    <div v-if="category.pdfs.length > 0">
+      <a v-for="(item, index) in category.pdfs"
+        :key="index"
+        :href="`${imgPath}${item.pdf}`"
+      >
+        {{ item.pdf }}
+      </a>
+      <vue-pdf-embed
+        v-for="(item, index) in category.pdfs"
+        :key="index"
+        :source="`${imgPath}${item.pdf}`"
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import api from '../../services/api';
+import api from "../../services/api";
+import VuePdfEmbed from "vue-pdf-embed/dist/vue2-pdf-embed";
 
 export default {
-  name: 'InfoText',
-  // components: {InfoLol},
+  name: "InfoText",
+  components: { VuePdfEmbed },
   props: {
     category: {
       type: Object,
-    }
-  },
-  // mounted() {
-  //   console.log(this.category);
-  // },
-  computed: {
-    imgPath() {
-      return `${api.defaults.baseURL}`
     },
   },
-}
+  computed: {
+    imgPath() {
+      return `${api.defaults.baseURL}`;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -44,7 +55,7 @@ img {
   width: 100%;
 }
 
-.parsed-html{
+.parsed-html {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -59,4 +70,5 @@ img {
   width: 100%;
   aspect-ratio: 16/9;
 }
+
 </style>

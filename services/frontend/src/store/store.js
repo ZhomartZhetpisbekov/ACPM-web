@@ -11,7 +11,10 @@ export default new Vuex.Store({
   modules: { a: userStore },
   state: {
     loginPassed: false,
-    currentLanguage: localStorage.getItem("currentLanguage"),
+
+    currentLanguage: localStorage.getItem("currentLanguage")
+      ? localStorage.getItem("currentLanguage")
+      : "ru",
     news: [],
     article: [],
     group: [],
