@@ -1,10 +1,10 @@
 <template>
-  <div class="single-news-block" :class="{ active: isLeadNews }">
-    <div @click="goToArticle()" class="img-container">
+  <div class="single-news-block">
+    <div @click="goToArticle" class="img-container">
       <img :src="imgPath" alt="" />
     </div>
     <!-- <a href="" class="text-container" :class="{ activeText: isLeadNews }"> -->
-    <div class="text-block">
+    <div @click="goToArticle" class="text-block">
       <h3>{{ title }}</h3>
       <p>
         {{ shortText.slice(0, 250) + ".." }}
@@ -73,6 +73,7 @@ span {
 
 .img-container {
   width: 55%;
+  cursor: pointer;
 }
 
 .img-container img {
@@ -87,6 +88,7 @@ span {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 65rem) {

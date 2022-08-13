@@ -115,7 +115,7 @@ export default {
       this.loading = false;
     },
     goBack() {
-      this.$router.back();
+      this.$router.push('/news');
     },
     showMoreNews() {
       this.newsCount += 3;

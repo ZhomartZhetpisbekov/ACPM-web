@@ -1,10 +1,10 @@
 <template>
-  <div class="single-news-block" :class="{ active: isLeadNews }">
-    <div @click="goToArticle()" class="img-container">
+  <div class="single-news-block">
+    <div @click="goToArticle" class="img-container">
       <img :src="imgPath" alt="" />
       <span class="mobile-view-date">{{ date }}</span>
     </div>
-    <div class="text-block">
+    <div @click="goToArticle" class="text-block">
       <h3>{{ title }}</h3>
       <p>
         {{ shortText.slice(0, 250) + ".." }}
@@ -73,6 +73,7 @@ span {
 
 .img-container {
   width: 35%;
+  cursor: pointer;
 }
 
 .img-container img {
@@ -92,6 +93,7 @@ span {
   flex-direction: column;
   gap: 2rem;
   justify-content: space-around;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 65rem) {
