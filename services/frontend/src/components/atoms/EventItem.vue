@@ -1,5 +1,5 @@
 <template>
-  <div class="event-container">
+  <div class="event-container" @click="goToEvents">
     <!-- <a href="" class="event-link-wrapper" style="border: 1px solid purple"> -->
     <img :src="`${imgPath}${eventInfo.main_image}`" />
     <div class="text-box">
@@ -28,6 +28,11 @@ export default {
       return `${api.defaults.baseURL}`
     },
   },
+  methods: {
+    goToEvents() {
+      this.$router.push(`events/${this.eventInfo.category}`);
+    }
+  },
 };
 </script>
 
@@ -37,6 +42,7 @@ export default {
 .event-container {
   width: 90%;
   text-align: left;
+  cursor: pointer;
 }
 
 img {
