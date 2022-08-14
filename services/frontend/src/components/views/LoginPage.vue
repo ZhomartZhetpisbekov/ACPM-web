@@ -12,6 +12,9 @@
         placeholder="Email or Phone"
         id="username"
       />
+      <!-- <label style="margin-bottom: 1rem; color: red" v-if="!loginError"
+        >Неверный пароль или логин</label
+      > -->
 
       <label for="password">{{ $t("loginPage.password") }}</label>
       <input
@@ -23,8 +26,11 @@
         id="password"
         :minlength="8"
       />
+      <label style="margin-bottom: 1rem; color: red" v-if="!loginError"
+        >Неверный пароль или логин</label
+      >
 
-      <div class="actions-container">
+      <div class="actions-container" style="line-height: 1.25rem">
         <div class="checkbox-container">
           <input type="checkbox" />
           <label> {{ $t("loginPage.remember") }}</label>
@@ -59,6 +65,11 @@ export default {
       usernameRef: "",
       passwordRef: "",
     };
+  },
+  computed: {
+    loginError() {
+      return this.$store.state.loginPassed;
+    },
   },
   methods: {
     async submitHandler(e) {

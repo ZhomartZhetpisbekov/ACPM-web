@@ -10,8 +10,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   modules: { a: userStore },
   state: {
-    loginPassed: false,
-
+    loginPassed: true,
     currentLanguage: localStorage.getItem("currentLanguage")
       ? localStorage.getItem("currentLanguage")
       : "ru",
@@ -186,6 +185,7 @@ export default new Vuex.Store({
         .catch((error) => {
           console.log("Password or email incorrect!\n");
           console.log(error);
+          state.loginPassed = false;
           // this.state.loginEr = "Неправильный пароль !";
         });
     },
