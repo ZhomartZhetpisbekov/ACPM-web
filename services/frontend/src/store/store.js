@@ -27,7 +27,7 @@ export default new Vuex.Store({
       pages: {
         headerNavTop: [
           { name: "Новости", path: "news", routerName: "News" },
-          { name: "Контакты", path: "contacts", routerName: "Contacts" },
+          { name: "Контакты", path: "society", routerName: "Information" },
           { name: "Личный Кабинет", path: "account", routerName: "Account" },
         ],
         headerNavBottom: [

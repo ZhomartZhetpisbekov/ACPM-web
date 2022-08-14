@@ -6,7 +6,7 @@
         <div class="text-block">
           <h3>{{ article[0].title }}</h3>
           <span>{{ article[0].date }}</span>
-          <div v-html="article[0].text"></div>
+          <div class="parsed-html" v-html="article[0].text"></div>
           <div class="go-back-btn mobile">
             <a @click="goBack">
               <i class="fa-solid fa-arrow-left-long"></i>
@@ -46,7 +46,7 @@
       </div>
     </div>
     <div class="go-back-btn">
-      <a @click="goBack">
+      <a class="goBack-btn" @click="goBack">
         <i class="fa-solid fa-arrow-left-long"></i>
         Вернуться на страницу новостей
       </a>
@@ -91,7 +91,7 @@ export default {
   mounted() {
     () => {
       this.newsCount = 3;
-    }
+    };
   },
   watch: {
     $route: {
@@ -115,7 +115,7 @@ export default {
       this.loading = false;
     },
     goBack() {
-      this.$router.push('/news');
+      this.$router.push("/news");
     },
     showMoreNews() {
       this.newsCount += 3;
@@ -133,6 +133,10 @@ h3 {
 }
 span {
   color: #70a2a7;
+}
+
+a {
+  cursor: pointer;
 }
 .article-page {
   margin-top: 13rem;
@@ -205,6 +209,31 @@ span {
   color: #fff;
   border-radius: 30px;
   cursor: pointer;
+}
+
+.parsed-html {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.parsed-html >>> img {
+  width: 50%;
+}
+
+.parsed-html >>> iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+.parsed-html >>> ol,
+.parsed-html >>> ul {
+  padding: 0 2rem;
+}
+
+.parsed-html >>> a {
+  /* color: var(--text-color); */
+  text-decoration: underline;
 }
 
 @media only screen and (max-width: 65rem) {

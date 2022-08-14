@@ -47,6 +47,7 @@ export default {
         });
         this.$router.go()
       }
+      if (this.pagePath == 'contacts') {this.$router.push('society/contacts')}
       else if (this.$router.currentRoute.path !== "/" + this.pagePath)
         this.$router.push({
           name: this.routerName,
