@@ -10,7 +10,7 @@
       <div class="main-edit">
         <a @click="editInfo" :class="{ activeLink: isEditting }">{{ $t('accountPage.editInfo') }}</a>
       </div>
-      <div class="user-info-container">
+      <div class="user-info-container" v-if="isOnSettings" style="border: 1px solid green">
         <form @submit="submitHandler">
           <AccountForm
             v-for="(item, index) in formSections"
@@ -20,8 +20,10 @@
             :isReadOnly="!isEditting"
           />
           <input v-if="isEditting" type="submit" value="Save" class="submit-btn">
-          name: ""
         </form>
+      </div>
+      <div class="user-info-container" v-if="!isOnSettings" style="border: 1px solid green">
+
       </div>
       <div class="user-actions-container">
         <a @click="editInfo" :class="{ activeLink: isEditting }">{{ $t('accountPage.editInfo') }}</a>
@@ -39,11 +41,6 @@ import i18n from "../../plugins/i18n";
 export default {
   name: "AccountPage",
   components: { AccountForm },
-  // computed: {
-  //   userInfo() {
-  //     return this.$store.state.userInfo;
-  //   }
-  // },
   created() {
     this.fetchUserInfo();
   },

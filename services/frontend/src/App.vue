@@ -93,6 +93,7 @@ section {
 
 a {
   text-decoration: none;
+  cursor: pointer;
   color: #000;
 }
 </style>

@@ -22,6 +22,7 @@ export default new Vuex.Store({
     aboutUs: [],
     membership: [],
     userInfo: {},
+    isPremiumUser: false,
     menu: {
       pages: {
         headerNavTop: [
@@ -114,6 +115,9 @@ export default new Vuex.Store({
     SET_USER_INFO(state, userInfo) {
       state.userInfo = userInfo;
     },
+    SET_IS_PREMIUM(state, isPremiumUser) {
+      state.isPremiumUser = isPremiumUser;
+    }
   },
   actions: {
     async getAboutUs({ commit, state }) {
@@ -200,6 +204,8 @@ export default new Vuex.Store({
       axios(config)
         .then(function(response) {
           commit("SET_USER_INFO", response.data);
+          console.log(response.data);
+          // commit("SET_IS_PREMIUM", response.data.)
         })
         .catch(function(error) {
           console.log(error);

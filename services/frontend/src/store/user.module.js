@@ -73,7 +73,7 @@ export const userStore = {
     },
   },
   actions: {
-    async getRegistration({ commit, state }) {
+    async getRegistration({ state }) {
       let bodyFormData = new FormData();
       bodyFormData.append("username", state.username);
       bodyFormData.append("password", state.password);

@@ -36,9 +36,10 @@ export default {
     },
     clickHandler(url) {
       console.log(this.$router);
-      this.$router.push("/");
-      this.$router.push(url);
-      this.$router.go();
+      console.log(this.resultQuery)
+      // this.$router.push("/");
+      this.$router.push('/'+url);
+      // this.$router.go();
     },
   },
   computed: {
