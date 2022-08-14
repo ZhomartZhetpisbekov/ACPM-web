@@ -92,10 +92,12 @@ export const userStore = {
         .post("/auth/users/", bodyFormData)
         .then((response) => {
           console.log(response);
-          commit("REGISTER", response.data);
+          // commit("a/REGISTER", response.data);
           router.push('/login')
         })
         .catch((error) => {
+          console.log(error.data);
+          console.log(error.username);
           console.log(error);
         });
     },
