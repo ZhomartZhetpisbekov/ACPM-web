@@ -60,6 +60,7 @@ img {
   flex-direction: column;
   gap: 1rem;
   padding: 1rem 0;
+  line-height: 1.5rem;
 }
 
 .parsed-html >>> img {
@@ -69,6 +70,15 @@ img {
 .parsed-html >>> iframe {
   width: 100%;
   aspect-ratio: 16/9;
+}
+
+.parsed-html >>> ol, .parsed-html >>> ul {
+  padding: 0 2rem;
+}
+
+.parsed-html >>> a {
+  color: var(--text-color);
+  text-decoration: underline;
 }
 
 </style>
